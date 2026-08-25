@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}EDMAH - {% trans "Événements & Conférences" %}{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/evenements.css' %}">
+{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="page-header">
+    <div class="container">
+        <div class="text-center" data-aos="fade-up">
+            <h1 class="page-title">{% trans "Événements & Séminaires" %}</h1>
+            <p style="font-size: 1.3rem; opacity: 0.95;">
+                {% trans "Rejoignez nos conférences, retraites de couples et ateliers thématiques" %}
+            </p>
+        </div>
+    </div>
+</section>
+
+<div class="container py-5">
+    <div class="row g-4">
+        <div class="col-lg-6" data-aos="fade-up">
+            <div class="event-card">
+                <div class="event-badge">{% trans "À Venir" %}</div>
+                <h3 class="event-title">{% trans "Grande Retraite des Couples 2026" %}</h3>
+                <div class="event-meta">
+                    <p><i class="fas fa-calendar-alt text-warning me-2"></i> 15 - 17 Novembre 2026</p>
+                    <p><i class="fas fa-map-marker-alt text-warning me-2"></i> {% trans "Centre d'Accompagnement, Yaoundé" %}</p>
+                </div>
+                <p class="event-desc">
+                    {% trans "Un week-end d'immersion totale dédié au ressourcement conjugal, avec conférences, ateliers pratiques et moments de prière au calme." %}
+                </p>
+                <a href="{% url 'contact' %}" class="btn btn-warning rounded-pill fw-bold text-dark px-4 py-2">
+                    {% trans "Réserver ma place" %}
+                </a>
+            </div>
+        </div>
+
+        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="event-card">
+                <div class="event-badge" style="background: var(--dore); color: dark;">{% trans "Webinaire En Ligne" %}</div>
+                <h3 class="event-title">{% trans "Atelier : Gérer le Budget à Deux" %}</h3>
+                <div class="event-meta">
+                    <p><i class="fas fa-calendar-alt text-warning me-2"></i> 10 Octobre 2026 (20h00 - 21h30)</p>
+                    <p><i class="fas fa-video text-warning me-2"></i> {% trans "En ligne (Zoom)" %}</p>
+                </div>
+                <p class="event-desc">
+                    {% trans "Un atelier interactif d'1h30 pour acquérir une méthode simple et biblique de gestion des finances familiales sans dispute." %}
+                </p>
+                <a href="{% url 'contact' %}" class="btn btn-outline-primary rounded-pill fw-bold px-4 py-2">
+                    {% trans "S'inscrire au Webinaire" %}
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

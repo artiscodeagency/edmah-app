@@ -1,0 +1,223 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}EDMAH - {% trans "Espace Apprenant & Cours" %}{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/cours.css' %}">
+{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="page-header">
+    <div class="container">
+        <div class="text-center" data-aos="fade-up">
+            <h1 class="page-title">{% trans "Espace Apprenant & Cours" %}</h1>
+            <p style="font-size: 1.3rem; opacity: 0.95;">
+                {% trans "Modules de formation enrichissants avec vidéos, supports et exercices" %}
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Course Content -->
+<section style="padding: 4rem 0;">
+    <div class="container">
+        <!-- Progress Overview -->
+        <div class="progress-container" data-aos="fade-up">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h5 style="color: var(--bordeaux); margin: 0;">
+                    <i class="fas fa-chart-line me-2"></i> {% trans "Votre Progression" %}
+                </h5>
+                <span style="font-weight: 700; color: var(--dore);">
+                    <span id="progressPercentage">35</span>% {% trans "complété" %}
+                </span>
+            </div>
+            <div class="progress-bar-custom">
+                <div class="progress-fill" id="progressFill" style="width: 35%;">
+                    35%
+                </div>
+            </div>
+            <p style="margin-top: 1rem; color: var(--gris-fonce); opacity: 0.8;">
+                <i class="fas fa-trophy me-2" style="color: var(--dore);"></i>
+                {% trans "Continue comme ça ! Tu as complété" %} <strong>7 {% trans "modules sur" %} 20</strong>
+            </p>
+        </div>
+
+        <div class="row">
+            <!-- Sidebar Navigation -->
+            <div class="col-lg-3" data-aos="fade-right">
+                <div class="sidebar">
+                    <h5 style="color: var(--bordeaux); margin-bottom: 1.5rem;">
+                        <i class="fas fa-book me-2"></i> {% trans "Modules" %}
+                    </h5>
+                    
+                    <div class="module-nav-item completed" data-module="1">
+                        <div class="module-icon"><i class="fas fa-check"></i></div>
+                        <div>
+                            <div style="font-weight: 600;">Module 1</div>
+                            <small style="opacity: 0.8;">{% trans "Introduction" %}</small>
+                        </div>
+                    </div>
+
+                    <div class="module-nav-item completed" data-module="2">
+                        <div class="module-icon"><i class="fas fa-check"></i></div>
+                        <div>
+                            <div style="font-weight: 600;">Module 2</div>
+                            <small style="opacity: 0.8;">{% trans "Communication" %}</small>
+                        </div>
+                    </div>
+
+                    <div class="module-nav-item active" data-module="3">
+                        <div class="module-icon"><i class="fas fa-play"></i></div>
+                        <div>
+                            <div style="font-weight: 600;">Module 3</div>
+                            <small style="opacity: 0.8;">{% trans "Finances" %}</small>
+                        </div>
+                    </div>
+
+                    <div class="module-nav-item" data-module="4">
+                        <div class="module-icon"><i class="fas fa-lock"></i></div>
+                        <div>
+                            <div style="font-weight: 600;">Module 4</div>
+                            <small style="opacity: 0.8;">{% trans "Intimité" %}</small>
+                        </div>
+                    </div>
+
+                    <div class="module-nav-item" data-module="5">
+                        <div class="module-icon"><i class="fas fa-lock"></i></div>
+                        <div>
+                            <div style="font-weight: 600;">Module 5</div>
+                            <small style="opacity: 0.8;">{% trans "Parentalité" %}</small>
+                        </div>
+                    </div>
+
+                    <div class="module-nav-item" data-module="6">
+                        <div class="module-icon"><i class="fas fa-lock"></i></div>
+                        <div>
+                            <div style="font-weight: 600;">Module 6</div>
+                            <small style="opacity: 0.8;">{% trans "Résolution Conflits" %}</small>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 2rem; padding-top: 2rem; border-top: 2px solid var(--gris-clair);">
+                        <div style="text-align: center; margin-bottom: 1rem;">
+                            <div style="font-size: 0.9rem; color: var(--gris-fonce); margin-bottom: 0.5rem;">
+                                <i class="fas fa-trophy" style="color: var(--dore);"></i> {% trans "Votre Parcours" %}
+                            </div>
+                            <div style="font-size: 1.5rem; font-weight: 700; color: var(--bordeaux);">
+                                7 / 20 modules
+                            </div>
+                        </div>
+                        <a href="{% url 'certifications' %}" class="btn-download" style="width: 100%; justify-content: center;">
+                            <i class="fas fa-certificate"></i> {% trans "Certificat" %}
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="col-lg-9" data-aos="fade-left">
+                <div class="course-content">
+                    <div class="module-header">
+                        <div>
+                            <h2 class="module-title">{% trans "Module 3: Finances de Couple" %}</h2>
+                            <div class="module-meta">
+                                <div class="meta-badge"><i class="fas fa-clock"></i> <span>45 min</span></div>
+                                <div class="meta-badge"><i class="fas fa-file-pdf"></i> <span>5 documents</span></div>
+                                <div class="meta-badge"><i class="fas fa-question-circle"></i> <span>{% trans "Quiz final" %}</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Video Player -->
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+
+                    <!-- Course Description -->
+                    <div style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--bordeaux); margin-bottom: 1rem;">
+                            <i class="fas fa-info-circle me-2"></i> {% trans "À propos de ce module" %}
+                        </h4>
+                        <p style="line-height: 1.8;">
+                            {% trans "Dans ce module, nous abordons l'importance cruciale de la gestion financière dans le couple. Vous apprendrez à établir un budget familial, à communiquer efficacement sur l'argent, à planifier vos objectifs financiers communs et à gérer les désaccords liés aux finances." %}
+                        </p>
+                    </div>
+
+                    <!-- Learning Objectives -->
+                    <div style="background: var(--gris-clair); padding: 2rem; border-radius: 20px; margin-bottom: 2rem;">
+                        <h4 style="color: var(--bordeaux); margin-bottom: 1.5rem;">
+                            <i class="fas fa-target me-2"></i> {% trans "Objectifs d'apprentissage" %}
+                        </h4>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="padding: 0.5rem 0; display: flex; align-items: start; gap: 1rem;">
+                                <i class="fas fa-check-circle" style="color: var(--dore); margin-top: 4px;"></i>
+                                <span>{% trans "Comprendre les principes bibliques de la gestion financière" %}</span>
+                            </li>
+                            <li style="padding: 0.5rem 0; display: flex; align-items: start; gap: 1rem;">
+                                <i class="fas fa-check-circle" style="color: var(--dore); margin-top: 4px;"></i>
+                                <span>{% trans "Créer un budget familial réaliste et équilibré" %}</span>
+                            </li>
+                            <li style="padding: 0.5rem 0; display: flex; align-items: start; gap: 1rem;">
+                                <i class="fas fa-check-circle" style="color: var(--dore); margin-top: 4px;"></i>
+                                <span>{% trans "Établir des objectifs financiers communs à court et long terme" %}</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Resources -->
+                    <div class="resources-section">
+                        <h4 style="color: var(--bordeaux); margin-bottom: 1.5rem;">
+                            <i class="fas fa-download me-2"></i> {% trans "Supports de Cours" %}
+                        </h4>
+
+                        <div class="resource-item">
+                            <div class="resource-info">
+                                <div class="resource-icon"><i class="fas fa-file-pdf"></i></div>
+                                <div class="resource-details">
+                                    <h4>{% trans "Plan d'Épargne Familial" %}</h4>
+                                    <div class="resource-size">PDF • 1.8 MB • 10 pages</div>
+                                </div>
+                            </div>
+                            <a href="#" class="btn-download"><i class="fas fa-download"></i> {% trans "Télécharger" %}</a>
+                        </div>
+                    </div>
+
+                    <!-- Quiz Section -->
+                    <div class="quiz-section mt-5">
+                        <h4 style="color: var(--bordeaux); margin-bottom: 1.5rem;">
+                            <i class="fas fa-question-circle me-2"></i> {% trans "Quiz d'évaluation" %}
+                        </h4>
+                        <p style="margin-bottom: 2rem; color: var(--gris-fonce);">
+                            {% trans "Testez vos connaissances sur ce module. Vous devez obtenir au moins 80% pour valider." %}
+                        </p>
+
+                        <form id="quizForm">
+                            <div class="question-item mb-4">
+                                <div class="question-text fw-bold mb-2">
+                                    1. {% trans "Selon les principes bibliques, quelle devrait être la priorité dans la gestion financière du couple ?" %}
+                                </div>
+                                <div class="answer-option"><input type="radio" name="q1" value="a" id="q1a"> <label for="q1a">{% trans "L'épargne personnelle" %}</label></div>
+                                <div class="answer-option"><input type="radio" name="q1" value="b" id="q1b"> <label for="q1b">{% trans "La dîme et les offrandes" %}</label></div>
+                                <div class="answer-option"><input type="radio" name="q1" value="c" id="q1c"> <label for="q1c">{% trans "Les loisirs" %}</label></div>
+                            </div>
+
+                            <button type="submit" class="btn btn-warning rounded-pill fw-bold text-dark px-4 py-2">
+                                <i class="fas fa-check me-2"></i> {% trans "Soumettre le Quiz" %}
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Personal Notes Section -->
+                    <div class="mt-5 p-4 rounded-4 bg-white border">
+                        <h4 style="color: var(--bordeaux); margin-bottom: 1rem;"><i class="fas fa-sticky-note me-2"></i> {% trans "Mes Notes Personnelles" %}</h4>
+                        <textarea class="form-control" rows="4" placeholder="{% trans 'Prenez vos notes ici... Elles seront sauvegardées automatiquement.' %}"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

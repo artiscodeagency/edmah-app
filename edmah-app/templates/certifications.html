@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}{% trans "Vérification de Certificat - EDMAH" %}{% endblock %}
+
+{% block content %}
+<section class="py-5" style="background: linear-gradient(135deg, #1F4D78 0%, #2E74B5 100%);">
+    <div class="container py-4 text-center text-white">
+        <span class="badge bg-warning text-dark px-3 py-2 rounded-pill mb-3 fw-bold">{% trans "Authenticité & Traçabilité" %}</span>
+        <h1 class="display-5 fw-bold mb-2"><i class="fas fa-certificate me-2"></i> {% trans "Vérification de Certificat" %}</h1>
+        <p class="lead opacity-90">{% trans "Entrez le code unique présent sur votre diplôme EDMAH pour vérifier sa validité." %}</p>
+    </div>
+</section>
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8" data-aos="fade-up">
+            <div class="card border-0 shadow-lg rounded-4 p-4 p-md-5">
+                <h4 class="fw-bold text-primary mb-3 text-center">{% trans "Vérifier l'authenticité d'un diplôme" %}</h4>
+                <p class="text-muted text-center mb-4">{% trans "EDMAH délivre des certificats sécurisés munis d'un identifiant unique de vérification." %}</p>
+
+                <form id="verifyForm">
+                    <div class="input-group input-group-lg mb-4">
+                        <span class="input-group-text bg-light border-end-0"><i class="fas fa-qrcode text-warning"></i></span>
+                        <input type="text" class="form-control border-start-0" id="certCode" placeholder="{% trans 'Ex: EDMAH-2026-CERT-8921' %}" required>
+                        <button class="btn btn-warning fw-bold px-4 text-dark" type="submit">{% trans "Vérifier" %}</button>
+                    </div>
+                </form>
+
+                <div id="certResult" class="d-none mt-4 p-4 border rounded-4 bg-light">
+                    <div class="text-center mb-3">
+                        <i class="fas fa-award text-success display-3 mb-2"></i>
+                        <h4 class="fw-bold text-success">{% trans "Certificat Authentique & Valide" %}</h4>
+                    </div>
+                    <div class="row g-2 text-dark">
+                        <div class="col-6 text-end fw-bold">{% trans "Titulaire :" %}</div>
+                        <div class="col-6">Marie K.</div>
+                        <div class="col-6 text-end fw-bold">{% trans "Formation :" %}</div>
+                        <div class="col-6">Préparation au Mariage</div>
+                        <div class="col-6 text-end fw-bold">{% trans "Date d'émission :" %}</div>
+                        <div class="col-6">15 Juin 2026</div>
+                        <div class="col-6 text-end fw-bold">{% trans "Statut :" %}</div>
+                        <div class="col-6"><span class="badge bg-success">{% trans "Délivré & Confirmé" %}</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.getElementById('verifyForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const code = document.getElementById('certCode').value.trim();
+        const result = document.getElementById('certResult');
+
+        if (code) {
+            result.classList.remove('d-none');
+        }
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,1449 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-25 14:18+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+#: .\edmah_project\settings.py:121
+msgid "Français"
+msgstr ""
+
+#: .\edmah_project\settings.py:122
+msgid "English"
+msgstr ""
+
+#: .\templates\about.html:5
+msgid "À propos de Nous"
+msgstr ""
+
+#: .\templates\about.html:16
+msgid "À Propos de Nous"
+msgstr ""
+
+#: .\templates\about.html:17
+msgid "Découvrez notre histoire, notre vision et notre équipe"
+msgstr ""
+
+#: .\templates\about.html:31
+msgid "Notre Mission"
+msgstr ""
+
+#: .\templates\about.html:33
+msgid ""
+"Former des couples solides et épanouis en leur transmettant les principes "
+"bibliques du mariage. Nous croyons que chaque foyer peut devenir un havre de "
+"paix, d'amour et de prospérité lorsqu'il est bâti sur des fondations "
+"spirituelles solides."
+msgstr ""
+
+#: .\templates\about.html:42
+msgid "Notre Vision"
+msgstr ""
+
+#: .\templates\about.html:44
+msgid ""
+"Devenir la référence en matière de formation au mariage harmonieux en "
+"Afrique francophone. Nous aspirons à voir des milliers de foyers "
+"transformés, des communautés renforcées et une génération de couples qui "
+"incarnent l'amour et la fidélité."
+msgstr ""
+
+#: .\templates\about.html:56
+msgid "Notre Histoire"
+msgstr ""
+
+#: .\templates\about.html:58
+msgid "Un parcours guidé par la foi et l'engagement envers les couples"
+msgstr ""
+
+#: .\templates\about.html:65
+msgid "La Genèse"
+msgstr ""
+
+#: .\templates\about.html:66
+msgid ""
+"EDMAH est née d'une vision divine reçue par notre fondateur après avoir "
+"constaté le nombre croissant de divorces et de foyers en détresse dans nos "
+"communautés."
+msgstr ""
+
+#: .\templates\about.html:73
+msgid "Premiers Pas"
+msgstr ""
+
+#: .\templates\about.html:74
+msgid ""
+"Lancement de nos premières formations avec un groupe de 20 couples. Les "
+"résultats positifs nous ont encouragés à étendre notre impact."
+msgstr ""
+
+#: .\templates\about.html:81
+msgid "Expansion"
+msgstr ""
+
+#: .\templates\about.html:82
+msgid ""
+"Ouverture de formations en ligne et création de contenus digitaux pour "
+"toucher un public plus large à travers toute l'Afrique francophone."
+msgstr ""
+
+#: .\templates\about.html:89
+msgid "Reconnaissance"
+msgstr ""
+
+#: .\templates\about.html:90
+msgid ""
+"Plus de 500 couples formés, partenariats avec des églises locales et "
+"reconnaissance comme centre de référence pour la formation maritale."
+msgstr ""
+
+#: .\templates\about.html:102
+msgid "Nos Valeurs"
+msgstr ""
+
+#: .\templates\about.html:104
+msgid "Les principes qui guident notre action au quotidien"
+msgstr ""
+
+#: .\templates\about.html:113
+msgid "Foi en Dieu"
+msgstr ""
+
+#: .\templates\about.html:114
+msgid ""
+"La Parole de Dieu est notre fondement. Nous croyons que les principes "
+"bibliques sont la clé d'un mariage heureux et durable."
+msgstr ""
+
+#: .\templates\about.html:121
+msgid "Excellence"
+msgstr ""
+
+#: .\templates\about.html:122
+msgid ""
+"Nous nous engageons à fournir des formations de qualité supérieure avec des "
+"formateurs expérimentés et des contenus pertinents."
+msgstr ""
+
+#: .\templates\about.html:129
+msgid "Amour & Respect"
+msgstr ""
+
+#: .\templates\about.html:130
+msgid ""
+"Chaque couple est unique. Nous accompagnons avec bienveillance, sans "
+"jugement, dans le respect de l'histoire de chacun."
+msgstr ""
+
+#: .\templates\about.html:139
+msgid "Intégrité"
+msgstr ""
+
+#: .\templates\about.html:140
+msgid ""
+"Nous prêchons ce que nous vivons. Nos formateurs sont des modèles de couples "
+"épanouis qui incarnent les valeurs enseignées."
+msgstr ""
+
+#: .\templates\about.html:147
+msgid "Confidentialité"
+msgstr ""
+
+#: .\templates\about.html:148
+msgid ""
+"Les histoires partagées restent confidentielles. Nous créons un espace sûr "
+"où chacun peut s'exprimer librement."
+msgstr ""
+
+#: .\templates\about.html:155
+msgid "Transformation"
+msgstr ""
+
+#: .\templates\about.html:156
+msgid ""
+"Notre objectif n'est pas seulement d'informer, mais de transformer les vies "
+"et de voir des foyers restaurés et épanouis."
+msgstr ""
+
+#: .\templates\about.html:168
+msgid "Notre Équipe"
+msgstr ""
+
+#: .\templates\about.html:170
+msgid "Des serviteurs passionnés au service des couples"
+msgstr ""
+
+#: .\templates\about.html:180
+msgid "Fondateur & Directeur"
+msgstr ""
+
+#: .\templates\about.html:182
+msgid ""
+"Marié depuis 15 ans, père de 3 enfants. Pasteur et conseiller conjugal "
+"certifié avec une passion pour la restauration des foyers."
+msgstr ""
+
+#: .\templates\about.html:193
+msgid "Coordonnatrice Pédagogique"
+msgstr ""
+
+#: .\templates\about.html:195
+msgid ""
+"Psychologue clinicienne et formatrice. Elle apporte son expertise dans la "
+"gestion des conflits et la communication de couple."
+msgstr ""
+
+#: .\templates\about.html:206
+msgid "Formateur Principal"
+msgstr ""
+
+#: .\templates\about.html:208
+msgid ""
+"Expert en finances familiales et gestion de foyer. Il aide les couples à "
+"établir des bases financières solides."
+msgstr ""
+
+#: .\templates\about.html:223
+msgid ""
+"« C'est pourquoi l'homme quittera son père et sa mère, et s'attachera à sa "
+"wife, et ils deviendront une seule chair. »"
+msgstr ""
+
+#: .\templates\about.html:233
+msgid "Rejoignez Notre Communauté"
+msgstr ""
+
+#: .\templates\about.html:235
+msgid ""
+"Inscrivez-vous dès aujourd'hui et commencez votre parcours vers un mariage "
+"harmonieux"
+msgstr ""
+
+#: .\templates\about.html:238
+msgid "Découvrir les formations"
+msgstr ""
+
+#: .\templates\about.html:241
+msgid "Nous contacter"
+msgstr ""
+
+#: .\templates\base.html:8 .\templates\index.html:5
+msgid "École du Mariage Harmonieux"
+msgstr ""
+
+#: .\templates\base.html:9
+msgid ""
+"EDMAH est une école de formation dédiée au mariage, au couple et à la vie "
+"familiale, à inspiration biblique."
+msgstr ""
+
+#: .\templates\base.html:37
+msgid "Basculer la navigation"
+msgstr ""
+
+#: .\templates\base.html:43 .\templates\base.html:122
+msgid "Accueil"
+msgstr ""
+
+#: .\templates\base.html:46 .\templates\base.html:123
+msgid "À propos"
+msgstr ""
+
+#: .\templates\base.html:49 .\templates\base.html:124 .\templates\base.html:129
+#: .\templates\index.html:52
+msgid "Formations"
+msgstr ""
+
+#: .\templates\base.html:52
+msgid "Cours"
+msgstr ""
+
+#: .\templates\base.html:55 .\templates\base.html:125
+msgid "Événements"
+msgstr ""
+
+#: .\templates\base.html:58
+msgid "Galerie"
+msgstr ""
+
+#: .\templates\base.html:61 .\templates\base.html:126
+msgid "Blog"
+msgstr ""
+
+#: .\templates\base.html:64 .\templates\base.html:136
+msgid "Contact"
+msgstr ""
+
+#: .\templates\base.html:68 .\templates\formations.html:86
+#: .\templates\formations.html:130 .\templates\formations.html:174
+#: .\templates\formations.html:219 .\templates\formations.html:263
+#: .\templates\formations.html:307
+msgid "S'inscrire"
+msgstr ""
+
+#: .\templates\base.html:111
+msgid ""
+"L'École du Mariage Harmonieux vous accompagne dans la construction de foyers "
+"solides et heureux selon les principes bibliques."
+msgstr ""
+
+#: .\templates\base.html:121
+msgid "Navigation"
+msgstr ""
+
+#: .\templates\base.html:130
+msgid "Préparation au mariage"
+msgstr ""
+
+#: .\templates\base.html:131
+msgid "Couple épanoui"
+msgstr ""
+
+#: .\templates\base.html:132
+msgid "Vie familiale"
+msgstr ""
+
+#: .\templates\base.html:133
+msgid "Certifications"
+msgstr ""
+
+#: .\templates\base.html:139
+msgid "Yaoundé, Cameroun"
+msgstr ""
+
+#: .\templates\base.html:155
+msgid "Tous droits réservés."
+msgstr ""
+
+#: .\templates\base.html:159
+msgid "Politique de confidentialité"
+msgstr ""
+
+#: .\templates\base.html:160
+msgid "Conditions d'utilisation"
+msgstr ""
+
+#: .\templates\blog.html:5
+msgid "Blog & Articles - EDMAH"
+msgstr ""
+
+#: .\templates\blog.html:10
+msgid "Ressources & Conseils"
+msgstr ""
+
+#: .\templates\blog.html:11
+msgid "Blog EDMAH"
+msgstr ""
+
+#: .\templates\blog.html:12
+msgid "Articles, enseignements et réflexions pour nourrir votre vie de couple."
+msgstr ""
+
+#: .\templates\blog.html:21 .\templates\cours.html:68
+msgid "Communication"
+msgstr ""
+
+#: .\templates\blog.html:22
+msgid "5 clés pour déamorcer les conflits dans le couple"
+msgstr ""
+
+#: .\templates\blog.html:23
+msgid "Par Pasteur Daniel M. • 20 Août 2026"
+msgstr ""
+
+#: .\templates\blog.html:24
+msgid ""
+"Découvrez comment transformer les désaccords en opportunités de croissance "
+"et d'écoute mutuelle."
+msgstr ""
+
+#: .\templates\blog.html:25 .\templates\blog.html:37 .\templates\blog.html:49
+msgid "Lire l'article"
+msgstr ""
+
+#: .\templates\blog.html:33 .\templates\cours.html:76
+msgid "Finances"
+msgstr ""
+
+#: .\templates\blog.html:34
+msgid "L'argent dans le ménage : Serviteur ou Maître ?"
+msgstr ""
+
+#: .\templates\blog.html:35
+msgid "Par Équipe EDMAH • 12 Août 2026"
+msgstr ""
+
+#: .\templates\blog.html:36
+msgid ""
+"Des conseils pratiques pour gérer le budget familial avec transparence et "
+"sérénité."
+msgstr ""
+
+#: .\templates\blog.html:45
+msgid "Spiritualité"
+msgstr ""
+
+#: .\templates\blog.html:46
+msgid "Construire un autel familial béni"
+msgstr ""
+
+#: .\templates\blog.html:47
+msgid "Par Marie K. • 05 Août 2026"
+msgstr ""
+
+#: .\templates\blog.html:48
+msgid ""
+"Comment mettre la prière au cœur de votre foyer et transmettre la foi aux "
+"enfants."
+msgstr ""
+
+#: .\templates\certifications.html:5
+msgid "Vérification de Certificat - EDMAH"
+msgstr ""
+
+#: .\templates\certifications.html:10
+msgid "Authenticité & Traçabilité"
+msgstr ""
+
+#: .\templates\certifications.html:11
+msgid "Vérification de Certificat"
+msgstr ""
+
+#: .\templates\certifications.html:12
+msgid ""
+"Entrez le code unique présent sur votre diplôme EDMAH pour vérifier sa "
+"validité."
+msgstr ""
+
+#: .\templates\certifications.html:20
+msgid "Vérifier l'authenticité d'un diplôme"
+msgstr ""
+
+#: .\templates\certifications.html:21
+msgid ""
+"EDMAH délivre des certificats sécurisés munis d'un identifiant unique de "
+"vérification."
+msgstr ""
+
+#: .\templates\certifications.html:26
+msgid "Ex: EDMAH-2026-CERT-8921"
+msgstr ""
+
+#: .\templates\certifications.html:27
+msgid "Vérifier"
+msgstr ""
+
+#: .\templates\certifications.html:34
+msgid "Certificat Authentique & Valide"
+msgstr ""
+
+#: .\templates\certifications.html:37
+msgid "Titulaire :"
+msgstr ""
+
+#: .\templates\certifications.html:39
+msgid "Formation :"
+msgstr ""
+
+#: .\templates\certifications.html:41
+msgid "Date d'émission :"
+msgstr ""
+
+#: .\templates\certifications.html:43
+msgid "Statut :"
+msgstr ""
+
+#: .\templates\certifications.html:44
+msgid "Délivré & Confirmé"
+msgstr ""
+
+#: .\templates\contact.html:5
+msgid "Contactez-nous - EDMAH"
+msgstr ""
+
+#: .\templates\contact.html:10
+msgid "À votre écoute"
+msgstr ""
+
+#: .\templates\contact.html:11
+msgid "Contactez l'Équipe EDMAH"
+msgstr ""
+
+#: .\templates\contact.html:12
+msgid ""
+"Une question sur nos formations ou vos inscriptions ? Envoyez-nous un "
+"message."
+msgstr ""
+
+#: .\templates\contact.html:19
+msgid "Nos Coordonnées"
+msgstr ""
+
+#: .\templates\contact.html:24
+msgid "Localisation"
+msgstr ""
+
+#: .\templates\contact.html:32
+msgid "Téléphone / WhatsApp"
+msgstr ""
+
+#: .\templates\contact.html:40
+msgid "Adresse Courriel"
+msgstr ""
+
+#: .\templates\contact.html:48
+msgid "Envoyer un message"
+msgstr ""
+
+#: .\templates\contact.html:53
+msgid "Nom complet"
+msgstr ""
+
+#: .\templates\contact.html:54
+msgid "Votre nom"
+msgstr ""
+
+#: .\templates\contact.html:57
+msgid "Adresse Email"
+msgstr ""
+
+#: .\templates\contact.html:58
+msgid "votre.email@exemple.com"
+msgstr ""
+
+#: .\templates\contact.html:61
+msgid "Sujet"
+msgstr ""
+
+#: .\templates\contact.html:62
+msgid "Objet de votre message"
+msgstr ""
+
+#: .\templates\contact.html:65
+msgid "Message"
+msgstr ""
+
+#: .\templates\contact.html:66
+msgid "Écrivez votre message ici..."
+msgstr ""
+
+#: .\templates\contact.html:70 .\templates\contact.html:101
+msgid "Envoyer le message"
+msgstr ""
+
+#: .\templates\contact.html:87
+msgid "Envoi..."
+msgstr ""
+
+#: .\templates\contact.html:92
+msgid "Votre message a bien été envoyé. Notre équipe vous répondra rapidement."
+msgstr ""
+
+#: .\templates\contact.html:97
+msgid "Erreur lors de l'envoi."
+msgstr ""
+
+#: .\templates\cours.html:5 .\templates\cours.html:16
+msgid "Espace Apprenant & Cours"
+msgstr ""
+
+#: .\templates\cours.html:18
+msgid "Modules de formation enrichissants avec vidéos, supports et exercices"
+msgstr ""
+
+#: .\templates\cours.html:31
+msgid "Votre Progression"
+msgstr ""
+
+#: .\templates\cours.html:34
+msgid "complété"
+msgstr ""
+
+#: .\templates\cours.html:44
+msgid "Continue comme ça ! Tu as complété"
+msgstr ""
+
+#: .\templates\cours.html:44
+msgid "modules sur"
+msgstr ""
+
+#: .\templates\cours.html:53
+msgid "Modules"
+msgstr ""
+
+#: .\templates\cours.html:60
+msgid "Introduction"
+msgstr ""
+
+#: .\templates\cours.html:84
+msgid "Intimité"
+msgstr ""
+
+#: .\templates\cours.html:92
+msgid "Parentalité"
+msgstr ""
+
+#: .\templates\cours.html:100
+msgid "Résolution Conflits"
+msgstr ""
+
+#: .\templates\cours.html:107
+msgid "Votre Parcours"
+msgstr ""
+
+#: .\templates\cours.html:114
+msgid "Certificat"
+msgstr ""
+
+#: .\templates\cours.html:125
+msgid "Module 3: Finances de Couple"
+msgstr ""
+
+#: .\templates\cours.html:129
+msgid "Quiz final"
+msgstr ""
+
+#: .\templates\cours.html:142
+msgid "À propos de ce module"
+msgstr ""
+
+#: .\templates\cours.html:145
+msgid ""
+"Dans ce module, nous abordons l'importance cruciale de la gestion financière "
+"dans le couple. Vous apprendrez à établir un budget familial, à communiquer "
+"efficacement sur l'argent, à planifier vos objectifs financiers communs et à "
+"gérer les désaccords liés aux finances."
+msgstr ""
+
+#: .\templates\cours.html:152
+msgid "Objectifs d'apprentissage"
+msgstr ""
+
+#: .\templates\cours.html:157
+msgid "Comprendre les principes bibliques de la gestion financière"
+msgstr ""
+
+#: .\templates\cours.html:161
+msgid "Créer un budget familial réaliste et équilibré"
+msgstr ""
+
+#: .\templates\cours.html:165
+msgid "Établir des objectifs financiers communs à court et long terme"
+msgstr ""
+
+#: .\templates\cours.html:173
+msgid "Supports de Cours"
+msgstr ""
+
+#: .\templates\cours.html:180
+msgid "Plan d'Épargne Familial"
+msgstr ""
+
+#: .\templates\cours.html:184
+msgid "Télécharger"
+msgstr ""
+
+#: .\templates\cours.html:191
+msgid "Quiz d'évaluation"
+msgstr ""
+
+#: .\templates\cours.html:194
+#, python-format
+msgid ""
+"Testez vos connaissances sur ce module. Vous devez obtenir au moins 80%% "
+"pour valider."
+msgstr ""
+
+#: .\templates\cours.html:200
+msgid ""
+"Selon les principes bibliques, quelle devrait être la priorité dans la "
+"gestion financière du couple ?"
+msgstr ""
+
+#: .\templates\cours.html:202
+msgid "L'épargne personnelle"
+msgstr ""
+
+#: .\templates\cours.html:203
+msgid "La dîme et les offrandes"
+msgstr ""
+
+#: .\templates\cours.html:204
+msgid "Les loisirs"
+msgstr ""
+
+#: .\templates\cours.html:208
+msgid "Soumettre le Quiz"
+msgstr ""
+
+#: .\templates\cours.html:215
+msgid "Mes Notes Personnelles"
+msgstr ""
+
+#: .\templates\cours.html:216
+msgid "Prenez vos notes ici... Elles seront sauvegardées automatiquement."
+msgstr ""
+
+#: .\templates\evenements.html:5
+msgid "Événements & Conférences"
+msgstr ""
+
+#: .\templates\evenements.html:16
+msgid "Événements & Séminaires"
+msgstr ""
+
+#: .\templates\evenements.html:18
+msgid "Rejoignez nos conférences, retraites de couples et ateliers thématiques"
+msgstr ""
+
+#: .\templates\evenements.html:28
+msgid "À Venir"
+msgstr ""
+
+#: .\templates\evenements.html:29
+msgid "Grande Retraite des Couples 2026"
+msgstr ""
+
+#: .\templates\evenements.html:32
+msgid "Centre d'Accompagnement, Yaoundé"
+msgstr ""
+
+#: .\templates\evenements.html:35
+msgid ""
+"Un week-end d'immersion totale dédié au ressourcement conjugal, avec "
+"conférences, ateliers pratiques et moments de prière au calme."
+msgstr ""
+
+#: .\templates\evenements.html:38
+msgid "Réserver ma place"
+msgstr ""
+
+#: .\templates\evenements.html:45
+msgid "Webinaire En Ligne"
+msgstr ""
+
+#: .\templates\evenements.html:46
+msgid "Atelier : Gérer le Budget à Deux"
+msgstr ""
+
+#: .\templates\evenements.html:49
+msgid "En ligne (Zoom)"
+msgstr ""
+
+#: .\templates\evenements.html:52
+msgid ""
+"Un atelier interactif d'1h30 pour acquérir une méthode simple et biblique de "
+"gestion des finances familiales sans dispute."
+msgstr ""
+
+#: .\templates\evenements.html:55
+msgid "S'inscrire au Webinaire"
+msgstr ""
+
+#: .\templates\formations.html:5 .\templates\formations.html:16
+#: .\templates\index.html:75
+msgid "Nos Formations"
+msgstr ""
+
+#: .\templates\formations.html:18
+msgid "Des programmes complets pour chaque étape de votre vie conjugale"
+msgstr ""
+
+#: .\templates\formations.html:29
+msgid "Toutes les formations"
+msgstr ""
+
+#: .\templates\formations.html:32 .\templates\formations.html:56
+#: .\templates\formations.html:277
+msgid "Préparation"
+msgstr ""
+
+#: .\templates\formations.html:35
+msgid "Vie de couple"
+msgstr ""
+
+#: .\templates\formations.html:38 .\templates\formations.html:144
+msgid "Famille"
+msgstr ""
+
+#: .\templates\formations.html:53
+msgid "Populaire"
+msgstr ""
+
+#: .\templates\formations.html:57 .\templates\index.html:84
+msgid "Préparation au Mariage"
+msgstr ""
+
+#: .\templates\formations.html:59
+msgid ""
+"Un programme complet de 8 semaines pour préparer solidement votre union. "
+"Abordez les sujets essentiels : communication, finances, intimité, "
+"résolution de conflits et fondements spirituels."
+msgstr ""
+
+#: .\templates\formations.html:63
+msgid "8 semaines"
+msgstr ""
+
+#: .\templates\formations.html:64
+msgid "Couples fiancés"
+msgstr ""
+
+#: .\templates\formations.html:65
+msgid "Certificat inclus"
+msgstr ""
+
+#: .\templates\formations.html:71
+msgid "16 sessions de cours"
+msgstr ""
+
+#: .\templates\formations.html:71
+msgid "2 sessions par semaine"
+msgstr ""
+
+#: .\templates\formations.html:75
+msgid "Supports de cours complets"
+msgstr ""
+
+#: .\templates\formations.html:75
+msgid "Manuels + exercices pratiques"
+msgstr ""
+
+#: .\templates\formations.html:79
+msgid "Accompagnement personnalisé"
+msgstr ""
+
+#: .\templates\formations.html:79
+msgid "Entretiens individuels inclus"
+msgstr ""
+
+#: .\templates\formations.html:100 .\templates\formations.html:189
+#: .\templates\formations.html:233
+msgid "Vie de Couple"
+msgstr ""
+
+#: .\templates\formations.html:101 .\templates\index.html:96
+msgid "Couple Épanoui"
+msgstr ""
+
+#: .\templates\formations.html:103
+msgid ""
+"Renforcez votre union et ravivez la flamme. Apprenez les clés d'une "
+"communication efficace, découvrez les langages de l'amour et cultivez "
+"l'intimité émotionnelle et spirituelle."
+msgstr ""
+
+#: .\templates\formations.html:107
+msgid "6 semaines"
+msgstr ""
+
+#: .\templates\formations.html:108 .\templates\formations.html:241
+msgid "Couples mariés"
+msgstr ""
+
+#: .\templates\formations.html:109
+msgid "En ligne/présentiel"
+msgstr ""
+
+#: .\templates\formations.html:115
+msgid "12 sessions interactives"
+msgstr ""
+
+#: .\templates\formations.html:115
+msgid "Ateliers pratiques inclus"
+msgstr ""
+
+#: .\templates\formations.html:119
+msgid "Exercices de couple"
+msgstr ""
+
+#: .\templates\formations.html:119
+msgid "Renforcement du lien affectif"
+msgstr ""
+
+#: .\templates\formations.html:123
+msgid "Support continu"
+msgstr ""
+
+#: .\templates\formations.html:123
+msgid "Groupe WhatsApp + suivi"
+msgstr ""
+
+#: .\templates\formations.html:145
+msgid "Gestion Familiale Biblique"
+msgstr ""
+
+#: .\templates\formations.html:147
+msgid ""
+"Apprenez à gérer votre foyer selon les principes de la Parole. Éducation des "
+"enfants, finances, organisation domestique, rôles conjugaux et spiritualité "
+"familiale."
+msgstr ""
+
+#: .\templates\formations.html:151
+msgid "10 semaines"
+msgstr ""
+
+#: .\templates\formations.html:152
+msgid "Parents"
+msgstr ""
+
+#: .\templates\formations.html:153
+msgid "Certification"
+msgstr ""
+
+#: .\templates\formations.html:159
+msgid "20 modules complets"
+msgstr ""
+
+#: .\templates\formations.html:159
+msgid "Théorie + cas pratiques"
+msgstr ""
+
+#: .\templates\formations.html:163
+msgid "Finances familiales"
+msgstr ""
+
+#: .\templates\formations.html:163
+msgid "Budget, épargne, investissement"
+msgstr ""
+
+#: .\templates\formations.html:167
+msgid "Éducation des enfants"
+msgstr ""
+
+#: .\templates\formations.html:167
+msgid "Discipline positive + valeurs"
+msgstr ""
+
+#: .\templates\formations.html:186
+msgid "Nouveau"
+msgstr ""
+
+#: .\templates\formations.html:190
+msgid "Communication & Résolution de Conflits"
+msgstr ""
+
+#: .\templates\formations.html:192
+msgid ""
+"Formation intensive pour améliorer votre communication et gérer sainement "
+"les désaccords. Techniques éprouvées pour transformer les conflits en "
+"opportunités de croissance."
+msgstr ""
+
+#: .\templates\formations.html:196
+msgid "4 semaines"
+msgstr ""
+
+#: .\templates\formations.html:197 .\templates\formations.html:285
+msgid "Tous couples"
+msgstr ""
+
+#: .\templates\formations.html:198
+#, python-format
+msgid "100%% en ligne"
+msgstr ""
+
+#: .\templates\formations.html:204
+msgid "8 sessions intensives"
+msgstr ""
+
+#: .\templates\formations.html:204
+msgid "Exercices pratiques immédiats"
+msgstr ""
+
+#: .\templates\formations.html:208
+msgid "Techniques de communication"
+msgstr ""
+
+#: .\templates\formations.html:208
+msgid "Écoute active + expression saine"
+msgstr ""
+
+#: .\templates\formations.html:212
+msgid "Gestion des conflits"
+msgstr ""
+
+#: .\templates\formations.html:212
+msgid "Stratégies de résolution efficaces"
+msgstr ""
+
+#: .\templates\formations.html:234
+msgid "Intimité Conjugale"
+msgstr ""
+
+#: .\templates\formations.html:236
+msgid ""
+"Formation délicate sur l'intimité physique, émotionnelle et spirituelle dans "
+"le couple. Abordez ce sujet crucial dans un cadre sain, respectueux et "
+"biblique."
+msgstr ""
+
+#: .\templates\formations.html:240
+msgid "3 semaines"
+msgstr ""
+
+#: .\templates\formations.html:242
+msgid "Confidentialité totale"
+msgstr ""
+
+#: .\templates\formations.html:248
+msgid "6 sessions privées"
+msgstr ""
+
+#: .\templates\formations.html:248
+msgid "Groupes restreints"
+msgstr ""
+
+#: .\templates\formations.html:252
+msgid "Vision biblique"
+msgstr ""
+
+#: .\templates\formations.html:252
+msgid "Intimité selon la Parole"
+msgstr ""
+
+#: .\templates\formations.html:256
+msgid "Approche professionnelle"
+msgstr ""
+
+#: .\templates\formations.html:256
+msgid "Conseillers qualifiés"
+msgstr ""
+
+#: .\templates\formations.html:278
+msgid "Finances pour Couples"
+msgstr ""
+
+#: .\templates\formations.html:280
+msgid ""
+"Maîtrisez la gestion financière à deux. Budget familial, épargne, "
+"investissements, gestion des dettes et construction d'un patrimoine selon "
+"les principes bibliques."
+msgstr ""
+
+#: .\templates\formations.html:284
+msgid "5 semaines"
+msgstr ""
+
+#: .\templates\formations.html:286
+msgid "Outils inclus"
+msgstr ""
+
+#: .\templates\formations.html:292
+msgid "10 modules pratiques"
+msgstr ""
+
+#: .\templates\formations.html:292
+msgid "Cas réels + simulations"
+msgstr ""
+
+#: .\templates\formations.html:296
+msgid "Outils de gestion"
+msgstr ""
+
+#: .\templates\formations.html:296
+msgid "Tableurs + templates"
+msgstr ""
+
+#: .\templates\formations.html:300
+msgid "Plan financier personnalisé"
+msgstr ""
+
+#: .\templates\formations.html:300
+msgid "Adapté à votre situation"
+msgstr ""
+
+#: .\templates\formations.html:318
+msgid "Aucune formation trouvée"
+msgstr ""
+
+#: .\templates\formations.html:319
+msgid "Essayez un autre filtre"
+msgstr ""
+
+#: .\templates\gallerie.html:5
+msgid "Galerie Photos & Souvenirs"
+msgstr ""
+
+#: .\templates\gallerie.html:15
+msgid "Galerie Photos"
+msgstr ""
+
+#: .\templates\gallerie.html:17
+msgid "Revivez les moments forts de nos promotions et séminaires"
+msgstr ""
+
+#: .\templates\gallerie.html:29
+msgid "Cérémonie de Remise des Diplômes"
+msgstr ""
+
+#: .\templates\gallerie.html:30
+msgid "Promotion 2024 - Yaoundé"
+msgstr ""
+
+#: .\templates\gallerie.html:39
+msgid "Retraite des Couples"
+msgstr ""
+
+#: .\templates\gallerie.html:40
+msgid "Session de Kribi"
+msgstr ""
+
+#: .\templates\gallerie.html:49
+msgid "Atelier Communication"
+msgstr ""
+
+#: .\templates\gallerie.html:50
+msgid "Session Pratique"
+msgstr ""
+
+#: .\templates\index.html:18
+msgid "Bâtir des foyers solides et heureux"
+msgstr ""
+
+#: .\templates\index.html:19
+msgid "Formez-vous au mariage harmonieux selon les principes bibliques"
+msgstr ""
+
+#: .\templates\index.html:22
+msgid "Découvrir nos formations"
+msgstr ""
+
+#: .\templates\index.html:25
+msgid "Voir la vidéo"
+msgstr ""
+
+#: .\templates\index.html:46
+msgid "Étudiants formés"
+msgstr ""
+
+#: .\templates\index.html:58
+#, python-format
+msgid "%% Satisfaction"
+msgstr ""
+
+#: .\templates\index.html:64
+msgid "Années d'expérience"
+msgstr ""
+
+#: .\templates\index.html:76
+msgid "Des programmes adaptés à chaque étape de votre vie conjugale"
+msgstr ""
+
+#: .\templates\index.html:85
+msgid ""
+"Préparez-vous solidement avant le grand jour avec nos cours sur la "
+"communication, les finances et la vie de couple."
+msgstr ""
+
+#: .\templates\index.html:87 .\templates\index.html:99
+#: .\templates\index.html:111
+msgid "En savoir plus"
+msgstr ""
+
+#: .\templates\index.html:97
+msgid ""
+"Renforcez votre union avec des outils pratiques pour maintenir l'harmonie et "
+"la complicité au quotidien."
+msgstr ""
+
+#: .\templates\index.html:108
+msgid "Vie Familiale"
+msgstr ""
+
+#: .\templates\index.html:109
+msgid ""
+"Apprenez à gérer votre foyer selon les principes bibliques : éducation des "
+"enfants, finances, spiritualité."
+msgstr ""
+
+#: .\templates\index.html:118
+msgid "Voir toutes les formations"
+msgstr ""
+
+#: .\templates\index.html:128
+msgid "Témoignages"
+msgstr ""
+
+#: .\templates\index.html:129
+msgid "Ce que nos étudiants disent de nous"
+msgstr ""
+
+#: .\templates\index.html:135
+msgid ""
+"\"EDMAH a transformé notre relation. Les enseignements bibliques nous ont "
+"permis de construire un foyer solide basé sur l\\"
+msgstr ""
+
+#: .\templates\index.html:140
+msgid "Couple marié depuis 3 ans"
+msgstr ""
+
+#: .\templates\index.html:148
+msgid ""
+"\"La formation de préparation au mariage était exactement ce dont nous "
+"avions besoin. Nous nous sentons maintenant prêts à démarrer notre vie "
+"conjugale.\""
+msgstr ""
+
+#: .\templates\index.html:153
+msgid "Fiancés"
+msgstr ""
+
+#: .\templates\index.html:161
+msgid ""
+"\"Les cours sur la communication et la résolution des conflits ont sauvé "
+"notre mariage. Merci à toute l\\"
+msgstr ""
+
+#: .\templates\index.html:166
+msgid "Couple marié depuis 7 ans"
+msgstr ""
+
+#: .\templates\index.html:181
+msgid "Restez informé"
+msgstr ""
+
+#: .\templates\index.html:182
+msgid ""
+"Inscrivez-vous à notre newsletter pour recevoir nos dernières actualités, "
+"conseils et événements."
+msgstr ""
+
+#: .\templates\index.html:187
+msgid "Votre adresse email"
+msgstr ""
+
+#: .\templates\index.html:189
+msgid "S'abonner"
+msgstr ""
+
+#: .\templates\inscriptions.html:5
+msgid "Inscription aux Formations"
+msgstr ""
+
+#: .\templates\inscriptions.html:17
+msgid "Inscription"
+msgstr ""
+
+#: .\templates\inscriptions.html:18
+msgid "Rejoignez EDMAH et commencez votre parcours vers un mariage harmonieux"
+msgstr ""
+
+#: .\templates\inscriptions.html:27
+msgid "Informations personnelles"
+msgstr ""
+
+#: .\templates\inscriptions.html:31
+msgid "Formation"
+msgstr ""
+
+#: .\templates\inscriptions.html:35
+msgid "Documents"
+msgstr ""
+
+#: .\templates\inscriptions.html:39
+msgid "Confirmation"
+msgstr ""
+
+#: .\templates\inscriptions.html:49
+msgid "Informations Personnelles"
+msgstr ""
+
+#: .\templates\inscriptions.html:54
+msgid "Nom"
+msgstr ""
+
+#: .\templates\inscriptions.html:60
+msgid "Prénom"
+msgstr ""
+
+#: .\templates\inscriptions.html:69
+msgid "Date de naissance"
+msgstr ""
+
+#: .\templates\inscriptions.html:75
+msgid "Sexe"
+msgstr ""
+
+#: .\templates\inscriptions.html:77 .\templates\inscriptions.html:103
+#: .\templates\inscriptions.html:149
+msgid "Sélectionnez"
+msgstr ""
+
+#: .\templates\inscriptions.html:78
+msgid "Masculin"
+msgstr ""
+
+#: .\templates\inscriptions.html:79
+msgid "Féminin"
+msgstr ""
+
+#: .\templates\inscriptions.html:88
+msgid "Email"
+msgstr ""
+
+#: .\templates\inscriptions.html:94
+msgid "Téléphone"
+msgstr ""
+
+#: .\templates\inscriptions.html:101
+msgid "État civil"
+msgstr ""
+
+#: .\templates\inscriptions.html:104
+msgid "Célibataire"
+msgstr ""
+
+#: .\templates\inscriptions.html:105
+msgid "Fiancé(e)"
+msgstr ""
+
+#: .\templates\inscriptions.html:106
+msgid "Marié(e)"
+msgstr ""
+
+#: .\templates\inscriptions.html:107
+msgid "Divorcé(e)"
+msgstr ""
+
+#: .\templates\inscriptions.html:108
+msgid "Veuf/Veuve"
+msgstr ""
+
+#: .\templates\inscriptions.html:113
+msgid "Adresse complète"
+msgstr ""
+
+#: .\templates\inscriptions.html:119 .\templates\inscriptions.html:166
+#: .\templates\inscriptions.html:219
+msgid "Suivant"
+msgstr ""
+
+#: .\templates\inscriptions.html:126
+msgid "Choisir une Formation"
+msgstr ""
+
+#: .\templates\inscriptions.html:129
+msgid "Formation souhaitée"
+msgstr ""
+
+#: .\templates\inscriptions.html:131
+msgid "Sélectionnez une formation"
+msgstr ""
+
+#: .\templates\inscriptions.html:132
+msgid "Préparation au Mariage (50 000 FCFA)"
+msgstr ""
+
+#: .\templates\inscriptions.html:133
+msgid "Couple Épanoui (40 000 FCFA)"
+msgstr ""
+
+#: .\templates\inscriptions.html:134
+msgid "Gestion Familiale Biblique (60 000 FCFA)"
+msgstr ""
+
+#: .\templates\inscriptions.html:135
+msgid "Communication & Résolution de Conflits (30 000 FCFA)"
+msgstr ""
+
+#: .\templates\inscriptions.html:136
+msgid "Intimité Conjugale (35 000 FCFA)"
+msgstr ""
+
+#: .\templates\inscriptions.html:137
+msgid "Finances pour Couples (45 000 FCFA)"
+msgstr ""
+
+#: .\templates\inscriptions.html:142
+msgid "Détails de la formation"
+msgstr ""
+
+#: .\templates\inscriptions.html:147
+msgid "Mode de formation"
+msgstr ""
+
+#: .\templates\inscriptions.html:150
+msgid "Présentiel"
+msgstr ""
+
+#: .\templates\inscriptions.html:151
+msgid "En ligne"
+msgstr ""
+
+#: .\templates\inscriptions.html:152
+msgid "Hybride"
+msgstr ""
+
+#: .\templates\inscriptions.html:157
+msgid "Motivations (optionnel)"
+msgstr ""
+
+#: .\templates\inscriptions.html:158
+msgid "Partagez vos attentes et motivations pour cette formation..."
+msgstr ""
+
+#: .\templates\inscriptions.html:163 .\templates\inscriptions.html:216
+#: .\templates\inscriptions.html:239
+msgid "Précédent"
+msgstr ""
+
+#: .\templates\inscriptions.html:173
+msgid "Documents Requis"
+msgstr ""
+
+#: .\templates\inscriptions.html:176 .\templates\inscriptions.html:181
+msgid "Photo d'identité"
+msgstr ""
+
+#: .\templates\inscriptions.html:182 .\templates\inscriptions.html:195
+msgid "ou"
+msgstr ""
+
+#: .\templates\inscriptions.html:189
+msgid "Pièce d'état civil"
+msgstr ""
+
+#: .\templates\inscriptions.html:194
+msgid "Acte de naissance ou CNI"
+msgstr ""
+
+#: .\templates\inscriptions.html:202
+msgid "Autres documents (optionnel)"
+msgstr ""
+
+#: .\templates\inscriptions.html:207
+msgid "Documents supplémentaires"
+msgstr ""
+
+#: .\templates\inscriptions.html:208
+msgid "Certificat de mariage, diplômes, etc. (max 5MB chacun)"
+msgstr ""
+
+#: .\templates\inscriptions.html:226
+msgid "Récapitulatif"
+msgstr ""
+
+#: .\templates\inscriptions.html:233
+msgid ""
+"J'accepte les conditions d'utilisation et la politique de confidentialité"
+msgstr ""
+
+#: .\templates\inscriptions.html:242
+msgid "Confirmer l'inscription"
+msgstr ""

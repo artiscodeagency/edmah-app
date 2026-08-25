@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galerie - EDMAH</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/gallerie.css">
+   
+
+
+
+
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+        <div class="container">
+           <a class="navbar-brand" href="home.html">
+                <img src="images/logo.png" alt="Edmah" class="logo" style="height: 100px;">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="home.html">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">À propos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="formations.html">Formations</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cours.html">Cours</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="evenements.html">Événements</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="gallerie.html">Galerie</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="blog.html">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item ms-3">
+                        <a href="inscription.html" class="btn btn-inscrire">S'inscrire</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <div class="text-center" data-aos="fade-up">
+                <h1 class="page-title">Notre Galerie</h1>
+                <p style="font-size: 1.3rem; opacity: 0.95;">
+                    Découvrez les moments forts de notre communauté
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filter Tabs -->
+    <section style="padding: 4rem 0 2rem;">
+        <div class="container">
+            <div class="filter-tabs" data-aos="fade-up">
+                <button class="tab-btn active" data-filter="all">
+                    <i class="fas fa-th me-2"></i> Tout
+                </button>
+                <button class="tab-btn" data-filter="photos">
+                    <i class="fas fa-camera me-2"></i> Photos
+                </button>
+                <button class="tab-btn" data-filter="videos">
+                    <i class="fas fa-video me-2"></i> Vidéos
+                </button>
+                <button class="tab-btn" data-filter="events">
+                    <i class="fas fa-calendar me-2"></i> Événements
+                </button>
+                <button class="tab-btn" data-filter="testimonials">
+                    <i class="fas fa-comment me-2"></i> Témoignages
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Grid -->
+    <section style="padding: 2rem 0 4rem;">
+        <div class="container">
+            <div class="gallery-grid" id="galleryGrid">
+                <!-- Photo Items -->
+                <div class="gallery-item" data-category="photos events" data-aos="fade-up" data-type="image"
+                    data-src="https://images.unsplash.com/photo-1519741497674-611481863552?w=1200">
+                    <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600" alt="Conférence 2024">
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">Conférence Annuelle 2024</div>
+                        <div class="gallery-category">Événement</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="photos events" data-aos="fade-up" data-aos-delay="100"
+                    data-type="image" data-src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1200">
+                    <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600" alt="Atelier Couple">
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">Atelier Communication</div>
+                        <div class="gallery-category">Formation</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="videos testimonials" data-aos="fade-up" data-aos-delay="200"
+                    data-type="video" data-src="https://www.youtube.com/embed/dQw4w9WgXcQ">
+                    <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=600"
+                        alt="Témoignage Couple">
+                    <div class="play-icon">
+                        <i class="fas fa-play"></i>
+                    </div>
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">Témoignage - Jean & Marie</div>
+                        <div class="gallery-category">Vidéo</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="photos events" data-aos="fade-up" data-type="image"
+                    data-src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=1200">
+                    <img src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=600" alt="Retraite Kribi">
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">Retraite Spirituelle Kribi</div>
+                        <div class="gallery-category">Retraite</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="videos" data-aos="fade-up" data-aos-delay="100"
+                    data-type="video" data-src="https://www.youtube.com/embed/dQw4w9WgXcQ">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600"
+                        alt="Formation Finances">
+                    <div class="play-icon">
+                        <i class="fas fa-play"></i>
+                    </div>
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">Formation Gestion Financière</div>
+                        <div class="gallery-category">Vidéo Formation</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="photos events" data-aos="fade-up" data-aos-delay="200"
+                    data-type="image" data-src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?w=1200">
+                    <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?w=600" alt="Cérémonie">
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">Cérémonie de Certification</div>
+                        <div class="gallery-category">Certification</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="photos" data-aos="fade-up" data-type="image"
+                    data-src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=1200">
+                    <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=600" alt="Équipe EDMAH">
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">Notre Équipe Pédagogique</div>
+                        <div class="gallery-category">Équipe</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="videos testimonials" data-aos="fade-up" data-aos-delay="100"
+                    data-type="video" data-src="https://www.youtube.com/embed/dQw4w9WgXcQ">
+                    <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=600" alt="Témoignage">
+                    <div class="play-icon">
+                        <i class="fas fa-play"></i>
+                    </div>
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">Témoignage - Paul & Sophie</div>
+                        <div class="gallery-category">Vidéo Témoignage</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="photos events" data-aos="fade-up" data-aos-delay="200"
+                    data-type="image" data-src="https://images.unsplash.com/photo-1460978812857-470ed1c77af0?w=1200">
+                    <img src="https://images.unsplash.com/photo-1460978812857-470ed1c77af0?w=600" alt="Séminaire">
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">Séminaire Intimité</div>
+                        <div class="gallery-category">Séminaire</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="photos events" data-aos="fade-up" data-type="image"
+                    data-src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=1200">
+                    <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=600" alt="Célébration">
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">Célébration Saint-Valentin</div>
+                        <div class="gallery-category">Événement Spécial</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="videos" data-aos="fade-up" data-aos-delay="100"
+                    data-type="video" data-src="https://www.youtube.com/embed/dQw4w9WgXcQ">
+                    <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=600" alt="Présentation">
+                    <div class="play-icon">
+                        <i class="fas fa-play"></i>
+                    </div>
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">Présentation EDMAH</div>
+                        <div class="gallery-category">Vidéo Présentation</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="photos" data-aos="fade-up" data-aos-delay="200"
+                    data-type="image" data-src="https://images.unsplash.com/photo-1511895426328-dc8714191300?w=1200">
+                    <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?w=600" alt="Famille">
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">Famille Épanouie</div>
+                        <div class="gallery-category">Moments de Joie</div>
+                    </div>
+                </div>
+
+                <!-- Additional Gallery Items -->
+                <div class="gallery-item" data-category="photos events" data-aos="fade-up" data-type="image"
+                    data-src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1200">
+                    <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=600" alt="Workshop">
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">Atelier Pratique</div>
+                        <div class="gallery-category">Formation</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="videos" data-aos="fade-up" data-aos-delay="100"
+                    data-type="video" data-src="https://www.youtube.com/embed/dQw4w9WgXcQ">
+                    <img src="https://images.unsplash.com/photo-1591115765373-5207764f72e7?w=600" alt="Enseignement">
+                    <div class="play-icon">
+                        <i class="fas fa-play"></i>
+                    </div>
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">Enseignement Biblique</div>
+                        <div class="gallery-category">Vidéo Spiritualité</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="photos events" data-aos="fade-up" data-aos-delay="200"
+                    data-type="image" data-src="https://images.unsplash.com/photo-1464047736614-af63643285bf?w=1200">
+                    <img src="https://images.unsplash.com/photo-1464047736614-af63643285bf?w=600" alt="Prière">
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">Moment de Prière</div>
+                        <div class="gallery-category">Spiritualité</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="photos" data-aos="fade-up" data-type="image"
+                    data-src="https://images.unsplash.com/photo-1450297350677-623de575f31c?w=1200">
+                    <img src="https://images.unsplash.com/photo-1450297350677-623de575f31c?w=600" alt="Mariage">
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">Célébration de Mariage</div>
+                        <div class="gallery-category">Cérémonie</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="videos testimonials" data-aos="fade-up" data-aos-delay="100"
+                    data-type="video" data-src="https://www.youtube.com/embed/dQw4w9WgXcQ">
+                    <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=600" alt="Interview">
+                    <div class="play-icon">
+                        <i class="fas fa-play"></i>
+                    </div>
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">Interview Couple Heureux</div>
+                        <div class="gallery-category">Témoignage Vidéo</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="photos events" data-aos="fade-up" data-aos-delay="200"
+                    data-type="image" data-src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=1200">
+                    <img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=600" alt="Groupe">
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">Session de Groupe</div>
+                        <div class="gallery-category">Atelier Collectif</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="photos" data-aos="fade-up" data-type="image"
+                    data-src="https://images.unsplash.com/photo-1469371670807-013ccf25f16a?w=1200">
+                    <img src="https://images.unsplash.com/photo-1469371670807-013ccf25016a?w=600" alt="Étude">
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">Étude de la Parole</div>
+                        <div class="gallery-category">Formation Biblique</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="videos" data-aos="fade-up" data-aos-delay="100"
+                    data-type="video" data-src="https://www.youtube.com/embed/dQw4w9WgXcQ">
+                    <img src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=600" alt="Conseils">
+                    <div class="play-icon">
+                        <i class="fas fa-play"></i>
+                    </div>
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">Conseils pour Jeunes Mariés</div>
+                        <div class="gallery-category">Vidéo Conseil</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="photos events" data-aos="fade-up" data-aos-delay="200"
+                    data-type="image" data-src="https://images.unsplash.com/photo-1515169067868-5387ec356754?w=1200">
+                    <img src="https://images.unsplash.com/photo-1515169067868-5387ec356754?w=600" alt="Louange">
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">Moment de Louange</div>
+                        <div class="gallery-category">Adoration</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="photos" data-aos="fade-up" data-type="image"
+                    data-src="https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?w=1200">
+                    <img src="https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?w=600" alt="Bibliothèque">
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">Ressources Pédagogiques</div>
+                        <div class="gallery-category">Documentation</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="videos testimonials" data-aos="fade-up" data-aos-delay="100"
+                    data-type="video" data-src="https://www.youtube.com/embed/dQw4w9WgXcQ">
+                    <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600" alt="Histoire">
+                    <div class="play-icon">
+                        <i class="fas fa-play"></i>
+                    </div>
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">Notre Histoire d'Amour</div>
+                        <div class="gallery-category">Témoignage Inspirant</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="photos events" data-aos="fade-up" data-aos-delay="200"
+                    data-type="image" data-src="https://images.unsplash.com/photo-1511578314322-379afb476865?w=1200">
+                    <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?w=600" alt="Dîner">
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">Dîner de Couples</div>
+                        <div class="gallery-category">Événement Social</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="photos" data-aos="fade-up" data-type="image"
+                    data-src="https://images.unsplash.com/photo-1483721310020-03333e577078?w=1200">
+                    <img src="https://images.unsplash.com/photo-1483721310020-03333e577078?w=600" alt="Installations">
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">Nos Installations</div>
+                        <div class="gallery-category">Centre EDMAH</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="videos" data-aos="fade-up" data-aos-delay="100"
+                    data-type="video" data-src="https://www.youtube.com/embed/dQw4w9WgXcQ">
+                    <img src="https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=600" alt="Capsule">
+                    <div class="play-icon">
+                        <i class="fas fa-play"></i>
+                    </div>
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">Capsule Inspirante</div>
+                        <div class="gallery-category">Message Quotidien</div>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="photos events" data-aos="fade-up" data-aos-delay="200"
+                    data-type="image" data-src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=1200">
+                    <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=600" alt="Remise">
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">Remise de Certificats</div>
+                        <div class="gallery-category">Graduation</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-close" id="lightboxClose">
+            <i class="fas fa-times"></i>
+        </div>
+        <div class="lightbox-nav lightbox-prev" id="lightboxPrev">
+            <i class="fas fa-chevron-left"></i>
+        </div>
+        <div class="lightbox-nav lightbox-next" id="lightboxNext">
+            <i class="fas fa-chevron-right"></i>
+        </div>
+        <div class="lightbox-content" id="lightboxContent">
+            <!-- Content will be injected here -->
+        </div>
+        <div class="lightbox-caption" id="lightboxCaption"></div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer-modern">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h3 class="footer-title">
+                        <i class="fas fa-heart me-2"></i> EDMAH
+                    </h3>
+                    <p style="color: rgba(255,255,255,0.7); line-height: 1.8;">
+                        L'École du Mariage Harmonieux vous accompagne dans la construction de foyers solides et heureux
+                        selon les principes bibliques.
+                    </p>
+                    <div class="mt-4">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-6 mb-4">
+                    <h4 class="footer-title">Navigation</h4>
+                    <a href="index.html" class="footer-link">Accueil</a>
+                    <a href="about.html" class="footer-link">À propos</a>
+                    <a href="formations.html" class="footer-link">Formations</a>
+                    <a href="evenements.html" class="footer-link">Événements</a>
+                    <a href="blog.html" class="footer-link">Blog</a>
+                </div>
+                <div class="col-lg-2 col-md-4 col-6 mb-4">
+                    <h4 class="footer-title">Formations</h4>
+                    <a href="formations.html" class="footer-link">Préparation au mariage</a>
+                    <a href="formations.html" class="footer-link">Couple épanoui</a>
+                    <a href="formations.html" class="footer-link">Vie familiale</a>
+                    <a href="certifications.html" class="footer-link">Certifications</a>
+                </div>
+                <div class="col-lg-4 col-md-4 mb-4">
+                    <h4 class="footer-title">Contact</h4>
+                    <p style="color: rgba(255,255,255,0.7);">
+                        <i class="fas fa-map-marker-alt me-2" style="color: var(--dore);"></i>
+                        Yaoundé, Cameroun
+                    </p>
+                    <p style="color: rgba(255,255,255,0.7);">
+                        <i class="fas fa-phone me-2" style="color: var(--dore);"></i>
+                        +237 6XX XX XX XX
+                    </p>
+                    <p style="color: rgba(255,255,255,0.7);">
+                        <i class="fas fa-envelope me-2" style="color: var(--dore);"></i>
+                        contact@edmah.com
+                    </p>
+                </div>
+            </div>
+            <hr style="border-color: rgba(255,255,255,0.1); margin: 2rem 0;">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    <p style="color: rgba(255,255,255,0.6); margin: 0;">
+                        © 2024 EDMAH. Tous droits réservés.
+                    </p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <a href="#" class="footer-link d-inline me-3">Politique de confidentialité</a>
+                    <a href="#" class="footer-link d-inline">Conditions d'utilisation</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top -->
+    <div class="scroll-top" id="scrollTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // Scroll to top
+        const scrollTopBtn = document.getElementById('scrollTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollTopBtn.classList.add('show');
+            } else {
+                scrollTopBtn.classList.remove('show');
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Filter Gallery
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Update active button
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                const filterValue = button.getAttribute('data-filter');
+
+                galleryItems.forEach(item => {
+                    const categories = item.getAttribute('data-category').split(' ');
+
+                    if (filterValue === 'all' || categories.includes(filterValue)) {
+                        item.style.display = 'block';
+                        item.classList.remove('aos-animate');
+                        setTimeout(() => item.classList.add('aos-animate'), 100);
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Lightbox
+        const lightbox = document.getElementById('lightbox');
+        const lightboxContent = document.getElementById('lightboxContent');
+        const lightboxCaption = document.getElementById('lightboxCaption');
+        const lightboxClose = document.getElementById('lightboxClose');
+        const lightboxPrev = document.getElementById('lightboxPrev');
+        const lightboxNext = document.getElementById('lightboxNext');
+
+        let currentIndex = 0;
+        let currentFilter = 'all';
+        let visibleItems = [];
+
+        function updateVisibleItems() {
+            visibleItems = Array.from(galleryItems).filter(item => {
+                return item.style.display !== 'none';
+            });
+        }
+
+        // Open lightbox
+        galleryItems.forEach((item, index) => {
+            item.addEventListener('click', () => {
+                updateVisibleItems();
+                currentIndex = visibleItems.indexOf(item);
+                showLightbox(item);
+            });
+        });
+
+        function showLightbox(item) {
+            const type = item.getAttribute('data-type');
+            const src = item.getAttribute('data-src');
+            const title = item.querySelector('.gallery-title').textContent;
+            const category = item.querySelector('.gallery-category').textContent;
+
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+
+            if (type === 'image') {
+                lightboxContent.innerHTML = `<img src="${src}" alt="${title}">`;
+            } else if (type === 'video') {
+                lightboxContent.innerHTML = `<iframe src="${src}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+            }
+
+            lightboxCaption.innerHTML = `<strong>${title}</strong> - ${category}`;
+        }
+
+        // Close lightbox
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+            lightboxContent.innerHTML = '';
+        }
+
+        // Navigation
+        lightboxPrev.addEventListener('click', (e) => {
+            e.stopPropagation();
+            currentIndex = (currentIndex - 1 + visibleItems.length) % visibleItems.length;
+            showLightbox(visibleItems[currentIndex]);
+        });
+
+        lightboxNext.addEventListener('click', (e) => {
+            e.stopPropagation();
+            currentIndex = (currentIndex + 1) % visibleItems.length;
+            showLightbox(visibleItems[currentIndex]);
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('active')) return;
+
+            if (e.key === 'Escape') {
+                closeLightbox();
+            } else if (e.key === 'ArrowLeft') {
+                lightboxPrev.click();
+            } else if (e.key === 'ArrowRight') {
+                lightboxNext.click();
+            }
+        });
+    </script>
+</body>
+
+</html>

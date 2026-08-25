@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}{% trans "Blog & Articles - EDMAH" %}{% endblock %}
+
+{% block content %}
+<section class="py-5" style="background: linear-gradient(135deg, #1F4D78 0%, #2E74B5 100%);">
+    <div class="container py-4 text-center text-white">
+        <span class="badge bg-warning text-dark px-3 py-2 rounded-pill mb-3 fw-bold">{% trans "Ressources & Conseils" %}</span>
+        <h1 class="display-5 fw-bold mb-2">{% trans "Blog EDMAH" %}</h1>
+        <p class="lead opacity-90">{% trans "Articles, enseignements et réflexions pour nourrir votre vie de couple." %}</p>
+    </div>
+</section>
+
+<div class="container py-5">
+    <div class="row g-4">
+        <div class="col-lg-4 col-md-6" data-aos="fade-up">
+            <div class="card border-0 shadow-sm rounded-4 overflow-hidden h-100">
+                <div class="card-body p-4">
+                    <span class="badge bg-info text-dark mb-2">{% trans "Communication" %}</span>
+                    <h4 class="fw-bold text-dark mb-3">{% trans "5 clés pour déamorcer les conflits dans le couple" %}</h4>
+                    <p class="text-muted small mb-3">{% trans "Par Pasteur Daniel M. • 20 Août 2026" %}</p>
+                    <p class="text-muted">{% trans "Découvrez comment transformer les désaccords en opportunités de croissance et d'écoute mutuelle." %}</p>
+                    <a href="#" class="btn btn-link text-primary p-0 fw-bold text-decoration-none">{% trans "Lire l'article" %} <i class="fas fa-arrow-right ms-1"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="card border-0 shadow-sm rounded-4 overflow-hidden h-100">
+                <div class="card-body p-4">
+                    <span class="badge bg-warning text-dark mb-2">{% trans "Finances" %}</span>
+                    <h4 class="fw-bold text-dark mb-3">{% trans "L'argent dans le ménage : Serviteur ou Maître ?" %}</h4>
+                    <p class="text-muted small mb-3">{% trans "Par Équipe EDMAH • 12 Août 2026" %}</p>
+                    <p class="text-muted">{% trans "Des conseils pratiques pour gérer le budget familial avec transparence et sérénité." %}</p>
+                    <a href="#" class="btn btn-link text-primary p-0 fw-bold text-decoration-none">{% trans "Lire l'article" %} <i class="fas fa-arrow-right ms-1"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="card border-0 shadow-sm rounded-4 overflow-hidden h-100">
+                <div class="card-body p-4">
+                    <span class="badge bg-success text-white mb-2">{% trans "Spiritualité" %}</span>
+                    <h4 class="fw-bold text-dark mb-3">{% trans "Construire un autel familial béni" %}</h4>
+                    <p class="text-muted small mb-3">{% trans "Par Marie K. • 05 Août 2026" %}</p>
+                    <p class="text-muted">{% trans "Comment mettre la prière au cœur de votre foyer et transmettre la foi aux enfants." %}</p>
+                    <a href="#" class="btn btn-link text-primary p-0 fw-bold text-decoration-none">{% trans "Lire l'article" %} <i class="fas fa-arrow-right ms-1"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

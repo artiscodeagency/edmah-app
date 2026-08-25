@@ -1,0 +1,259 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}EDMAH - {% trans "École du Mariage Harmonieux" %}{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6" data-aos="fade-right">
+                <div class="hero-content">
+                    <h1 class="hero-title">{% trans "Bâtir des foyers solides et heureux" %}</h1>
+                    <p class="hero-subtitle">{% trans "Formez-vous au mariage harmonieux selon les principes bibliques" %}</p>
+                    <div class="hero-cta">
+                        <button class="btn btn-hero-primary" onclick="window.location.href='{% url 'formations' %}'">
+                            {% trans "Découvrir nos formations" %}
+                        </button>
+                        <button class="btn btn-hero-secondary" data-bs-toggle="modal" data-bs-target="#videoModal">
+                            <i class="fas fa-play me-2"></i> {% trans "Voir la vidéo" %}
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6" data-aos="fade-left">
+                <div class="hero-image text-center">
+                    <i class="fas fa-hands-holding-heart" style="font-size: 20rem; color: rgba(255,255,255,0.2);"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Stats Section -->
+<section class="section-modern bg-white">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-3 col-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="stats-card">
+                    <div class="stat-number" data-count="500">0</div>
+                    <div class="stat-label">{% trans "Étudiants formés" %}</div>
+                </div>
+            </div>
+            <div class="col-md-3 col-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="stats-card">
+                    <div class="stat-number" data-count="15">0</div>
+                    <div class="stat-label">{% trans "Formations" %}</div>
+                </div>
+            </div>
+            <div class="col-md-3 col-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="stats-card">
+                    <div class="stat-number" data-count="98">0</div>
+                    <div class="stat-label">{% trans "% Satisfaction" %}</div>
+                </div>
+            </div>
+            <div class="col-md-3 col-6 mb-4" data-aos="fade-up" data-aos-delay="400">
+                <div class="stats-card">
+                    <div class="stat-number" data-count="5">0</div>
+                    <div class="stat-label">{% trans "Années d'expérience" %}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Formations Section -->
+<section class="section-modern" style="background: var(--gris-clair);">
+    <div class="container">
+        <div class="text-center mb-5" data-aos="fade-up">
+            <h2 class="section-title">{% trans "Nos Formations" %}</h2>
+            <p class="section-subtitle">{% trans "Des programmes adaptés à chaque étape de votre vie conjugale" %}</p>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="card-modern">
+                    <div class="card-icon">
+                        <i class="fas fa-ring"></i>
+                    </div>
+                    <h3 class="card-title">{% trans "Préparation au Mariage" %}</h3>
+                    <p class="card-text">{% trans "Préparez-vous solidement avant le grand jour avec nos cours sur la communication, les finances et la vie de couple." %}</p>
+                    <a href="{% url 'formations' %}" class="btn-card">
+                        {% trans "En savoir plus" %} <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="card-modern">
+                    <div class="card-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h3 class="card-title">{% trans "Couple Épanoui" %}</h3>
+                    <p class="card-text">{% trans "Renforcez votre union avec des outils pratiques pour maintenir l'harmonie et la complicité au quotidien." %}</p>
+                    <a href="{% url 'formations' %}" class="btn-card">
+                        {% trans "En savoir plus" %} <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="card-modern">
+                    <div class="card-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3 class="card-title">{% trans "Vie Familiale" %}</h3>
+                    <p class="card-text">{% trans "Apprenez à gérer votre foyer selon les principes bibliques : éducation des enfants, finances, spiritualité." %}</p>
+                    <a href="{% url 'formations' %}" class="btn-card">
+                        {% trans "En savoir plus" %} <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-4" data-aos="fade-up">
+            <a href="{% url 'formations' %}" class="btn btn-inscrire btn-lg">
+                {% trans "Voir toutes les formations" %} <i class="fas fa-arrow-right ms-2"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="section-modern">
+    <div class="container">
+        <div class="text-center mb-5" data-aos="fade-up">
+            <h2 class="section-title">{% trans "Témoignages" %}</h2>
+            <p class="section-subtitle">{% trans "Ce que nos étudiants disent de nous" %}</p>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="testimonial-card">
+                    <i class="fas fa-quote-left testimonial-quote"></i>
+                    <p class="testimonial-text">{% trans '"EDMAH a transformé notre relation. Les enseignements bibliques nous ont permis de construire un foyer solide basé sur l\'amour et le respect mutuel."' %}</p>
+                    <div class="testimonial-author">
+                        <img src="https://i.pravatar.cc/150?img=1" alt="Jean & Marie" class="author-image">
+                        <div class="author-info">
+                            <h5>Jean & Marie K.</h5>
+                            <p>{% trans "Couple marié depuis 3 ans" %}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="testimonial-card">
+                    <i class="fas fa-quote-left testimonial-quote"></i>
+                    <p class="testimonial-text">{% trans '"La formation de préparation au mariage était exactement ce dont nous avions besoin. Nous nous sentons maintenant prêts à démarrer notre vie conjugale."' %}</p>
+                    <div class="testimonial-author">
+                        <img src="https://i.pravatar.cc/150?img=5" alt="Paul & Sophie" class="author-image">
+                        <div class="author-info">
+                            <h5>Paul & Sophie D.</h5>
+                            <p>{% trans "Fiancés" %}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="testimonial-card">
+                    <i class="fas fa-quote-left testimonial-quote"></i>
+                    <p class="testimonial-text">{% trans '"Les cours sur la communication et la résolution des conflits ont sauvé notre mariage. Merci à toute l\'équipe d\'EDMAH pour votre accompagnement."' %}</p>
+                    <div class="testimonial-author">
+                        <img src="https://i.pravatar.cc/150?img=9" alt="Daniel & Grace" class="author-image">
+                        <div class="author-info">
+                            <h5>Daniel & Grace M.</h5>
+                            <p>{% trans "Couple marié depuis 7 ans" %}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Newsletter Section -->
+<section class="section-modern">
+    <div class="container">
+        <div class="newsletter-section" data-aos="zoom-in">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">{% trans "Restez informé" %}</h2>
+                    <p style="font-size: 1.2rem; opacity: 0.9;">{% trans "Inscrivez-vous à notre newsletter pour recevoir nos dernières actualités, conseils et événements." %}</p>
+                </div>
+                <div class="col-lg-6">
+                    <form id="newsletterForm" class="d-flex gap-2">
+                        {% csrf_token %}
+                        <input type="email" class="form-control newsletter-input flex-grow-1" placeholder="{% trans 'Votre adresse email' %}" required>
+                        <button type="submit" class="btn btn-newsletter">
+                            {% trans "S'abonner" %} <i class="fas fa-paper-plane ms-2"></i>
+                        </button>
+                    </form>
+                    <div id="newsletterMessage" class="mt-3" style="display: none;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Video Modal -->
+<div class="modal fade" id="videoModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content" style="background: transparent; border: none;">
+            <div class="modal-body p-0">
+                <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-3" data-bs-dismiss="modal" style="z-index: 10;"></button>
+                <div class="ratio ratio-16x9">
+                    <iframe id="videoFrame" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Animated counter
+    const counters = document.querySelectorAll('.stat-number');
+    const observerOptions = { threshold: 0.5, rootMargin: '0px' };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const counter = entry.target;
+                const target = parseInt(counter.getAttribute('data-count'));
+                const duration = 2000;
+                const increment = target / (duration / 16);
+                let current = 0;
+
+                const updateCounter = () => {
+                    current += increment;
+                    if (current < target) {
+                        counter.textContent = Math.ceil(current);
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counter.textContent = target;
+                    }
+                };
+
+                updateCounter();
+                observer.unobserve(counter);
+            }
+        });
+    }, observerOptions);
+
+    counters.forEach(counter => observer.observe(counter));
+
+    // Video modal
+    const videoModal = document.getElementById('videoModal');
+    const videoFrame = document.getElementById('videoFrame');
+    if (videoModal && videoFrame) {
+        videoModal.addEventListener('show.bs.modal', () => {
+            videoFrame.src = 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1';
+        });
+        videoModal.addEventListener('hide.bs.modal', () => {
+            videoFrame.src = '';
+        });
+    }
+</script>
+{% endblock %}

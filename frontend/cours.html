@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cours - EDMAH</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/cours.css">
+
+    
+   
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+        <div class="container">
+         <a class="navbar-brand" href="home.html">
+                <img src="images/logo.png" alt="Edmah"  class="logo" style="height: 100px;">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">À propos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="formations.html">Formations</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="cours.html">Cours</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="evenements.html">Événements</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="gallerie.html">Galerie</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="blog.html">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item ms-3">
+                        <a href="inscription.html" class="btn btn-inscrire">S'inscrire</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <div class="text-center" data-aos="fade-up">
+                <h1 class="page-title">Nos Cours</h1>
+                <p style="font-size: 1.3rem; opacity: 0.95;">
+                    Modules de formation enrichissants avec vidéos, supports et exercices
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Course Content -->
+    <section style="padding: 4rem 0;">
+        <div class="container">
+            <!-- Progress Overview -->
+            <div class="progress-container" data-aos="fade-up">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h5 style="color: var(--bordeaux); margin: 0;">
+                        <i class="fas fa-chart-line me-2"></i> Votre Progression
+                    </h5>
+                    <span style="font-weight: 700; color: var(--dore);">
+                        <span id="progressPercentage">35</span>% complété
+                    </span>
+                </div>
+                <div class="progress-bar-custom">
+                    <div class="progress-fill" id="progressFill" style="width: 35%;">
+                        35%
+                    </div>
+                </div>
+                <p style="margin-top: 1rem; color: var(--gris-fonce); opacity: 0.8;">
+                    <i class="fas fa-trophy me-2" style="color: var(--dore);"></i>
+                    Continue comme ça ! Tu as complété <strong>7 modules sur 20</strong>
+                </p>
+            </div>
+
+            <div class="row">
+                <!-- Sidebar Navigation -->
+                <div class="col-lg-3" data-aos="fade-right">
+                    <div class="sidebar">
+                        <h5 style="color: var(--bordeaux); margin-bottom: 1.5rem;">
+                            <i class="fas fa-book me-2"></i> Modules
+                        </h5>
+                        
+                        <div class="module-nav-item completed" data-module="1">
+                            <div class="module-icon">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div>
+                                <div style="font-weight: 600;">Module 1</div>
+                                <small style="opacity: 0.8;">Introduction</small>
+                            </div>
+                        </div>
+
+                        <div class="module-nav-item completed" data-module="2">
+                            <div class="module-icon">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div>
+                                <div style="font-weight: 600;">Module 2</div>
+                                <small style="opacity: 0.8;">Communication</small>
+                            </div>
+                        </div>
+
+                        <div class="module-nav-item active" data-module="3">
+                            <div class="module-icon">
+                                <i class="fas fa-play"></i>
+                            </div>
+                            <div>
+                                <div style="font-weight: 600;">Module 3</div>
+                                <small style="opacity: 0.8;">Finances</small>
+                            </div>
+                        </div>
+
+                        <div class="module-nav-item" data-module="4">
+                            <div class="module-icon">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <div>
+                                <div style="font-weight: 600;">Module 4</div>
+                                <small style="opacity: 0.8;">Intimité</small>
+                            </div>
+                        </div>
+
+                        <div class="module-nav-item" data-module="5">
+                            <div class="module-icon">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <div>
+                                <div style="font-weight: 600;">Module 5</div>
+                                <small style="opacity: 0.8;">Parentalité</small>
+                            </div>
+                        </div>
+
+                        <div class="module-nav-item" data-module="6">
+                            <div class="module-icon">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <div>
+                                <div style="font-weight: 600;">Module 6</div>
+                                <small style="opacity: 0.8;">Résolution Conflits</small>
+                            </div>
+                        </div>
+
+                        <div class="module-nav-item" data-module="7">
+                            <div class="module-icon">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <div>
+                                <div style="font-weight: 600;">Module 7</div>
+                                <small style="opacity: 0.8;">Rôles Conjugaux</small>
+                            </div>
+                        </div>
+
+                        <div class="module-nav-item" data-module="8">
+                            <div class="module-icon">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <div>
+                                <div style="font-weight: 600;">Module 8</div>
+                                <small style="opacity: 0.8;">Fidélité</small>
+                            </div>
+                        </div>
+
+                        <div class="module-nav-item" data-module="9">
+                            <div class="module-icon">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <div>
+                                <div style="font-weight: 600;">Module 9</div>
+                                <small style="opacity: 0.8;">Spiritualité</small>
+                            </div>
+                        </div>
+
+                        <div class="module-nav-item" data-module="10">
+                            <div class="module-icon">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <div>
+                                <div style="font-weight: 600;">Module 10</div>
+                                <small style="opacity: 0.8;">Famille Élargie</small>
+                            </div>
+                        </div>
+
+                        <div class="module-nav-item" data-module="11">
+                            <div class="module-icon">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <div>
+                                <div style="font-weight: 600;">Module 11</div>
+                                <small style="opacity: 0.8;">Gestion du Temps</small>
+                            </div>
+                        </div>
+
+                        <div class="module-nav-item" data-module="12">
+                            <div class="module-icon">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <div>
+                                <div style="font-weight: 600;">Module 12</div>
+                                <small style="opacity: 0.8;">Santé du Couple</small>
+                            </div>
+                        </div>
+
+                        <div class="module-nav-item" data-module="13">
+                            <div class="module-icon">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <div>
+                                <div style="font-weight: 600;">Module 13</div>
+                                <small style="opacity: 0.8;">Tradition & Modernité</small>
+                            </div>
+                        </div>
+
+                        <div class="module-nav-item" data-module="14">
+                            <div class="module-icon">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <div>
+                                <div style="font-weight: 600;">Module 14</div>
+                                <small style="opacity: 0.8;">Résilience</small>
+                            </div>
+                        </div>
+
+                        <div class="module-nav-item" data-module="15">
+                            <div class="module-icon">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <div>
+                                <div style="font-weight: 600;">Module 15</div>
+                                <small style="opacity: 0.8;">Projet de Vie</small>
+                            </div>
+                        </div>
+
+                        <div class="module-nav-item" data-module="16">
+                            <div class="module-icon">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <div>
+                                <div style="font-weight: 600;">Module 16</div>
+                                <small style="opacity: 0.8;">Langages Amour</small>
+                            </div>
+                        </div>
+
+                        <div class="module-nav-item" data-module="17">
+                            <div class="module-icon">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <div>
+                                <div style="font-weight: 600;">Module 17</div>
+                                <small style="opacity: 0.8;">Pardon</small>
+                            </div>
+                        </div>
+
+                        <div class="module-nav-item" data-module="18">
+                            <div class="module-icon">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <div>
+                                <div style="font-weight: 600;">Module 18</div>
+                                <small style="opacity: 0.8;">Leadership Foyer</small>
+                            </div>
+                        </div>
+
+                        <div class="module-nav-item" data-module="19">
+                            <div class="module-icon">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <div>
+                                <div style="font-weight: 600;">Module 19</div>
+                                <small style="opacity: 0.8;">Héritage Spirituel</small>
+                            </div>
+                        </div>
+
+                        <div class="module-nav-item" data-module="20">
+                            <div class="module-icon">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <div>
+                                <div style="font-weight: 600;">Module 20</div>
+                                <small style="opacity: 0.8;">Projet Final</small>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 2rem; padding-top: 2rem; border-top: 2px solid var(--gris-clair);">
+                            <div style="text-align: center; margin-bottom: 1rem;">
+                                <div style="font-size: 0.9rem; color: var(--gris-fonce); margin-bottom: 0.5rem;">
+                                    <i class="fas fa-trophy" style="color: var(--dore);"></i> Votre Parcours
+                                </div>
+                                <div style="font-size: 1.5rem; font-weight: 700; color: var(--bordeaux);">
+                                    7 / 20 modules
+                                </div>
+                            </div>
+                            <a href="certifications.html" class="btn-download" style="width: 100%; justify-content: center;">
+                                <i class="fas fa-certificate"></i>
+                                Certificat
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Content -->
+                <div class="col-lg-9" data-aos="fade-left">
+                    <div class="course-content">
+                        <div class="module-header">
+                            <div>
+                                <h2 class="module-title">Module 3: Finances de Couple</h2>
+                                <div class="module-meta">
+                                    <div class="meta-badge">
+                                        <i class="fas fa-clock"></i>
+                                        <span>45 min</span>
+                                    </div>
+                                    <div class="meta-badge">
+                                        <i class="fas fa-file-pdf"></i>
+                                        <span>5 documents</span>
+                                    </div>
+                                    <div class="meta-badge">
+                                        <i class="fas fa-question-circle"></i>
+                                        <span>Quiz final</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Video Player -->
+                        <div class="video-container">
+                            <iframe 
+                                src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+
+                        <!-- Course Description -->
+                        <div style="margin-bottom: 2rem;">
+                            <h4 style="color: var(--bordeaux); margin-bottom: 1rem;">
+                                <i class="fas fa-info-circle me-2"></i> À propos de ce module
+                            </h4>
+                            <p style="line-height: 1.8;">
+                                Dans ce module, nous abordons l'importance cruciale de la gestion financière dans le couple. Vous apprendrez à établir un budget familial,à communiquer efficacement sur l'argent, à planifier vos objectifs financiers communs et à gérer les désaccords liés aux finances. Des principes bibliques sur l'administration des ressources seront également explorés.
+                            </p>
+                        </div>
+
+                        <!-- Learning Objectives -->
+                        <div style="background: var(--gris-clair); padding: 2rem; border-radius: 20px; margin-bottom: 2rem;">
+                            <h4 style="color: var(--bordeaux); margin-bottom: 1.5rem;">
+                                <i class="fas fa-target me-2"></i> Objectifs d'apprentissage
+                            </h4>
+                            <ul style="list-style: none; padding: 0;">
+                                <li style="padding: 0.5rem 0; display: flex; align-items: start; gap: 1rem;">
+                                    <i class="fas fa-check-circle" style="color: var(--dore); margin-top: 4px;"></i>
+                                    <span>Comprendre les principes bibliques de la gestion financière</span>
+                                </li>
+                                <li style="padding: 0.5rem 0; display: flex; align-items: start; gap: 1rem;">
+                                    <i class="fas fa-check-circle" style="color: var(--dore); margin-top: 4px;"></i>
+                                    <span>Créer un budget familial réaliste et équilibré</span>
+                                </li>
+                                <li style="padding: 0.5rem 0; display: flex; align-items: start; gap: 1rem;">
+                                    <i class="fas fa-check-circle" style="color: var(--dore); margin-top: 4px;"></i>
+                                    <span>Établir des objectifs financiers communs à court et long terme</span>
+                                </li>
+                                <li style="padding: 0.5rem 0; display: flex; align-items: start; gap: 1rem;">
+                                    <i class="fas fa-check-circle" style="color: var(--dore); margin-top: 4px;"></i>
+                                    <span>Gérer les conflits financiers avec sagesse et respect</span>
+                                </li>
+                                <li style="padding: 0.5rem 0; display: flex; align-items: start; gap: 1rem;">
+                                    <i class="fas fa-check-circle" style="color: var(--dore); margin-top: 4px;"></i>
+                                    <span>Planifier l'épargne et les investissements familiaux</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Resources -->
+                        <div class="resources-section">
+                            <h4 style="color: var(--bordeaux); margin-bottom: 1.5rem;">
+                                <i class="fas fa-download me-2"></i> Supports de Cours
+                            </h4>
+
+                            <div class="resource-item">
+                                <div class="resource-info">
+                                    <div class="resource-icon">
+                                        <i class="fas fa-file-pdf"></i>
+                                    </div>
+                                    <div class="resource-details">
+                                        <h4>Plan d'Épargne Familial</h4>
+                                        <div class="resource-size">PDF • 1.8 MB • 10 pages</div>
+                                    </div>
+                                </div>
+                                <a href="#" class="btn-download">
+                                    <i class="fas fa-download"></i>
+                                    Télécharger
+                                </a>
+                            </div>
+
+                            <div class="resource-item">
+                                <div class="resource-info">
+                                    <div class="resource-icon">
+                                        <i class="fas fa-file-powerpoint"></i>
+                                    </div>
+                                    <div class="resource-details">
+                                        <h4>Slides de Présentation</h4>
+                                        <div class="resource-size">PPTX • 3.2 MB • 25 slides</div>
+                                    </div>
+                                </div>
+                                <a href="#" class="btn-download">
+                                    <i class="fas fa-download"></i>
+                                    Télécharger
+                                </a>
+                            </div>
+
+                            <div class="resource-item">
+                                <div class="resource-info">
+                                    <div class="resource-icon">
+                                        <i class="fas fa-file-video"></i>
+                                    </div>
+                                    <div class="resource-details">
+                                        <h4>Vidéo Complémentaire</h4>
+                                        <div class="resource-size">MP4 • 45 MB • 15 min</div>
+                                    </div>
+                                </div>
+                                <a href="#" class="btn-download">
+                                    <i class="fas fa-download"></i>
+                                    Télécharger
+                                </a>
+                            </div>
+
+                            <div class="resource-item">
+                                <div class="resource-info">
+                                    <div class="resource-icon">
+                                        <i class="fas fa-file-audio"></i>
+                                    </div>
+                                    <div class="resource-details">
+                                        <h4>Podcast - Témoignages</h4>
+                                        <div class="resource-size">MP3 • 12 MB • 20 min</div>
+                                    </div>
+                                </div>
+                                <a href="#" class="btn-download">
+                                    <i class="fas fa-download"></i>
+                                    Télécharger
+                                </a>
+                            </div>
+
+                            <div class="resource-item">
+                                <div class="resource-info">
+                                    <div class="resource-icon">
+                                        <i class="fas fa-file-archive"></i>
+                                    </div>
+                                    <div class="resource-details">
+                                        <h4>Pack Complet Module 3</h4>
+                                        <div class="resource-size">ZIP • 25 MB • Tous les documents</div>
+                                    </div>
+                                </div>
+                                <a href="#" class="btn-download" style="background: var(--bordeaux);">
+                                    <i class="fas fa-download"></i>
+                                    Télécharger Tout
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Quiz Section -->
+                        <div class="quiz-section">
+                            <h4 style="color: var(--bordeaux); margin-bottom: 1.5rem;">
+                                <i class="fas fa-question-circle me-2"></i> Quiz d'évaluation
+                            </h4>
+                            <p style="margin-bottom: 2rem; color: var(--gris-fonce);">
+                                Testez vos connaissances sur ce module. Vous devez obtenir au moins 80% pour valider.
+                            </p>
+
+                            <form id="quizForm">
+                                <div class="question-item">
+                                    <div class="question-text">
+                                        1. Selon les principes bibliques, quelle devrait être la priorité dans la gestion financière du couple ?
+                                    </div>
+                                    <div class="answer-option">
+                                        <input type="radio" name="q1" value="a" id="q1a">
+                                        <label for="q1a" style="cursor: pointer;">L'épargne personnelle</label>
+                                    </div>
+                                    <div class="answer-option">
+                                        <input type="radio" name="q1" value="b" id="q1b">
+                                        <label for="q1b" style="cursor: pointer;">La dîme et les offrandes</label>
+                                    </div>
+                                    <div class="answer-option">
+                                        <input type="radio" name="q1" value="c" id="q1c">
+                                        <label for="q1c" style="cursor: pointer;">Les loisirs</label>
+                                    </div>
+                                </div>
+
+                                <div class="question-item">
+                                    <div class="question-text">
+                                        2. Quelle est la meilleure approche pour gérer les désaccords financiers dans le couple ?
+                                    </div>
+                                    <div class="answer-option">
+                                        <input type="radio" name="q2" value="a" id="q2a">
+                                        <label for="q2a" style="cursor: pointer;">Éviter d'en parler</label>
+                                    </div>
+                                    <div class="answer-option">
+                                        <input type="radio" name="q2" value="b" id="q2b">
+                                        <label for="q2b" style="cursor: pointer;">Communication ouverte et respectueuse</label>
+                                    </div>
+                                    <div class="answer-option">
+                                        <input type="radio" name="q2" value="c" id="q2c">
+                                        <label for="q2c" style="cursor: pointer;">Laisser une personne décider seule</label>
+                                    </div>
+                                </div>
+
+                                <div class="question-item">
+                                    <div class="question-text">
+                                        3. Quel pourcentage du revenu familial devrait idéalement être consacré à l'épargne ?
+                                    </div>
+                                    <div class="answer-option">
+                                        <input type="radio" name="q3" value="a" id="q3a">
+                                        <label for="q3a" style="cursor: pointer;">0-5%</label>
+                                    </div>
+                                    <div class="answer-option">
+                                        <input type="radio" name="q3" value="b" id="q3b">
+                                        <label for="q3b" style="cursor: pointer;">10-20%</label>
+                                    </div>
+                                    <div class="answer-option">
+                                        <input type="radio" name="q3" value="c" id="q3c">
+                                        <label for="q3c" style="cursor: pointer;">50%</label>
+                                    </div>
+                                </div>
+
+                                <div id="quizResult" style="display: none; padding: 1.5rem; border-radius: 15px; margin-top: 1.5rem;"></div>
+
+                                <button type="submit" class="btn-next" style="width: 100%; margin-top: 1.5rem;">
+                                    <i class="fas fa-check me-2"></i> Soumettre le Quiz
+                                </button>
+                            </form>
+                        </div>
+
+                        <!-- Notes Section -->
+                        <div style="background: white; border-radius: 20px; padding: 2rem; margin-bottom: 2rem; border: 2px solid var(--gris-clair);">
+                            <h4 style="color: var(--bordeaux); margin-bottom: 1.5rem;">
+                                <i class="fas fa-sticky-note me-2"></i> Mes Notes Personnelles
+                            </h4>
+                            <textarea class="form-control" rows="5" placeholder="Prenez vos notes ici... Elles seront sauvegardées automatiquement." style="border-radius: 15px; border: 2px solid var(--gris-clair);"></textarea>
+                            <div style="margin-top: 1rem; display: flex; justify-content: space-between; align-items: center;">
+                                <small style="color: var(--gris-fonce); opacity: 0.7;">
+                                    <i class="fas fa-save me-1"></i> Sauvegarde automatique activée
+                                </small>
+                                <button class="btn" style="background: var(--dore); color: white; padding: 0.5rem 1.5rem; border-radius: 50px; border: none;">
+                                    <i class="fas fa-download me-2"></i> Exporter mes notes
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Discussion Forum -->
+                        <div style="background: var(--gris-clair); border-radius: 20px; padding: 2rem; margin-bottom: 2rem;">
+                            <h4 style="color: var(--bordeaux); margin-bottom: 1.5rem;">
+                                <i class="fas fa-comments me-2"></i> Forum de Discussion
+                            </h4>
+                            <p style="color: var(--gris-fonce); margin-bottom: 1.5rem;">
+                                Échangez avec les autres étudiants et posez vos questions
+                            </p>
+
+                            <div style="background: white; border-radius: 15px; padding: 1.5rem; margin-bottom: 1rem;">
+                                <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+                                    <img src="https://i.pravatar.cc/50?img=3" alt="User" style="width: 40px; height: 40px; border-radius: 50%;">
+                                    <div style="flex-grow: 1;">
+                                        <div style="font-weight: 600; color: var(--bordeaux);">Marie K.</div>
+                                        <p style="margin: 0.5rem 0; color: var(--gris-fonce);">
+                                            Comment avez-vous fait pour mettre en place votre premier budget familial ? Des conseils pratiques ?
+                                        </p>
+                                        <div style="font-size: 0.85rem; color: var(--gris-fonce); opacity: 0.7;">
+                                            <i class="fas fa-clock me-1"></i> Il y a 2 heures • 
+                                            <i class="fas fa-thumbs-up ms-2 me-1"></i> 12 • 
+                                            <i class="fas fa-comment ms-2 me-1"></i> 5 réponses
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div style="background: white; border-radius: 15px; padding: 1.5rem; margin-bottom: 1rem;">
+                                <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+                                    <img src="https://i.pravatar.cc/50?img=8" alt="User" style="width: 40px; height: 40px; border-radius: 50%;">
+                                    <div style="flex-grow: 1;">
+                                        <div style="font-weight: 600; color: var(--bordeaux);">Paul D.</div>
+                                        <p style="margin: 0.5rem 0; color: var(--gris-fonce);">
+                                            Excellent module ! Les templates Excel sont très utiles. Merci EDMAH !
+                                        </p>
+                                        <div style="font-size: 0.85rem; color: var(--gris-fonce); opacity: 0.7;">
+                                            <i class="fas fa-clock me-1"></i> Il y a 5 heures • 
+                                            <i class="fas fa-thumbs-up ms-2 me-1"></i> 24 • 
+                                            <i class="fas fa-comment ms-2 me-1"></i> 8 réponses
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div style="background: white; border-radius: 15px; padding: 1.5rem;">
+                                <div style="display: flex; gap: 1rem;">
+                                    <img src="https://i.pravatar.cc/50?img=12" alt="You" style="width: 40px; height: 40px; border-radius: 50%;">
+                                    <div style="flex-grow: 1;">
+                                        <textarea class="form-control" rows="3" placeholder="Posez votre question ou partagez votre expérience..." style="border-radius: 10px; margin-bottom: 1rem;"></textarea>
+                                        <button class="btn" style="background: var(--bordeaux); color: white; padding: 0.6rem 1.5rem; border-radius: 50px; border: none;">
+                                            <i class="fas fa-paper-plane me-2"></i> Publier
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Course Navigation -->
+                            <h4 style="color: var(--bordeaux); margin-bottom: 1.5rem;">
+                                <i class="fas fa-question-circle me-2"></i> Quiz d'évaluation
+                            </h4>
+                            <p style="margin-bottom: 2rem; color: var(--gris-fonce);">
+                                Testez vos connaissances sur ce module. Vous devez obtenir au moins 80% pour valider.
+                            </p>
+
+                            <form id="quizForm">
+                                <div class="question-item">
+                                    <div class="question-text">
+                                        1. Selon les principes bibliques, quelle devrait être la priorité dans la gestion financière du couple ?
+                                    </div>
+                                    <div class="answer-option">
+                                        <input type="radio" name="q1" value="a" id="q1a">
+                                        <label for="q1a" style="cursor: pointer;">L'épargne personnelle</label>
+                                    </div>
+                                    <div class="answer-option">
+                                        <input type="radio" name="q1" value="b" id="q1b">
+                                        <label for="q1b" style="cursor: pointer;">La dîme et les offrandes</label>
+                                    </div>
+                                    <div class="answer-option">
+                                        <input type="radio" name="q1" value="c" id="q1c">
+                                        <label for="q1c" style="cursor: pointer;">Les loisirs</label>
+                                    </div>
+                                </div>
+
+                                <div class="question-item">
+                                    <div class="question-text">
+                                        2. Quelle est la meilleure approche pour gérer les désaccords financiers dans le couple ?
+                                    </div>
+                                    <div class="answer-option">
+                                        <input type="radio" name="q2" value="a" id="q2a">
+                                        <label for="q2a" style="cursor: pointer;">Éviter d'en parler</label>
+                                    </div>
+                                    <div class="answer-option">
+                                        <input type="radio" name="q2" value="b" id="q2b">
+                                        <label for="q2b" style="cursor: pointer;">Communication ouverte et respectueuse</label>
+                                    </div>
+                                    <div class="answer-option">
+                                        <input type="radio" name="q2" value="c" id="q2c">
+                                        <label for="q2c" style="cursor: pointer;">Laisser une personne décider seule</label>
+                                    </div>
+                                </div>
+
+                                <div class="question-item">
+                                    <div class="question-text">
+                                        3. Quel pourcentage du revenu familial devrait idéalement être consacré à l'épargne ?
+                                    </div>
+                                    <div class="answer-option">
+                                        <input type="radio" name="q3" value="a" id="q3a">
+                                        <label for="q3a" style="cursor: pointer;">0-5%</label>
+                                    </div>
+                                    <div class="answer-option">
+                                        <input type="radio" name="q3" value="b" id="q3b">
+                                        <label for="q3b" style="cursor: pointer;">10-20%</label>
+                                    </div>
+                                    <div class="answer-option">
+                                        <input type="radio" name="q3" value="c" id="q3c">
+                                        <label for="q3c" style="cursor: pointer;">50%</label>
+                                    </div>
+                                </div>
+
+                                <div id="quizResult" style="display: none; padding: 1.5rem; border-radius: 15px; margin-top: 1.5rem;"></div>
+
+                                <button type="submit" class="btn-next" style="width: 100%; margin-top: 1.5rem;">
+                                    <i class="fas fa-check me-2"></i> Soumettre le Quiz
+                                </button>
+                            </form>
+                        </div>
+
+                        <!-- Course Navigation -->
+                        <div class="course-navigation">
+                            <button class="btn-nav btn-prev" onclick="window.location.href='cours.html?module=2'">
+                                <i class="fas fa-arrow-left"></i> Module Précédent
+                            </button>
+                            <button class="btn-nav btn-next" onclick="window.location.href='cours.html?module=4'">
+                                Module Suivant <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-modern">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h3 class="footer-title">
+                        <i class="fas fa-heart me-2"></i> EDMAH
+                    </h3>
+                    <p style="color: rgba(255,255,255,0.7); line-height: 1.8;">
+                        L'École du Mariage Harmonieux vous accompagne dans la construction de foyers solides et heureux selon les principes bibliques.
+                    </p>
+                    <div class="mt-4">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-6 mb-4">
+                    <h4 class="footer-title">Navigation</h4>
+                    <a href="index.html" class="footer-link">Accueil</a>
+                    <a href="about.html" class="footer-link">À propos</a>
+                    <a href="formations.html" class="footer-link">Formations</a>
+                    <a href="evenements.html" class="footer-link">Événements</a>
+                    <a href="blog.html" class="footer-link">Blog</a>
+                </div>
+                <div class="col-lg-2 col-md-4 col-6 mb-4">
+                    <h4 class="footer-title">Formations</h4>
+                    <a href="formations.html" class="footer-link">Préparation au mariage</a>
+                    <a href="formations.html" class="footer-link">Couple épanoui</a>
+                    <a href="formations.html" class="footer-link">Vie familiale</a>
+                    <a href="certifications.html" class="footer-link">Certifications</a>
+                </div>
+                <div class="col-lg-4 col-md-4 mb-4">
+                    <h4 class="footer-title">Contact</h4>
+                    <p style="color: rgba(255,255,255,0.7);">
+                        <i class="fas fa-map-marker-alt me-2" style="color: var(--dore);"></i>
+                        Yaoundé, Cameroun
+                    </p>
+                    <p style="color: rgba(255,255,255,0.7);">
+                        <i class="fas fa-phone me-2" style="color: var(--dore);"></i>
+                        +237 6XX XX XX XX
+                    </p>
+                    <p style="color: rgba(255,255,255,0.7);">
+                        <i class="fas fa-envelope me-2" style="color: var(--dore);"></i>
+                        contact@edmah.com
+                    </p>
+                </div>
+            </div>
+            <hr style="border-color: rgba(255,255,255,0.1); margin: 2rem 0;">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    <p style="color: rgba(255,255,255,0.6); margin: 0;">
+                        © 2024 EDMAH. Tous droits réservés.
+                    </p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <a href="#" class="footer-link d-inline me-3">Politique de confidentialité</a>
+                    <a href="#" class="footer-link d-inline">Conditions d'utilisation</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top -->
+    <div class="scroll-top" id="scrollTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // Scroll to top
+        const scrollTopBtn = document.getElementById('scrollTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollTopBtn.classList.add('show');
+            } else {
+                scrollTopBtn.classList.remove('show');
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Module Navigation
+        document.querySelectorAll('.module-nav-item').forEach(item => {
+            item.addEventListener('click', function() {
+                if (!this.classList.contains('completed') && !this.classList.contains('active')) {
+                    alert('Complétez le module actuel pour débloquer celui-ci');
+                    return;
+                }
+                
+                // Update active state
+                document.querySelectorAll('.module-nav-item').forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Load module content (simulation)
+                const moduleId = this.getAttribute('data-module');
+                console.log('Loading module:', moduleId);
+                // In production: load module content via AJAX
+            });
+        });
+
+        // Quiz Form
+        document.getElementById('quizForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const answers = {
+                q1: 'b',
+                q2: 'b',
+                q3: 'b'
+            };
+            
+            let score = 0;
+            let total = Object.keys(answers).length;
+            
+            Object.keys(answers).forEach(question => {
+                const selected = document.querySelector(`input[name="${question}"]:checked`);
+                if (selected && selected.value === answers[question]) {
+                    score++;
+                }
+            });
+            
+            const percentage = Math.round((score / total) * 100);
+            const resultDiv = document.getElementById('quizResult');
+            resultDiv.style.display = 'block';
+            
+            if (percentage >= 80) {
+                resultDiv.style.background = '#d4edda';
+                resultDiv.style.color = '#155724';
+                resultDiv.innerHTML = `
+                    <div style="display: flex; align-items: center; gap: 1rem;">
+                        <i class="fas fa-check-circle" style="font-size: 3rem; color: #28a745;"></i>
+                        <div>
+                            <h4 style="margin-bottom: 0.5rem;">Félicitations ! 🎉</h4>
+                            <p style="margin: 0;">Vous avez obtenu ${percentage}% (${score}/${total}). Module validé !</p>
+                        </div>
+                    </div>
+                `;
+                
+                // Update progress
+                updateProgress(40);
+                
+                // Mark as completed
+                document.querySelector('.module-nav-item.active').classList.add('completed');
+                document.querySelector('.module-nav-item.active .module-icon').innerHTML = '<i class="fas fa-check"></i>';
+                
+            } else {
+                resultDiv.style.background = '#f8d7da';
+                resultDiv.style.color = '#721c24';
+                resultDiv.innerHTML = `
+                    <div style="display: flex; align-items: center; gap: 1rem;">
+                        <i class="fas fa-times-circle" style="font-size: 3rem; color: #dc3545;"></i>
+                        <div>
+                            <h4 style="margin-bottom: 0.5rem;">Pas encore...</h4>
+                            <p style="margin: 0;">Vous avez obtenu ${percentage}% (${score}/${total}). Il vous faut au moins 80% pour valider. Révisez et réessayez !</p>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            // Scroll to result
+            resultDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
+
+        // Update progress bar
+        function updateProgress(percentage) {
+            const progressFill = document.getElementById('progressFill');
+            const progressPercentage = document.getElementById('progressPercentage');
+            
+            progressFill.style.width = percentage + '%';
+            progressFill.textContent = percentage + '%';
+            progressPercentage.textContent = percentage;
+        }
+
+        // Download resources (simulation)
+        document.querySelectorAll('.btn-download').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const resourceName = this.closest('.resource-item').querySelector('h4').textContent;
+                
+                // Show download notification
+                const notification = document.createElement('div');
+                notification.style.cssText = `
+                    position: fixed;
+                    top: 100px;
+                    right: 20px;
+                    background: #d4edda;
+                    color: #155724;
+                    padding: 1rem 1.5rem;
+                    border-radius: 10px;
+                    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+                    z-index: 9999;
+                    animation: slideInRight 0.3s ease;
+                `;
+                notification.innerHTML = `
+                    <i class="fas fa-check-circle me-2"></i>
+                    <strong>${resourceName}</strong> téléchargé !
+                `;
+                
+                document.body.appendChild(notification);
+                
+                setTimeout(() => {
+                    notification.style.animation = 'slideOutRight 0.3s ease';
+                    setTimeout(() => notification.remove(), 300);
+                }, 3000);
+                
+                // In production: trigger actual download
+                // window.location.href = 'path/to/file.pdf';
+            });
+        });
+
+        // Animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideInRight {
+                from {
+                    opacity: 0;
+                    transform: translateX(100px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateX(0);
+                }
+            }
+            
+            @keyframes slideOutRight {
+                from {
+                    opacity: 1;
+                    transform: translateX(0);
+                }
+                to {
+                    opacity: 0;
+                    transform: translateX(100px);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - EDMAH</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/blog.css">
+    
+   
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="home.html">
+                <img src="images/logo.png" alt="Edmah"  class="logo" style="height: 100px;">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="home.html">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">À propos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="formations.html">Formations</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cours.html">Cours</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="evenements.html">Événements</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="gallerie.html">Galerie</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="blog.html">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item ms-3">
+                        <a href="inscriptions.html" class="btn btn-inscrire">S'inscrire</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <div class="text-center" data-aos="fade-up">
+                <h1 class="page-title">Notre Blog</h1>
+                <p style="font-size: 1.3rem; opacity: 0.95;">
+                    Conseils, réflexions et inspiration pour votre couple
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search & Categories -->
+    <section style="padding: 4rem 0 2rem;">
+        <div class="container">
+            <!-- Search Bar -->
+            <div class="search-bar" data-aos="fade-up">
+                <input type="text" class="search-input" placeholder="Rechercher un article..." id="searchInput">
+                <button class="search-btn" id="searchBtn">
+                    <i class="fas fa-search me-2"></i> Rechercher
+                </button>
+            </div>
+
+            <!-- Categories -->
+            <div class="categories" data-aos="fade-up" data-aos-delay="100">
+                <div class="category-tag active" data-category="all">
+                    <i class="fas fa-th me-2"></i> Tous
+                </div>
+                <div class="category-tag" data-category="communication">
+                    <i class="fas fa-comments me-2"></i> Communication
+                </div>
+                <div class="category-tag" data-category="finances">
+                    <i class="fas fa-wallet me-2"></i> Finances
+                </div>
+                <div class="category-tag" data-category="spiritualite">
+                    <i class="fas fa-pray me-2"></i> Spiritualité
+                </div>
+                <div class="category-tag" data-category="famille">
+                    <i class="fas fa-home me-2"></i> Famille
+                </div>
+                <div class="category-tag" data-category="temoignages">
+                    <i class="fas fa-heart me-2"></i> Témoignages
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Grid -->
+    <section style="padding: 2rem 0 4rem;">
+        <div class="container">
+            <div class="row">
+                <!-- Main Content -->
+                <div class="col-lg-8">
+                    <div class="row" id="blogGrid">
+                        <!-- Blog Post 1 -->
+                        <div class="col-md-6 mb-4 blog-item" data-category="communication" data-aos="fade-up">
+                            <div class="blog-card">
+                                <div style="overflow: hidden;">
+                                    <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=600" alt="Communication" class="blog-image">
+                                </div>
+                                <div class="blog-content">
+                                    <span class="blog-category">Communication</span>
+                                    <h3 class="blog-title">Les 5 Langages de l'Amour dans le Couple</h3>
+                                    <div class="blog-meta">
+                                        <div class="meta-item">
+                                            <i class="fas fa-calendar"></i>
+                                            <span>15 Nov 2024</span>
+                                        </div>
+                                        <div class="meta-item">
+                                            <i class="fas fa-clock"></i>
+                                            <span>5 min</span>
+                                        </div>
+                                    </div>
+                                    <p class="blog-excerpt">
+                                        Découvrez comment identifier et parler le langage d'amour de votre conjoint pour renforcer votre lien émotionnel...
+                                    </p>
+                                    <div class="blog-author">
+                                        <img src="https://i.pravatar.cc/100?img=1" alt="Auteur" class="author-avatar">
+                                        <div class="author-info">
+                                            <h5>Pasteur Jean-Marc</h5>
+                                            <p>Fondateur EDMAH</p>
+                                        </div>
+                                    </div>
+                                    <a href="#" class="btn-read-more">
+                                        Lire la suite <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Blog Post 2 -->
+                        <div class="col-md-6 mb-4 blog-item" data-category="finances" data-aos="fade-up" data-aos-delay="100">
+                            <div class="blog-card">
+                                <div style="overflow: hidden;">
+                                    <img src="https://images.unsplash.com/photo-1460978812857-470ed1c77af0?w=600" alt="Finances" class="blog-image">
+                                </div>
+                                <div class="blog-content">
+                                    <span class="blog-category">Finances</span>
+                                    <h3 class="blog-title">Gérer les Finances de Couple sans Conflits</h3>
+                                    <div class="blog-meta">
+                                        <div class="meta-item">
+                                            <i class="fas fa-calendar"></i>
+                                            <span>12 Nov 2024</span>
+                                        </div>
+                                        <div class="meta-item">
+                                            <i class="fas fa-clock"></i>
+                                            <span>7 min</span>
+                                        </div>
+                                    </div>
+                                    <p class="blog-excerpt">
+                                        Des conseils pratiques pour établir un budget familial harmonieux et éviter les tensions financières dans votre couple...
+                                    </p>
+                                    <div class="blog-author">
+                                        <img src="https://i.pravatar.cc/100?img=8" alt="Auteur" class="author-avatar">
+                                        <div class="author-info">
+                                            <h5>M. David NKOLO</h5>
+                                            <p>Expert Finances</p>
+                                        </div>
+                                    </div>
+                                    <a href="#" class="btn-read-more">
+                                        Lire la suite <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Blog Post 3 -->
+                        <div class="col-md-6 mb-4 blog-item" data-category="spiritualite" data-aos="fade-up">
+                            <div class="blog-card">
+                                <div style="overflow: hidden;">
+                                    <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=600" alt="Prière" class="blog-image">
+                                </div>
+                                <div class="blog-content">
+                                    <span class="blog-category">Spiritualité</span>
+                                    <h3 class="blog-title">La Prière en Couple: Renforcer votre Union</h3>
+                                    <div class="blog-meta">
+                                        <div class="meta-item">
+                                            <i class="fas fa-calendar"></i>
+                                            <span>08 Nov 2024</span>
+                                        </div>
+                                        <div class="meta-item">
+                                            <i class="fas fa-clock"></i>
+                                            <span>6 min</span>
+                                        </div>
+                                    </div>
+                                    <p class="blog-excerpt">
+                                        Comment intégrer la prière dans votre vie quotidienne de couple pour fortifier votre relation spirituelle et conjugale...
+                                    </p>
+                                    <div class="blog-author">
+                                        <img src="https://i.pravatar.cc/100?img=5" alt="Auteur" class="author-avatar">
+                                        <div class="author-info">
+                                            <h5>Mme Grace KOUAM</h5>
+                                            <p>Conseillère</p>
+                                        </div>
+                                    </div>
+                                    <a href="#" class="btn-read-more">
+                                        Lire la suite <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Blog Post 4 -->
+                        <div class="col-md-6 mb-4 blog-item" data-category="famille" data-aos="fade-up" data-aos-delay="100">
+                            <div class="blog-card">
+                                <div style="overflow: hidden;">
+                                    <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?w=600" alt="Famille" class="blog-image">
+                                </div>
+                                <div class="blog-content">
+                                    <span class="blog-category">Famille</span>
+                                    <h3 class="blog-title">Éduquer ses Enfants selon les Principes Bibliques</h3>
+                                    <div class="blog-meta">
+                                        <div class="meta-item">
+                                            <i class="fas fa-calendar"></i>
+                                            <span>05 Nov 2024</span>
+                                        </div>
+                                        <div class="meta-item">
+                                            <i class="fas fa-clock"></i>
+                                            <span>8 min</span>
+                                        </div>
+                                    </div>
+                                    <p class="blog-excerpt">
+                                        Principes et astuces pour une éducation chrétienne équilibrée qui forme le caractère et la foi de vos enfants...
+                                    </p>
+                                    <div class="blog-author">
+                                        <img src="https://i.pravatar.cc/100?img=1" alt="Auteur" class="author-avatar">
+                                        <div class="author-info">
+                                            <h5>Pasteur Jean-Marc</h5>
+                                            <p>Fondateur EDMAH</p>
+                                        </div>
+                                    </div>
+                                    <a href="#" class="btn-read-more">
+                                        Lire la suite <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Blog Post 5 -->
+                        <div class="col-md-6 mb-4 blog-item" data-category="temoignages" data-aos="fade-up">
+                            <div class="blog-card">
+                                <div style="overflow: hidden;">
+                                    <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=600" alt="Témoignage" class="blog-image">
+                                </div>
+                                <div class="blog-content">
+                                    <span class="blog-category">Témoignages</span>
+                                    <h3 class="blog-title">Notre Mariage Restauré par la Foi</h3>
+                                    <div class="blog-meta">
+                                        <div class="meta-item">
+                                            <i class="fas fa-calendar"></i>
+                                            <span>02 Nov 2024</span>
+                                        </div>
+                                        <div class="meta-item">
+                                            <i class="fas fa-clock"></i>
+                                            <span>10 min</span>
+                                        </div>
+                                    </div>
+                                    <p class="blog-excerpt">
+                                        Le témoignage inspirant de Jean et Marie qui ont vu leur mariage transformé après avoir suivi nos formations...
+                                    </p>
+                                    <div class="blog-author">
+                                        <img src="https://i.pravatar.cc/100?img=3" alt="Auteur" class="author-avatar">
+                                        <div class="author-info">
+                                            <h5>Jean & Marie K.</h5>
+                                            <p>Alumnis EDMAH</p>
+                                        </div>
+                                    </div>
+                                    <a href="#" class="btn-read-more">
+                                        Lire la suite <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Blog Post 6 -->
+                        <div class="col-md-6 mb-4 blog-item" data-category="communication" data-aos="fade-up" data-aos-delay="100">
+                            <div class="blog-card">
+                                <div style="overflow: hidden;">
+                                    <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?w=600" alt="Conflit" class="blog-image">
+                                </div>
+                                <div class="blog-content">
+                                    <span class="blog-category">Communication</span>
+                                    <h3 class="blog-title">Résoudre les Conflits sans Blesser</h3>
+                                    <div class="blog-meta">
+                                        <div class="meta-item">
+                                            <i class="fas fa-calendar"></i>
+                                            <span>30 Oct 2024</span>
+                                        </div>
+                                        <div class="meta-item">
+                                            <i class="fas fa-clock"></i>
+                                            <span>6 min</span>
+                                        </div>
+                                    </div>
+                                    <p class="blog-excerpt">
+                                        Techniques de communication non-violente pour gérer les désaccords de manière constructive et respectueuse...
+                                    </p>
+                                    <div class="blog-author">
+                                        <img src="https://i.pravatar.cc/100?img=5" alt="Auteur" class="author-avatar">
+                                        <div class="author-info">
+                                            <h5>Mme Grace KOUAM</h5>
+                                            <p>Conseillère</p>
+                                        </div>
+                                    </div>
+                                    <a href="#" class="btn-read-more">
+                                        Lire la suite <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="pagination-custom" data-aos="fade-up">
+                        <div class="page-btn"><i class="fas fa-chevron-left"></i></div>
+                        <div class="page-btn active">1</div>
+                        <div class="page-btn">2</div>
+                        <div class="page-btn">3</div>
+                        <div class="page-btn">4</div>
+                        <div class="page-btn"><i class="fas fa-chevron-right"></i></div>
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="col-lg-4">
+                    <div class="sidebar">
+                        <!-- Popular Posts Widget -->
+                        <div class="sidebar-widget" data-aos="fade-left">
+                            <h3 class="widget-title">
+                                <i class="fas fa-fire me-2" style="color: var(--dore);"></i>
+                                Articles Populaires
+                            </h3>
+                            
+                            <div class="popular-post">
+                                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=200" alt="Popular" class="popular-post-img">
+                                <div>
+                                    <div class="popular-post-title">Les Clés d'un Mariage Heureux</div>
+                                    <div class="popular-post-date">
+                                        <i class="fas fa-calendar me-1"></i> 20 Oct 2024
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="popular-post">
+                                <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=200" alt="Popular" class="popular-post-img">
+                                <div>
+                                    <div class="popular-post-title">L'Intimité dans le Couple Chrétien</div>
+                                    <div class="popular-post-date">
+                                        <i class="fas fa-calendar me-1"></i> 18 Oct 2024
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="popular-post">
+                                <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=200" alt="Popular" class="popular-post-img">
+                                <div>
+                                    <div class="popular-post-title">10 Conseils pour Jeunes Mariés</div>
+                                    <div class="popular-post-date">
+                                        <i class="fas fa-calendar me-1"></i> 15 Oct 2024
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="popular-post">
+                                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=200" alt="Popular" class="popular-post-img">
+                                <div>
+                                    <div class="popular-post-title">Pardonner dans le Mariage</div>
+                                    <div class="popular-post-date">
+                                        <i class="fas fa-calendar me-1"></i> 12 Oct 2024
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Categories Widget -->
+                        <div class="sidebar-widget" data-aos="fade-left" data-aos-delay="100">
+                            <h3 class="widget-title">
+                                <i class="fas fa-folder me-2" style="color: var(--dore);"></i>
+                                Catégories
+                            </h3>
+                            
+                            <div style="display: flex; flex-direction: column; gap: 0.8rem;">
+                                <div style="display: flex; justify-content: space-between; padding: 0.8rem; background: var(--gris-clair); border-radius: 10px; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.background='var(--bordeaux)'; this.style.color='white'" onmouseout="this.style.background='var(--gris-clair)'; this.style.color='var(--gris-fonce)'">
+                                    <span><i class="fas fa-comments me-2"></i> Communication</span>
+                                    <span style="background: white; padding: 0.2rem 0.8rem; border-radius: 50px; font-size: 0.85rem; font-weight: 600; color: var(--bordeaux);">24</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; padding: 0.8rem; background: var(--gris-clair); border-radius: 10px; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.background='var(--bordeaux)'; this.style.color='white'" onmouseout="this.style.background='var(--gris-clair)'; this.style.color='var(--gris-fonce)'">
+                                    <span><i class="fas fa-wallet me-2"></i> Finances</span>
+                                    <span style="background: white; padding: 0.2rem 0.8rem; border-radius: 50px; font-size: 0.85rem; font-weight: 600; color: var(--bordeaux);">18</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; padding: 0.8rem; background: var(--gris-clair); border-radius: 10px; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.background='var(--bordeaux)'; this.style.color='white'" onmouseout="this.style.background='var(--gris-clair)'; this.style.color='var(--gris-fonce)'">
+                                    <span><i class="fas fa-pray me-2"></i> Spiritualité</span>
+                                    <span style="background: white; padding: 0.2rem 0.8rem; border-radius: 50px; font-size: 0.85rem; font-weight: 600; color: var(--bordeaux);">32</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; padding: 0.8rem; background: var(--gris-clair); border-radius: 10px; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.background='var(--bordeaux)'; this.style.color='white'" onmouseout="this.style.background='var(--gris-clair)'; this.style.color='var(--gris-fonce)'">
+                                    <span><i class="fas fa-home me-2"></i> Famille</span>
+                                    <span style="background: white; padding: 0.2rem 0.8rem; border-radius: 50px; font-size: 0.85rem; font-weight: 600; color: var(--bordeaux);">15</span>
+                                </div>
+                                <div style="display: flex; justify-content: space-between; padding: 0.8rem; background: var(--gris-clair); border-radius: 10px; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.background='var(--bordeaux)'; this.style.color='white'" onmouseout="this.style.background='var(--gris-clair)'; this.style.color='var(--gris-fonce)'">
+                                    <span><i class="fas fa-heart me-2"></i> Témoignages</span>
+                                    <span style="background: white; padding: 0.2rem 0.8rem; border-radius: 50px; font-size: 0.85rem; font-weight: 600; color: var(--bordeaux);">12</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tags Widget -->
+                        <div class="sidebar-widget" data-aos="fade-left" data-aos-delay="200">
+                            <h3 class="widget-title">
+                                <i class="fas fa-tags me-2" style="color: var(--dore);"></i>
+                                Tags Populaires
+                            </h3>
+                            <div class="tag-cloud">
+                                <span class="tag">Amour</span>
+                                <span class="tag">Prière</span>
+                                <span class="tag">Couple</span>
+                                <span class="tag">Mariage</span>
+                                <span class="tag">Foi</span>
+                                <span class="tag">Communication</span>
+                                <span class="tag">Pardon</span>
+                                <span class="tag">Famille</span>
+                                <span class="tag">Enfants</span>
+                                <span class="tag">Bible</span>
+                                <span class="tag">Confiance</span>
+                                <span class="tag">Respect</span>
+                            </div>
+                        </div>
+
+                        <!-- Newsletter Widget -->
+                        <div class="sidebar-widget" data-aos="fade-left" data-aos-delay="300" style="background: linear-gradient(135deg, var(--bordeaux), #a01836); color: white;">
+                            <h3 class="widget-title" style="color: white;">
+                                <i class="fas fa-envelope me-2"></i>
+                                Newsletter
+                            </h3>
+                            <p style="margin-bottom: 1.5rem; opacity: 0.95;">
+                                Recevez nos derniers articles directement dans votre boîte mail
+                            </p>
+                            <form id="sidebarNewsletterForm">
+                                <input type="email" class="form-control mb-3" placeholder="Votre email" style="border-radius: 10px; padding: 0.8rem; border: none;" required>
+                                <button type="submit" class="btn w-100" style="background: var(--dore); color: var(--gris-fonce); padding: 0.8rem; border-radius: 50px; font-weight: 600; border: none;">
+                                    <i class="fas fa-paper-plane me-2"></i> S'abonner
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-modern">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h3 class="footer-title">
+                        <i class="fas fa-heart me-2"></i> EDMAH
+                    </h3>
+                    <p style="color: rgba(255,255,255,0.7); line-height: 1.8;">
+                        L'École du Mariage Harmonieux vous accompagne dans la construction de foyers solides et heureux selon les principes bibliques.
+                    </p>
+                    <div class="mt-4">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-6 mb-4">
+                    <h4 class="footer-title">Navigation</h4>
+                    <a href="index.html" class="footer-link">Accueil</a>
+                    <a href="about.html" class="footer-link">À propos</a>
+                    <a href="formations.html" class="footer-link">Formations</a>
+                    <a href="evenements.html" class="footer-link">Événements</a>
+                    <a href="blog.html" class="footer-link">Blog</a>
+                </div>
+                <div class="col-lg-2 col-md-4 col-6 mb-4">
+                    <h4 class="footer-title">Formations</h4>
+                    <a href="formations.html" class="footer-link">Préparation au mariage</a>
+                    <a href="formations.html" class="footer-link">Couple épanoui</a>
+                    <a href="formations.html" class="footer-link">Vie familiale</a>
+                    <a href="certifications.html" class="footer-link">Certifications</a>
+                </div>
+                <div class="col-lg-4 col-md-4 mb-4">
+                    <h4 class="footer-title">Contact</h4>
+                    <p style="color: rgba(255,255,255,0.7);">
+                        <i class="fas fa-map-marker-alt me-2" style="color: var(--dore);"></i>
+                        Yaoundé, Cameroun
+                    </p>
+                    <p style="color: rgba(255,255,255,0.7);">
+                        <i class="fas fa-phone me-2" style="color: var(--dore);"></i>
+                        +237 6XX XX XX XX
+                    </p>
+                    <p style="color: rgba(255,255,255,0.7);">
+                        <i class="fas fa-envelope me-2" style="color: var(--dore);"></i>
+                        contact@edmah.com
+                    </p>
+                </div>
+            </div>
+            <hr style="border-color: rgba(255,255,255,0.1); margin: 2rem 0;">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    <p style="color: rgba(255,255,255,0.6); margin: 0;">
+                        © 2024 EDMAH. Tous droits réservés.
+                    </p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <a href="#" class="footer-link d-inline me-3">Politique de confidentialité</a>
+                    <a href="#" class="footer-link d-inline">Conditions d'utilisation</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top -->
+    <div class="scroll-top" id="scrollTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // Scroll to top
+        const scrollTopBtn = document.getElementById('scrollTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollTopBtn.classList.add('show');
+            } else {
+                scrollTopBtn.classList.remove('show');
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Category Filter
+        const categoryTags = document.querySelectorAll('.category-tag');
+        const blogItems = document.querySelectorAll('.blog-item');
+
+        categoryTags.forEach(tag => {
+            tag.addEventListener('click', () => {
+                // Update active tag
+                categoryTags.forEach(t => t.classList.remove('active'));
+                tag.classList.add('active');
+
+                const category = tag.getAttribute('data-category');
+
+                blogItems.forEach(item => {
+                    const itemCategory = item.getAttribute('data-category');
+                    
+                    if (category === 'all' || itemCategory === category) {
+                        item.style.display = 'block';
+                        item.classList.remove('aos-animate');
+                        setTimeout(() => item.classList.add('aos-animate'), 100);
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Search Functionality
+        const searchInput = document.getElementById('searchInput');
+        const searchBtn = document.getElementById('searchBtn');
+
+        searchBtn.addEventListener('click', performSearch);
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                performSearch();
+            }
+        });
+
+        function performSearch() {
+            const searchTerm = searchInput.value.toLowerCase().trim();
+            
+            if (!searchTerm) return;
+
+            blogItems.forEach(item => {
+                const title = item.querySelector('.blog-title').textContent.toLowerCase();
+                const excerpt = item.querySelector('.blog-excerpt').textContent.toLowerCase();
+                
+                if (title.includes(searchTerm) || excerpt.includes(searchTerm)) {
+                    item.style.display = 'block';
+                    // Highlight search term (optional)
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Pagination
+        const pageButtons = document.querySelectorAll('.page-btn');
+        
+        pageButtons.forEach(btn => {
+            btn.addEventListener('click', function() {
+                if (this.querySelector('i')) return; // Skip prev/next buttons
+                
+                pageButtons.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Scroll to top of blog grid
+                document.getElementById('blogGrid').scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+                
+                // In production: Load new posts via AJAX
+                // loadPosts(pageNumber);
+            });
+        });
+
+        // Newsletter Form (Sidebar)
+        document.getElementById('sidebarNewsletterForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const email = e.target.querySelector('input[type="email"]').value;
+            const submitBtn = e.target.querySelector('button[type="submit"]');
+            
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+            
+            try {
+                // Simulate AJAX call
+                await new Promise(resolve => setTimeout(resolve, 1000));
+                
+                alert('Merci ! Vous êtes maintenant abonné à notre newsletter.');
+                e.target.reset();
+            } catch (error) {
+                alert('Une erreur est survenue. Veuillez réessayer.');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fas fa-paper-plane me-2"></i> S\'abonner';
+            }
+        });
+
+        // Load More Posts (AJAX simulation)
+        function loadMorePosts() {
+            const blogGrid = document.getElementById('blogGrid');
+            
+            // Show loading skeleton
+            blogGrid.innerHTML += '<div class="col-12 text-center my-4"><div class="spinner-border" role="status"></div></div>';
+            
+            // Simulate AJAX call
+            setTimeout(() => {
+                // In production: fetch('/api/blog?page=2')
+                // Then append new posts
+                console.log('Loading more posts...');
+            }, 1000);
+        }
+    </script>
+</body>
+</html>

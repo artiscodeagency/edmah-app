@@ -1,0 +1,186 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}EDMAH - {% trans "École du Mariage Harmonieux" %}{% endblock %}</title>
+    <meta name="description" content="{% block meta_description %}{% trans "EDMAH est une école de formation dédiée au mariage, au couple et à la vie familiale, à inspiration biblique." %}{% endblock %}">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Custom CSS Base -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+
+    <!-- Loader -->
+    <div class="loader" id="loader">
+        <div class="loader-spinner"></div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-custom fixed-top" id="navbar">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="{% url 'index' %}">
+                <img src="{% static 'images/logo.png' %}" alt="EDMAH" class="logo" style="height: 100px;">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarEDMAH" aria-controls="navbarEDMAH" aria-expanded="false" aria-label="{% trans 'Basculer la navigation' %}">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarEDMAH">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.resolver_match.url_name == 'index' %}active{% endif %}" href="{% url 'index' %}">{% trans "Accueil" %}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.resolver_match.url_name == 'about' %}active{% endif %}" href="{% url 'about' %}">{% trans "À propos" %}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.resolver_match.url_name == 'formations' %}active{% endif %}" href="{% url 'formations' %}">{% trans "Formations" %}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.resolver_match.url_name == 'cours' %}active{% endif %}" href="{% url 'cours' %}">{% trans "Cours" %}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.resolver_match.url_name == 'evenements' %}active{% endif %}" href="{% url 'evenements' %}">{% trans "Événements" %}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.resolver_match.url_name == 'gallerie' %}active{% endif %}" href="{% url 'gallerie' %}">{% trans "Galerie" %}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.resolver_match.url_name == 'blog' %}active{% endif %}" href="{% url 'blog' %}">{% trans "Blog" %}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.resolver_match.url_name == 'contact' %}active{% endif %}" href="{% url 'contact' %}">{% trans "Contact" %}</a>
+                    </li>
+                    <li class="nav-item ms-lg-2">
+                        <a class="btn btn-warning btn-sm text-dark fw-bold px-3 py-2 rounded-pill shadow-sm" href="{% url 'inscriptions' %}">
+                            <i class="fas fa-user-plus me-1"></i> {% trans "S'inscrire" %}
+                        </a>
+                    </li>
+
+                    <!-- Sélecteur de langue multilingue (Français / English) -->
+                    <li class="nav-item dropdown ms-lg-3">
+                        <form action="{% url 'set_language' %}" method="post" id="langForm" class="d-inline">
+                            {% csrf_token %}
+                            <input name="next" type="hidden" value="{{ request.get_full_path }}">
+                            <select name="language" class="form-select form-select-sm bg-dark text-white border-secondary rounded-pill px-2 py-1" onchange="this.form.submit()" style="cursor: pointer; width: auto;">
+                                {% get_current_language as LANGUAGE_CODE %}
+                                {% get_available_languages as LANGUAGES %}
+                                {% get_language_info_list for LANGUAGES as languages %}
+                                {% for language in languages %}
+                                    <option value="{{ language.code }}" {% if language.code == LANGUAGE_CODE %}selected{% endif %}>
+                                        {% if language.code == 'fr' %}🇫🇷 FR{% else %}🇬🇧 EN{% endif %}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Conteneur d'alertes -->
+    <div id="alertContainer"></div>
+
+    <!-- Contenu principal -->
+    <main class="main-content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer-modern mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h3 class="footer-title">
+                        <i class="fas fa-heart me-2"></i> EDMAH
+                    </h3>
+                    <p style="color: rgba(255,255,255,0.7); line-height: 1.8;">
+                        {% trans "L'École du Mariage Harmonieux vous accompagne dans la construction de foyers solides et heureux selon les principes bibliques." %}
+                    </p>
+                    <div class="mt-4">
+                        <a href="#" class="social-icon" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon" title="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-icon" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-6 mb-4">
+                    <h4 class="footer-title">{% trans "Navigation" %}</h4>
+                    <a href="{% url 'index' %}" class="footer-link">{% trans "Accueil" %}</a>
+                    <a href="{% url 'about' %}" class="footer-link">{% trans "À propos" %}</a>
+                    <a href="{% url 'formations' %}" class="footer-link">{% trans "Formations" %}</a>
+                    <a href="{% url 'evenements' %}" class="footer-link">{% trans "Événements" %}</a>
+                    <a href="{% url 'blog' %}" class="footer-link">{% trans "Blog" %}</a>
+                </div>
+                <div class="col-lg-2 col-md-4 col-6 mb-4">
+                    <h4 class="footer-title">{% trans "Formations" %}</h4>
+                    <a href="{% url 'formations' %}" class="footer-link">{% trans "Préparation au mariage" %}</a>
+                    <a href="{% url 'formations' %}" class="footer-link">{% trans "Couple épanoui" %}</a>
+                    <a href="{% url 'formations' %}" class="footer-link">{% trans "Vie familiale" %}</a>
+                    <a href="{% url 'certifications' %}" class="footer-link">{% trans "Certifications" %}</a>
+                </div>
+                <div class="col-lg-4 col-md-4 mb-4">
+                    <h4 class="footer-title">{% trans "Contact" %}</h4>
+                    <p style="color: rgba(255,255,255,0.7);">
+                        <i class="fas fa-map-marker-alt me-2" style="color: var(--dore);"></i>
+                        {% trans "Yaoundé, Cameroun" %}
+                    </p>
+                    <p style="color: rgba(255,255,255,0.7);">
+                        <i class="fas fa-phone me-2" style="color: var(--dore);"></i>
+                        +237 6XX XX XX XX
+                    </p>
+                    <p style="color: rgba(255,255,255,0.7);">
+                        <i class="fas fa-envelope me-2" style="color: var(--dore);"></i>
+                        contact@edmah.com
+                    </p>
+                </div>
+            </div>
+            <hr style="border-color: rgba(255,255,255,0.1); margin: 2rem 0;">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    <p style="color: rgba(255,255,255,0.6); margin: 0;">
+                        © 2026 EDMAH. {% trans "Tous droits réservés." %}
+                    </p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <a href="#" class="footer-link d-inline me-3">{% trans "Politique de confidentialité" %}</a>
+                    <a href="#" class="footer-link d-inline">{% trans "Conditions d'utilisation" %}</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <div class="scroll-top" id="scrollTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Scripts Bootstrap 5 & AOS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true, offset: 100 });
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loader');
+            if (loader) {
+                setTimeout(() => loader.classList.add('hidden'), 400);
+            }
+        });
+    </script>
+    <!-- Main JS -->
+    <script src="{% static 'js/main.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,245 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}EDMAH - {% trans "À propos de Nous" %}{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/about.css' %}">
+{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="page-header">
+    <div class="container">
+        <div class="page-header-content text-center" data-aos="fade-up">
+            <h1 class="page-title">{% trans "À Propos de Nous" %}</h1>
+            <p class="page-subtitle">{% trans "Découvrez notre histoire, notre vision et notre équipe" %}</p>
+        </div>
+    </div>
+</section>
+
+<!-- Mission & Vision -->
+<section class="section-modern">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 mb-4" data-aos="fade-up">
+                <div class="mission-card">
+                    <div class="mission-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h2 style="color: var(--bordeaux); margin-bottom: 1.5rem;">{% trans "Notre Mission" %}</h2>
+                    <p style="font-size: 1.1rem; line-height: 1.8; color: var(--gris-fonce);">
+                        {% trans "Former des couples solides et épanouis en leur transmettant les principes bibliques du mariage. Nous croyons que chaque foyer peut devenir un havre de paix, d'amour et de prospérité lorsqu'il est bâti sur des fondations spirituelles solides." %}
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="mission-card">
+                    <div class="mission-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h2 style="color: var(--bordeaux); margin-bottom: 1.5rem;">{% trans "Notre Vision" %}</h2>
+                    <p style="font-size: 1.1rem; line-height: 1.8; color: var(--gris-fonce);">
+                        {% trans "Devenir la référence en matière de formation au mariage harmonieux en Afrique francophone. Nous aspirons à voir des milliers de foyers transformés, des communautés renforcées et une génération de couples qui incarnent l'amour et la fidélité." %}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Notre Histoire -->
+<section class="section-modern" style="background: var(--gris-clair);">
+    <div class="container">
+        <div class="text-center mb-5" data-aos="fade-up">
+            <h2 class="section-title">{% trans "Notre Histoire" %}</h2>
+            <p style="font-size: 1.2rem; color: var(--gris-fonce); opacity: 0.8; max-width: 700px; margin: 0 auto;">
+                {% trans "Un parcours guidé par la foi et l'engagement envers les couples" %}
+            </p>
+        </div>
+
+        <div class="timeline">
+            <div class="timeline-item" data-aos="fade-up">
+                <div class="timeline-content">
+                    <h4 style="color: var(--bordeaux); margin-bottom: 1rem;">{% trans "La Genèse" %}</h4>
+                    <p>{% trans "EDMAH est née d'une vision divine reçue par notre fondateur après avoir constaté le nombre croissant de divorces et de foyers en détresse dans nos communautés." %}</p>
+                </div>
+                <div class="timeline-date">2019</div>
+            </div>
+
+            <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
+                <div class="timeline-content">
+                    <h4 style="color: var(--bordeaux); margin-bottom: 1rem;">{% trans "Premiers Pas" %}</h4>
+                    <p>{% trans "Lancement de nos premières formations avec un groupe de 20 couples. Les résultats positifs nous ont encouragés à étendre notre impact." %}</p>
+                </div>
+                <div class="timeline-date">2020</div>
+            </div>
+
+            <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
+                <div class="timeline-content">
+                    <h4 style="color: var(--bordeaux); margin-bottom: 1rem;">{% trans "Expansion" %}</h4>
+                    <p>{% trans "Ouverture de formations en ligne et création de contenus digitaux pour toucher un public plus large à travers toute l'Afrique francophone." %}</p>
+                </div>
+                <div class="timeline-date">2022</div>
+            </div>
+
+            <div class="timeline-item" data-aos="fade-up" data-aos-delay="300">
+                <div class="timeline-content">
+                    <h4 style="color: var(--bordeaux); margin-bottom: 1rem;">{% trans "Reconnaissance" %}</h4>
+                    <p>{% trans "Plus de 500 couples formés, partenariats avec des églises locales et reconnaissance comme centre de référence pour la formation maritale." %}</p>
+                </div>
+                <div class="timeline-date">2024</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Nos Valeurs -->
+<section class="section-modern">
+    <div class="container">
+        <div class="text-center mb-5" data-aos="fade-up">
+            <h2 class="section-title">{% trans "Nos Valeurs" %}</h2>
+            <p style="font-size: 1.2rem; color: var(--gris-fonce); opacity: 0.8;">
+                {% trans "Les principes qui guident notre action au quotidien" %}
+            </p>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="value-item" data-aos="fade-right">
+                    <div class="value-number">01</div>
+                    <div class="value-content">
+                        <h4>{% trans "Foi en Dieu" %}</h4>
+                        <p>{% trans "La Parole de Dieu est notre fondement. Nous croyons que les principes bibliques sont la clé d'un mariage heureux et durable." %}</p>
+                    </div>
+                </div>
+
+                <div class="value-item" data-aos="fade-right" data-aos-delay="100">
+                    <div class="value-number">02</div>
+                    <div class="value-content">
+                        <h4>{% trans "Excellence" %}</h4>
+                        <p>{% trans "Nous nous engageons à fournir des formations de qualité supérieure avec des formateurs expérimentés et des contenus pertinents." %}</p>
+                    </div>
+                </div>
+
+                <div class="value-item" data-aos="fade-right" data-aos-delay="200">
+                    <div class="value-number">03</div>
+                    <div class="value-content">
+                        <h4>{% trans "Amour & Respect" %}</h4>
+                        <p>{% trans "Chaque couple est unique. Nous accompagnons avec bienveillance, sans jugement, dans le respect de l'histoire de chacun." %}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="value-item" data-aos="fade-left">
+                    <div class="value-number">04</div>
+                    <div class="value-content">
+                        <h4>{% trans "Intégrité" %}</h4>
+                        <p>{% trans "Nous prêchons ce que nous vivons. Nos formateurs sont des modèles de couples épanouis qui incarnent les valeurs enseignées." %}</p>
+                    </div>
+                </div>
+
+                <div class="value-item" data-aos="fade-left" data-aos-delay="100">
+                    <div class="value-number">05</div>
+                    <div class="value-content">
+                        <h4>{% trans "Confidentialité" %}</h4>
+                        <p>{% trans "Les histoires partagées restent confidentielles. Nous créons un espace sûr où chacun peut s'exprimer librement." %}</p>
+                    </div>
+                </div>
+
+                <div class="value-item" data-aos="fade-left" data-aos-delay="200">
+                    <div class="value-number">06</div>
+                    <div class="value-content">
+                        <h4>{% trans "Transformation" %}</h4>
+                        <p>{% trans "Notre objectif n'est pas seulement d'informer, mais de transformer les vies et de voir des foyers restaurés et épanouis." %}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Notre Équipe -->
+<section class="section-modern" style="background: var(--gris-clair);">
+    <div class="container">
+        <div class="text-center mb-5" data-aos="fade-up">
+            <h2 class="section-title">{% trans "Notre Équipe" %}</h2>
+            <p style="font-size: 1.2rem; color: var(--gris-fonce); opacity: 0.8;">
+                {% trans "Des serviteurs passionnés au service des couples" %}
+            </p>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up">
+                <div class="team-card">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600" alt="Fondateur" class="team-image">
+                    <div class="team-info">
+                        <h3 class="team-name">Pasteur Jean-Marc KOUAM</h3>
+                        <p class="team-role">{% trans "Fondateur & Directeur" %}</p>
+                        <p class="team-bio">
+                            {% trans "Marié depuis 15 ans, père de 3 enfants. Pasteur et conseiller conjugal certifié avec une passion pour la restauration des foyers." %}
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="team-card">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600" alt="Coordonnatrice" class="team-image">
+                    <div class="team-info">
+                        <h3 class="team-name">Mme Grace KOUAM</h3>
+                        <p class="team-role">{% trans "Coordonnatrice Pédagogique" %}</p>
+                        <p class="team-bio">
+                            {% trans "Psychologue clinicienne et formatrice. Elle apporte son expertise dans la gestion des conflits et la communication de couple." %}
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="team-card">
+                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600" alt="Formateur" class="team-image">
+                    <div class="team-info">
+                        <h3 class="team-name">M. David NKOLO</h3>
+                        <p class="team-role">{% trans "Formateur Principal" %}</p>
+                        <p class="team-bio">
+                            {% trans "Expert en finances familiales et gestion de foyer. Il aide les couples à établir des bases financières solides." %}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Citation Biblique -->
+<section class="section-modern">
+    <div class="container">
+        <div class="quote-section" data-aos="zoom-in">
+            <i class="fas fa-quote-right quote-icon"></i>
+            <p class="quote-text">
+                {% trans "« C'est pourquoi l'homme quittera son père et sa mère, et s'attachera à sa wife, et ils deviendront une seule chair. »" %}
+            </p>
+            <p class="quote-reference">Genèse 2:24</p>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="section-modern" style="background: linear-gradient(135deg, var(--bordeaux), #a01836); color: white;">
+    <div class="container text-center" data-aos="fade-up">
+        <h2 style="font-size: 3rem; margin-bottom: 1.5rem;">{% trans "Rejoignez Notre Communauté" %}</h2>
+        <p style="font-size: 1.3rem; margin-bottom: 2.5rem; opacity: 0.95;">
+            {% trans "Inscrivez-vous dès aujourd'hui et commencez votre parcours vers un mariage harmonieux" %}
+        </p>
+        <a href="{% url 'formations' %}" class="btn btn-hero-primary me-3" style="background: var(--dore); color: var(--gris-fonce); padding: 1rem 3rem; border-radius: 50px; font-weight: 600; border: none; text-decoration: none; display: inline-block;">
+            {% trans "Découvrir les formations" %}
+        </a>
+        <a href="{% url 'contact' %}" class="btn btn-hero-secondary" style="background: transparent; color: white; padding: 1rem 3rem; border-radius: 50px; font-weight: 600; border: 2px solid white; text-decoration: none; display: inline-block;">
+            {% trans "Nous contacter" %}
+        </a>
+    </div>
+</section>
+{% endblock %}
