@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Connexion" %} - EDMAH{% endblock %}
+
+{% block content %}
+<div class="auth-shell">
+    <div class="container">
+        <div class="auth-split" data-aos="fade-up">
+            <div class="auth-visual">
+                <div class="auth-visual-icon"><i class="fas fa-hands-holding-heart"></i></div>
+                <h2>{% trans "Bienvenue dans votre espace apprenant" %}</h2>
+                <p>{% trans "Reconnectez-vous pour poursuivre vos formations, valider vos quiz et suivre votre progression vers un mariage harmonieux." %}</p>
+                <ul class="auth-visual-list">
+                    <li><i class="fas fa-check-circle"></i> {% trans "Vos modules et votre progression sauvegardés" %}</li>
+                    <li><i class="fas fa-check-circle"></i> {% trans "Quiz notés instantanément" %}</li>
+                    <li><i class="fas fa-check-circle"></i> {% trans "Certificat dès la formation validée" %}</li>
+                </ul>
+            </div>
+            <div class="auth-form-panel">
+                <span class="badge-custom badge-dore"><i class="fas fa-lock"></i> {% trans "Espace sécurisé" %}</span>
+                <h1 class="auth-title">{% trans "Connexion" %}</h1>
+                <p class="auth-subtitle">{% trans "Accédez à vos formations, quiz et certificats." %}</p>
+
+                {% if form.errors %}
+                <div class="alert-custom alert-danger" role="alert"><i class="fas fa-exclamation-circle"></i> {% trans "Identifiants invalides. Veuillez réessayer." %}</div>
+                {% endif %}
+
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="auth-input-group">
+                        <i class="fas fa-user auth-input-icon"></i>
+                        {{ form.username }}
+                    </div>
+                    <div class="auth-input-group">
+                        <i class="fas fa-lock auth-input-icon"></i>
+                        {{ form.password }}
+                        <button type="button" class="auth-password-toggle" id="togglePassword" aria-label="{% trans 'Afficher le mot de passe' %}">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                    <input type="hidden" name="next" value="{{ next }}">
+                    <button type="submit" class="btn-auth-submit">
+                        <i class="fas fa-sign-in-alt me-2"></i> {% trans "Se connecter" %}
+                    </button>
+                </form>
+
+                <div class="auth-divider">{% trans "ou" %}</div>
+
+                <p class="text-center mb-0">
+                    {% trans "Pas encore de compte ?" %} <a href="{% url 'register' %}" class="auth-switch-link">{% trans "Créer un compte" %}</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    const toggleBtn = document.getElementById('togglePassword');
+    if (toggleBtn) {
+        toggleBtn.addEventListener('click', () => {
+            const input = toggleBtn.closest('.auth-input-group').querySelector('input');
+            const icon = toggleBtn.querySelector('i');
+            const isHidden = input.type === 'password';
+            input.type = isHidden ? 'text' : 'password';
+            icon.classList.toggle('fa-eye');
+            icon.classList.toggle('fa-eye-slash');
+        });
+    }
+</script>
+{% endblock %}

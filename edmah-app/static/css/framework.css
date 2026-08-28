@@ -1,0 +1,328 @@
+/**
+ * EDMAH Framework — grille et utilitaires maison
+ * Remplace Bootstrap : mêmes noms de classes (compatibilité avec les
+ * templates existants) mais implémentation 100% propre au projet.
+ */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+/* ============================================
+   CONTAINER
+   ============================================ */
+.container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+@media (min-width: 576px) { .container { max-width: 540px; } }
+@media (min-width: 768px) { .container { max-width: 720px; } }
+@media (min-width: 992px) { .container { max-width: 960px; } }
+@media (min-width: 1200px) { .container { max-width: 1140px; } }
+@media (min-width: 1400px) { .container { max-width: 1280px; } }
+
+/* ============================================
+   GRILLE (row / col-*)
+   ============================================ */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -0.75rem;
+}
+
+.row > * {
+    padding: 0 0.75rem;
+    width: 100%;
+}
+
+.g-2 { row-gap: 0.5rem; } .g-2 > * { padding: 0 0.5rem; margin-bottom: 0.5rem; }
+.g-3 { row-gap: 1rem; } .g-3 > * { padding: 0 0.5rem; margin-bottom: 1rem; }
+.g-4 { row-gap: 1.5rem; } .g-4 > * { padding: 0 0.75rem; margin-bottom: 1.5rem; }
+.g-5 { row-gap: 3rem; } .g-5 > * { padding: 0 0.75rem; margin-bottom: 3rem; }
+
+.col, [class^="col-"], [class*=" col-"] { flex: 0 0 auto; }
+.col { flex: 1 1 0; }
+.col-12 { width: 100%; }
+.col-6 { width: 50%; }
+
+@media (min-width: 768px) {
+    .col-md-3 { width: 25%; }
+    .col-md-4 { width: 33.3333%; }
+    .col-md-6 { width: 50%; }
+    .col-md-7 { width: 58.3333%; }
+    .col-md-8 { width: 66.6666%; }
+}
+
+@media (min-width: 992px) {
+    .col-lg-2 { width: 16.6666%; }
+    .col-lg-3 { width: 25%; }
+    .col-lg-4 { width: 33.3333%; }
+    .col-lg-5 { width: 41.6666%; }
+    .col-lg-6 { width: 50%; }
+    .col-lg-7 { width: 58.3333%; }
+    .col-lg-8 { width: 66.6666%; }
+    .col-lg-9 { width: 75%; }
+}
+
+.justify-content-center { justify-content: center; }
+.justify-content-between { justify-content: space-between; }
+.justify-content-md-between { }
+@media (min-width: 768px) { .justify-content-md-between { justify-content: space-between; } }
+.align-items-center { align-items: center; }
+.align-items-start { align-items: flex-start; }
+
+.d-flex { display: flex; }
+.d-inline { display: inline; }
+.d-inline-block { display: inline-block; }
+.d-none { display: none; }
+.d-block { display: block; }
+.flex-wrap { flex-wrap: wrap; }
+.flex-grow-1 { flex-grow: 1; }
+.gap-2 { gap: 0.5rem; }
+.gap-3 { gap: 1rem; }
+
+@media (min-width: 768px) {
+    .d-md-none { display: none; }
+    .d-md-block { display: block; }
+}
+
+/* ============================================
+   ESPACEMENT
+   ============================================ */
+:root {
+    --sp-0: 0; --sp-1: 0.25rem; --sp-2: 0.5rem; --sp-3: 1rem;
+    --sp-4: 1.5rem; --sp-5: 3rem;
+}
+
+.m-0 { margin: 0; }
+.mt-0 { margin-top: 0; } .mt-2 { margin-top: 0.5rem; } .mt-3 { margin-top: 1rem; }
+.mt-4 { margin-top: 1.5rem; } .mt-5 { margin-top: 3rem; }
+.mb-0 { margin-bottom: 0; } .mb-1 { margin-bottom: 0.25rem; } .mb-2 { margin-bottom: 0.5rem; }
+.mb-3 { margin-bottom: 1rem; } .mb-4 { margin-bottom: 1.5rem; } .mb-5 { margin-bottom: 3rem; }
+.me-1 { margin-right: 0.25rem; } .me-2 { margin-right: 0.5rem; } .me-3 { margin-right: 1rem; }
+.ms-1 { margin-left: 0.25rem; } .ms-2 { margin-left: 0.5rem; } .ms-3 { margin-left: 1rem; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+.p-0 { padding: 0; } .p-4 { padding: 1.5rem; }
+.py-2 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+.py-3 { padding-top: 1rem; padding-bottom: 1rem; }
+.py-4 { padding-top: 1.5rem; padding-bottom: 1.5rem; }
+.py-5 { padding-top: 3rem; padding-bottom: 3rem; }
+.px-2 { padding-left: 0.5rem; padding-right: 0.5rem; }
+.px-4 { padding-left: 1.5rem; padding-right: 1.5rem; }
+.w-100 { width: 100%; }
+.h-100 { height: 100%; }
+
+/* ============================================
+   TEXTE
+   ============================================ */
+.text-center { text-align: center; }
+.text-start { text-align: left; }
+.text-end { text-align: right; }
+.fw-bold { font-weight: 700; }
+.lead { font-size: 1.2rem; }
+.small { font-size: 0.875rem; }
+.display-3 { font-size: 3.5rem; }
+.text-muted { color: var(--gris-moyen); }
+.text-danger { color: #c0392b; }
+.text-success { color: #1e7e34; }
+.text-warning { color: var(--dore); }
+.text-white { color: #fff; }
+.text-dark { color: var(--gris-fonce); }
+.text-primary { color: var(--bordeaux); }
+.text-decoration-none { text-decoration: none; }
+
+@media (min-width: 768px) {
+    .text-md-start { text-align: left; }
+    .text-md-end { text-align: right; }
+}
+
+/* ============================================
+   BOUTONS
+   ============================================ */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    padding: 0.7rem 1.6rem;
+    border-radius: var(--radius-round);
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    font-family: var(--font-primary);
+    text-decoration: none;
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.btn-sm { padding: 0.45rem 1.1rem; font-size: 0.85rem; }
+.btn-lg { padding: 0.9rem 2rem; font-size: 1.05rem; }
+
+.btn-warning {
+    background: linear-gradient(135deg, var(--dore), var(--dore-hover));
+    color: var(--gris-fonce);
+    box-shadow: 0 4px 15px rgba(212, 160, 23, 0.3);
+}
+.btn-warning:hover { transform: translateY(-2px); box-shadow: 0 6px 22px rgba(212, 160, 23, 0.4); color: var(--gris-fonce); }
+
+.btn-primary, .btn-inscrire {
+    background: linear-gradient(135deg, var(--bordeaux), var(--bordeaux-hover));
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(123, 20, 38, 0.3);
+}
+.btn-primary:hover, .btn-inscrire:hover { transform: translateY(-2px); box-shadow: 0 6px 22px rgba(123, 20, 38, 0.4); color: #fff; }
+
+.btn-outline-primary {
+    background: transparent;
+    border: 2px solid var(--bordeaux);
+    color: var(--bordeaux);
+}
+.btn-outline-primary:hover { background: var(--bordeaux); color: #fff; }
+
+.btn-link {
+    background: none;
+    color: var(--bordeaux);
+    padding: 0;
+    box-shadow: none;
+}
+
+.btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none !important; }
+
+.btn-close {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.06);
+    color: var(--gris-fonce);
+    font-size: 1rem;
+    line-height: 1;
+}
+.btn-close-white { background: rgba(255,255,255,0.15); color: #fff; }
+.btn-close:hover { background: rgba(0,0,0,0.12); }
+
+/* ============================================
+   BADGES
+   ============================================ */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.4rem 0.9rem;
+    border-radius: var(--radius-round);
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+.badge-warning-fill, .bg-warning { background: var(--dore); color: var(--gris-fonce); }
+.bg-info { background: #5b8fb0; color: #fff; }
+.bg-success { background: #1e7e34; color: #fff; }
+.bg-primary { background: var(--bordeaux); color: #fff; }
+
+/* ============================================
+   CARDS
+   ============================================ */
+.card {
+    background: #fff;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+}
+.card-body { padding: 1.5rem; }
+
+/* ============================================
+   FORMULAIRES
+   ============================================ */
+.form-control, .form-select {
+    display: block;
+    width: 100%;
+    border: 2px solid var(--gris-clair);
+    border-radius: var(--radius-md);
+    padding: 0.75rem 1.1rem;
+    font-family: var(--font-primary);
+    font-size: 1rem;
+    background: #fff;
+    transition: all var(--transition-normal);
+}
+.form-control:focus, .form-select:focus {
+    outline: none;
+    border-color: var(--dore);
+    box-shadow: 0 0 0 3px rgba(212, 160, 23, 0.2);
+}
+.form-label { font-weight: 600; color: var(--bordeaux); margin-bottom: 0.4rem; display: block; }
+
+.form-check { display: flex; align-items: center; gap: 0.5rem; }
+.form-check-input {
+    width: 1.15rem;
+    height: 1.15rem;
+    accent-color: var(--bordeaux);
+    cursor: pointer;
+}
+.form-check-label { cursor: pointer; }
+
+.input-group { display: flex; align-items: stretch; border-radius: var(--radius-round); overflow: hidden; box-shadow: var(--shadow-sm); }
+.input-group .form-control { border-radius: 0; border: 2px solid var(--gris-clair); border-left: none; border-right: none; }
+.input-group-text { background: var(--gris-clair); display: flex; align-items: center; padding: 0 1.2rem; border: 2px solid var(--gris-clair); border-right: none; }
+.input-group-lg .form-control, .input-group-lg .input-group-text { padding-top: 1rem; padding-bottom: 1rem; font-size: 1.05rem; }
+.bg-light { background: var(--gris-clair) !important; }
+.border-end-0 { border-right: none !important; }
+
+/* ============================================
+   ALERTES
+   ============================================ */
+.alert { padding: 1rem 1.4rem; border-radius: var(--radius-md); margin-bottom: 1rem; }
+.alert-danger { background: #fbe9e7; color: #8b2f22; border-left: 4px solid #c0392b; }
+.alert-success { background: #e6f4ea; color: #1e5631; border-left: 4px solid #1e7e34; }
+.alert-warning { background: #fff6e0; color: #6a4e00; border-left: 4px solid var(--dore); }
+.alert-info { background: #eaf3f8; color: #295269; border-left: 4px solid #5b8fb0; }
+
+/* ============================================
+   RADII / OMBRES GÉNÉRIQUES
+   ============================================ */
+.rounded-pill { border-radius: var(--radius-round) !important; }
+.rounded-4 { border-radius: var(--radius-lg) !important; }
+.rounded-circle { border-radius: 50% !important; }
+.shadow-sm { box-shadow: var(--shadow-sm) !important; }
+.shadow { box-shadow: var(--shadow-md) !important; }
+.border-0 { border: none !important; }
+
+/* ============================================
+   MODAL (JS maison : .edmah-modal)
+   ============================================ */
+.edmah-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(20, 8, 12, 0.6);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    padding: 1.5rem;
+    animation: fadeIn 0.2s ease;
+}
+.edmah-modal-backdrop.active { display: flex; }
+
+.edmah-modal {
+    background: #fff;
+    border-radius: var(--radius-xl);
+    max-width: 480px;
+    width: 100%;
+    overflow: hidden;
+    box-shadow: var(--shadow-xl);
+    animation: scaleIn 0.25s ease;
+}
+
+.edmah-modal-header {
+    background: linear-gradient(135deg, var(--bordeaux), var(--bordeaux-hover));
+    color: #fff;
+    padding: 1.4rem 1.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.edmah-modal-body { padding: 1.75rem; }
+
+/* ============================================
+   ACCORDÉON (FAQ) — état ouvert générique
+   ============================================ */
+.is-open .accordion-body { max-height: 500px !important; padding: 1.5rem !important; }

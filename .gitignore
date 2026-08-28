@@ -64,6 +64,7 @@ db.sqlite3
 db.sqlite3-journal
 media/
 !media/.gitkeep
+private_media/
 
 # Environment variables
 .env
@@ -78,3 +79,14 @@ media/
 *~
 .DS_Store
 Thumbs.db
+
+
+# Jolli memorie
+.cursor/
+.claude/
+.agents/
+.gemini/
+.jolli/
+
+# Outil de design local (skill Claude Code) - ne fait pas partie du projet
+/ui-ux-pro-max-skill/

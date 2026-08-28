@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load asset_version %}
 {% load i18n %}
 
 {% block title %}EDMAH - {% trans "Espace Apprenant & Cours" %}{% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/cours.css' %}">
+<link rel="stylesheet" href="{% static_versioned 'css/cours.css' %}">
 {% endblock %}
 
 {% block content %}

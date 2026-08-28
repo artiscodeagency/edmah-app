@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load asset_version %}
 {% load i18n %}
 
 {% block title %}EDMAH - {% trans "À propos de Nous" %}{% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/about.css' %}">
+<link rel="stylesheet" href="{% static_versioned 'css/about.css' %}">
 {% endblock %}
 
 {% block content %}

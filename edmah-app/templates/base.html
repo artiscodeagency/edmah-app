@@ -1,5 +1,6 @@
 {% load static %}
 {% load i18n %}
+{% load asset_version %}
 <!DOCTYPE html>
 <html lang="{{ LANGUAGE_CODE }}">
 <head>
@@ -8,16 +9,18 @@
     <title>{% block title %}EDMAH - {% trans "École du Mariage Harmonieux" %}{% endblock %}</title>
     <meta name="description" content="{% block meta_description %}{% trans "EDMAH est une école de formation dédiée au mariage, au couple et à la vie familiale, à inspiration biblique." %}{% endblock %}">
 
-    <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome -->
+    <!-- Font Awesome (icônes uniquement) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <!-- AOS Animation -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <!-- Custom CSS Base -->
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- EDMAH Framework (grille + utilitaires maison) -->
+    <link rel="stylesheet" href="{% static_versioned 'css/framework.css' %}">
+    <!-- EDMAH Design System -->
+    <link rel="stylesheet" href="{% static_versioned 'css/style.css' %}">
+    <!-- EDMAH Navbar & Footer -->
+    <link rel="stylesheet" href="{% static_versioned 'css/navbar-footer.css' %}">
     {% block extra_css %}{% endblock %}
 </head>
 <body>
@@ -28,67 +31,91 @@
     </div>
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-custom fixed-top" id="navbar">
-        <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="{% url 'index' %}">
-                <img src="{% static 'images/logo.png' %}" alt="EDMAH" class="logo" style="height: 100px;">
+    <header class="site-navbar" id="navbar">
+        <div class="container site-navbar-inner">
+            <a class="site-brand" href="{% url 'index' %}">
+                <img src="{% static 'images/logo.png' %}" alt="EDMAH">
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarEDMAH" aria-controls="navbarEDMAH" aria-expanded="false" aria-label="{% trans 'Basculer la navigation' %}">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarEDMAH">
-                <ul class="navbar-nav ms-auto align-items-center">
-                    <li class="nav-item">
-                        <a class="nav-link {% if request.resolver_match.url_name == 'index' %}active{% endif %}" href="{% url 'index' %}">{% trans "Accueil" %}</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {% if request.resolver_match.url_name == 'about' %}active{% endif %}" href="{% url 'about' %}">{% trans "À propos" %}</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {% if request.resolver_match.url_name == 'formations' %}active{% endif %}" href="{% url 'formations' %}">{% trans "Formations" %}</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {% if request.resolver_match.url_name == 'cours' %}active{% endif %}" href="{% url 'cours' %}">{% trans "Cours" %}</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {% if request.resolver_match.url_name == 'evenements' %}active{% endif %}" href="{% url 'evenements' %}">{% trans "Événements" %}</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {% if request.resolver_match.url_name == 'gallerie' %}active{% endif %}" href="{% url 'gallerie' %}">{% trans "Galerie" %}</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {% if request.resolver_match.url_name == 'blog' %}active{% endif %}" href="{% url 'blog' %}">{% trans "Blog" %}</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {% if request.resolver_match.url_name == 'contact' %}active{% endif %}" href="{% url 'contact' %}">{% trans "Contact" %}</a>
-                    </li>
-                    <li class="nav-item ms-lg-2">
-                        <a class="btn btn-warning btn-sm text-dark fw-bold px-3 py-2 rounded-pill shadow-sm" href="{% url 'inscriptions' %}">
-                            <i class="fas fa-user-plus me-1"></i> {% trans "S'inscrire" %}
-                        </a>
-                    </li>
 
-                    <!-- Sélecteur de langue multilingue (Français / English) -->
-                    <li class="nav-item dropdown ms-lg-3">
-                        <form action="{% url 'set_language' %}" method="post" id="langForm" class="d-inline">
-                            {% csrf_token %}
-                            <input name="next" type="hidden" value="{{ request.get_full_path }}">
-                            <select name="language" class="form-select form-select-sm bg-dark text-white border-secondary rounded-pill px-2 py-1" onchange="this.form.submit()" style="cursor: pointer; width: auto;">
-                                {% get_current_language as LANGUAGE_CODE %}
-                                {% get_available_languages as LANGUAGES %}
-                                {% get_language_info_list for LANGUAGES as languages %}
-                                {% for language in languages %}
-                                    <option value="{{ language.code }}" {% if language.code == LANGUAGE_CODE %}selected{% endif %}>
-                                        {% if language.code == 'fr' %}🇫🇷 FR{% else %}🇬🇧 EN{% endif %}
-                                    </option>
-                                {% endfor %}
-                            </select>
-                        </form>
-                    </li>
+            <nav aria-label="{% trans 'Navigation principale' %}">
+                <ul class="site-nav-links">
+                    <li><a href="{% url 'index' %}" class="{% if request.resolver_match.url_name == 'index' %}active{% endif %}">{% trans "Accueil" %}</a></li>
+                    <li><a href="{% url 'about' %}" class="{% if request.resolver_match.url_name == 'about' %}active{% endif %}">{% trans "À propos" %}</a></li>
+                    <li><a href="{% url 'formations' %}" class="{% if request.resolver_match.url_name == 'formations' %}active{% endif %}">{% trans "Formations" %}</a></li>
+                    <li><a href="{% url 'cours' %}" class="{% if request.resolver_match.url_name == 'cours' %}active{% endif %}">{% trans "Cours" %}</a></li>
+                    <li><a href="{% url 'evenements' %}" class="{% if request.resolver_match.url_name == 'evenements' %}active{% endif %}">{% trans "Événements" %}</a></li>
+                    <li><a href="{% url 'gallerie' %}" class="{% if request.resolver_match.url_name == 'gallerie' %}active{% endif %}">{% trans "Galerie" %}</a></li>
+                    <li><a href="{% url 'blog' %}" class="{% if request.resolver_match.url_name == 'blog' %}active{% endif %}">{% trans "Blog" %}</a></li>
+                    <li><a href="{% url 'contact' %}" class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}">{% trans "Contact" %}</a></li>
                 </ul>
+            </nav>
+
+            <div class="site-nav-actions site-nav-desktop-actions">
+                {% if request.user.is_authenticated %}
+                <a href="{% url 'apprenant_dashboard' %}" class="site-user-chip"><i class="fas fa-user-circle"></i> {{ request.user.get_full_name|default:request.user.username }}</a>
+                <form action="{% url 'logout' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="site-logout-btn">{% trans "Déconnexion" %}</button>
+                </form>
+                {% else %}
+                <a href="{% url 'login' %}" class="site-logout-btn">{% trans "Connexion" %}</a>
+                {% endif %}
+                <a href="{% url 'inscriptions' %}" class="btn btn-warning btn-sm"><i class="fas fa-user-plus"></i> {% trans "S'inscrire" %}</a>
+                <form action="{% url 'set_language' %}" method="post" id="langForm">
+                    {% csrf_token %}
+                    <input name="next" type="hidden" value="{{ request.get_full_path }}">
+                    <div class="site-lang-toggle">
+                        {% get_current_language as LANGUAGE_CODE %}
+                        <button type="submit" name="language" value="fr" class="{% if LANGUAGE_CODE == 'fr' %}active{% endif %}">FR</button>
+                        <button type="submit" name="language" value="en" class="{% if LANGUAGE_CODE == 'en' %}active{% endif %}">EN</button>
+                    </div>
+                </form>
             </div>
+
+            <button class="site-navbar-toggle" id="navbarToggle" aria-label="{% trans 'Ouvrir le menu' %}" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
-    </nav>
+    </header>
+
+    <div class="site-navbar-mobile-backdrop" id="navbarMobileBackdrop"></div>
+    <aside class="site-navbar-mobile-panel" id="navbarMobilePanel">
+        <div class="site-navbar-mobile-header">
+            <img src="{% static 'images/logo.png' %}" alt="EDMAH" style="height: 50px;">
+            <button class="site-navbar-toggle" id="navbarClose" aria-label="{% trans 'Fermer le menu' %}"><i class="fas fa-times"></i></button>
+        </div>
+        <ul class="site-nav-links">
+            <li><a href="{% url 'index' %}" class="{% if request.resolver_match.url_name == 'index' %}active{% endif %}">{% trans "Accueil" %}</a></li>
+            <li><a href="{% url 'about' %}" class="{% if request.resolver_match.url_name == 'about' %}active{% endif %}">{% trans "À propos" %}</a></li>
+            <li><a href="{% url 'formations' %}" class="{% if request.resolver_match.url_name == 'formations' %}active{% endif %}">{% trans "Formations" %}</a></li>
+            <li><a href="{% url 'cours' %}" class="{% if request.resolver_match.url_name == 'cours' %}active{% endif %}">{% trans "Cours" %}</a></li>
+            <li><a href="{% url 'evenements' %}" class="{% if request.resolver_match.url_name == 'evenements' %}active{% endif %}">{% trans "Événements" %}</a></li>
+            <li><a href="{% url 'gallerie' %}" class="{% if request.resolver_match.url_name == 'gallerie' %}active{% endif %}">{% trans "Galerie" %}</a></li>
+            <li><a href="{% url 'blog' %}" class="{% if request.resolver_match.url_name == 'blog' %}active{% endif %}">{% trans "Blog" %}</a></li>
+            <li><a href="{% url 'contact' %}" class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}">{% trans "Contact" %}</a></li>
+        </ul>
+        <div class="site-nav-actions">
+            {% if request.user.is_authenticated %}
+            <a href="{% url 'apprenant_dashboard' %}" class="site-user-chip"><i class="fas fa-user-circle"></i> {{ request.user.get_full_name|default:request.user.username }}</a>
+            <form action="{% url 'logout' %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-outline-primary">{% trans "Déconnexion" %}</button>
+            </form>
+            {% else %}
+            <a href="{% url 'login' %}" class="btn btn-outline-primary">{% trans "Connexion" %}</a>
+            {% endif %}
+            <a href="{% url 'inscriptions' %}" class="btn btn-warning"><i class="fas fa-user-plus"></i> {% trans "S'inscrire" %}</a>
+            <form action="{% url 'set_language' %}" method="post">
+                {% csrf_token %}
+                <input name="next" type="hidden" value="{{ request.get_full_path }}">
+                <div class="site-lang-toggle">
+                    {% get_current_language as LANGUAGE_CODE %}
+                    <button type="submit" name="language" value="fr" class="{% if LANGUAGE_CODE == 'fr' %}active{% endif %}">FR</button>
+                    <button type="submit" name="language" value="en" class="{% if LANGUAGE_CODE == 'en' %}active{% endif %}">EN</button>
+                </div>
+            </form>
+        </div>
+    </aside>
 
     <!-- Conteneur d'alertes -->
     <div id="alertContainer"></div>
@@ -99,14 +126,12 @@
     </main>
 
     <!-- Footer -->
-    <footer class="footer-modern mt-5">
+    <footer class="site-footer">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-4 mb-4">
-                    <h3 class="footer-title">
-                        <i class="fas fa-heart me-2"></i> EDMAH
-                    </h3>
-                    <p style="color: rgba(255,255,255,0.7); line-height: 1.8;">
+            <div class="site-footer-grid">
+                <div class="site-footer-brand">
+                    <img src="{% static 'images/logo.png' %}" alt="EDMAH">
+                    <p>
                         {% trans "L'École du Mariage Harmonieux vous accompagne dans la construction de foyers solides et heureux selon les principes bibliques." %}
                     </p>
                     <div class="mt-4">
@@ -116,7 +141,7 @@
                         <a href="#" class="social-icon" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
-                <div class="col-lg-2 col-md-4 col-6 mb-4">
+                <div>
                     <h4 class="footer-title">{% trans "Navigation" %}</h4>
                     <a href="{% url 'index' %}" class="footer-link">{% trans "Accueil" %}</a>
                     <a href="{% url 'about' %}" class="footer-link">{% trans "À propos" %}</a>
@@ -124,39 +149,25 @@
                     <a href="{% url 'evenements' %}" class="footer-link">{% trans "Événements" %}</a>
                     <a href="{% url 'blog' %}" class="footer-link">{% trans "Blog" %}</a>
                 </div>
-                <div class="col-lg-2 col-md-4 col-6 mb-4">
+                <div>
                     <h4 class="footer-title">{% trans "Formations" %}</h4>
                     <a href="{% url 'formations' %}" class="footer-link">{% trans "Préparation au mariage" %}</a>
                     <a href="{% url 'formations' %}" class="footer-link">{% trans "Couple épanoui" %}</a>
                     <a href="{% url 'formations' %}" class="footer-link">{% trans "Vie familiale" %}</a>
                     <a href="{% url 'certifications' %}" class="footer-link">{% trans "Certifications" %}</a>
                 </div>
-                <div class="col-lg-4 col-md-4 mb-4">
+                <div>
                     <h4 class="footer-title">{% trans "Contact" %}</h4>
-                    <p style="color: rgba(255,255,255,0.7);">
-                        <i class="fas fa-map-marker-alt me-2" style="color: var(--dore);"></i>
-                        {% trans "Yaoundé, Cameroun" %}
-                    </p>
-                    <p style="color: rgba(255,255,255,0.7);">
-                        <i class="fas fa-phone me-2" style="color: var(--dore);"></i>
-                        +237 6XX XX XX XX
-                    </p>
-                    <p style="color: rgba(255,255,255,0.7);">
-                        <i class="fas fa-envelope me-2" style="color: var(--dore);"></i>
-                        contact@edmah.com
-                    </p>
+                    <div class="footer-contact-item"><i class="fas fa-map-marker-alt"></i> {% trans "Yaoundé, Cameroun" %}</div>
+                    <div class="footer-contact-item"><i class="fas fa-phone"></i> +237 6XX XX XX XX</div>
+                    <div class="footer-contact-item"><i class="fas fa-envelope"></i> contact@edmah.com</div>
                 </div>
             </div>
-            <hr style="border-color: rgba(255,255,255,0.1); margin: 2rem 0;">
-            <div class="row">
-                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                    <p style="color: rgba(255,255,255,0.6); margin: 0;">
-                        © 2026 EDMAH. {% trans "Tous droits réservés." %}
-                    </p>
-                </div>
-                <div class="col-md-6 text-center text-md-end">
-                    <a href="#" class="footer-link d-inline me-3">{% trans "Politique de confidentialité" %}</a>
-                    <a href="#" class="footer-link d-inline">{% trans "Conditions d'utilisation" %}</a>
+            <div class="footer-bottom">
+                <p style="margin:0;">© 2026 EDMAH. {% trans "Tous droits réservés." %}</p>
+                <div class="footer-bottom-links">
+                    <a href="#">{% trans "Politique de confidentialité" %}</a>
+                    <a href="#">{% trans "Conditions d'utilisation" %}</a>
                 </div>
             </div>
         </div>
@@ -167,9 +178,9 @@
         <i class="fas fa-arrow-up"></i>
     </div>
 
-    <!-- Scripts Bootstrap 5 & AOS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="{% static_versioned 'js/framework.js' %}"></script>
     <script>
         AOS.init({ duration: 1000, once: true, offset: 100 });
         window.addEventListener('load', () => {
@@ -178,9 +189,34 @@
                 setTimeout(() => loader.classList.add('hidden'), 400);
             }
         });
+
+        // Mobile navigation drawer
+        const navToggle = document.getElementById('navbarToggle');
+        const navClose = document.getElementById('navbarClose');
+        const navPanel = document.getElementById('navbarMobilePanel');
+        const navBackdrop = document.getElementById('navbarMobileBackdrop');
+
+        function openMobileNav() {
+            navPanel.classList.add('active');
+            navBackdrop.classList.add('active');
+            navToggle.setAttribute('aria-expanded', 'true');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeMobileNav() {
+            navPanel.classList.remove('active');
+            navBackdrop.classList.remove('active');
+            navToggle.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+        }
+        navToggle?.addEventListener('click', openMobileNav);
+        navClose?.addEventListener('click', closeMobileNav);
+        navBackdrop?.addEventListener('click', closeMobileNav);
+        navPanel?.querySelectorAll('a, button[type="submit"]').forEach(el => {
+            el.addEventListener('click', () => setTimeout(closeMobileNav, 150));
+        });
     </script>
     <!-- Main JS -->
-    <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static_versioned 'js/main.js' %}"></script>
     {% block extra_js %}{% endblock %}
 </body>
 </html>

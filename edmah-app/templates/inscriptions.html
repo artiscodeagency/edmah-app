@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load asset_version %}
 {% load i18n %}
 
 {% block title %}EDMAH - {% trans "Inscription aux Formations" %}{% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/inscriptions.css' %}">
+<link rel="stylesheet" href="{% static_versioned 'css/inscriptions.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -129,12 +130,11 @@
                         <label class="form-label">{% trans "Formation souhaitée" %} <span class="required">*</span></label>
                         <select class="form-select" name="formation" id="formationSelect" required>
                             <option value="">{% trans "Sélectionnez une formation" %}</option>
-                            <option value="preparation">{% trans "Préparation au Mariage (50 000 FCFA)" %}</option>
-                            <option value="couple-epanoui">{% trans "Couple Épanoui (40 000 FCFA)" %}</option>
-                            <option value="gestion-familiale">{% trans "Gestion Familiale Biblique (60 000 FCFA)" %}</option>
-                            <option value="communication-conflits">{% trans "Communication & Résolution de Conflits (30 000 FCFA)" %}</option>
-                            <option value="intimite-conjugale">{% trans "Intimité Conjugale (35 000 FCFA)" %}</option>
-                            <option value="finances-couples">{% trans "Finances pour Couples (45 000 FCFA)" %}</option>
+                            {% for formation in formations %}
+                            <option value="{{ formation.slug }}" data-duration="{{ formation.duration_label }}" data-price="{{ formation.price|floatformat:0 }} FCFA" data-sessions="{{ formation.sessions_label }}">
+                                {{ formation.title }} ({{ formation.price|floatformat:0 }} FCFA)
+                            </option>
+                            {% endfor %}
                         </select>
                     </div>
 
@@ -254,14 +254,16 @@
     let currentStep = 1;
     const formData = new FormData();
 
-    const formationDetails = {
-        'preparation': { title: 'Préparation au Mariage', duration: '8 semaines', price: '50 000 FCFA', sessions: '16 sessions' },
-        'couple-epanoui': { title: 'Couple Épanoui', duration: '6 semaines', price: '40 000 FCFA', sessions: '12 sessions' },
-        'gestion-familiale': { title: 'Gestion Familiale Biblique', duration: '10 semaines', price: '60 000 FCFA', sessions: '20 modules' },
-        'communication-conflits': { title: 'Communication & Résolution de Conflits', duration: '4 semaines', price: '30 000 FCFA', sessions: '8 sessions' },
-        'intimite-conjugale': { title: 'Intimité Conjugale', duration: '3 semaines', price: '35 000 FCFA', sessions: '6 sessions' },
-        'finances-couples': { title: 'Finances pour Couples', duration: '5 semaines', price: '45 000 FCFA', sessions: '10 modules' }
-    };
+    function getFormationDetails(value) {
+        const option = document.querySelector(`#formationSelect option[value="${value}"]`);
+        if (!option) return null;
+        return {
+            title: option.textContent.trim(),
+            duration: option.getAttribute('data-duration'),
+            price: option.getAttribute('data-price'),
+            sessions: option.getAttribute('data-sessions'),
+        };
+    }
 
     const urlParams = new URLSearchParams(window.location.search);
     const preSelectedFormation = urlParams.get('formation');
@@ -280,7 +282,7 @@
     });
 
     function showFormationDetails(value) {
-        const details = formationDetails[value];
+        const details = getFormationDetails(value);
         if (details) {
             document.getElementById('formationDetails').style.display = 'block';
             document.getElementById('formationDetailsContent').innerHTML = `
@@ -314,7 +316,14 @@
 
         const formInputs = currentStepElement.querySelectorAll('input, select, textarea');
         formInputs.forEach(input => {
-            if (input.type !== 'file') {
+            if (input.type === 'file') {
+                if (input.multiple) {
+                    formData.delete(input.name);
+                    Array.from(input.files).forEach(file => formData.append(input.name, file));
+                } else if (input.files.length) {
+                    formData.set(input.name, input.files[0]);
+                }
+            } else {
                 formData.set(input.name, input.value);
             }
         });
@@ -352,7 +361,7 @@
 
     function generateSummary() {
         const formation = formData.get('formation');
-        const formationInfo = formationDetails[formation] || { title: '-', price: '-' };
+        const formationInfo = getFormationDetails(formation) || { title: '-', price: '-' };
         
         const summaryHTML = `
             <div class="mb-3">
@@ -385,16 +394,16 @@
         submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i> Envoi en cours...';
 
         try {
-            await new Promise(resolve => setTimeout(resolve, 1500));
+            const result = await EDMAHApp.submitRegistration(formData);
             if (typeof EDMAHApp !== 'undefined') {
-                EDMAHApp.showAlert('Votre inscription a été enregistrée avec succès !', 'success');
+                EDMAHApp.showAlert(result.message || 'Votre inscription a été enregistrée avec succès !', 'success');
             }
             this.reset();
             currentStep = 1;
             updateSteps();
         } catch (error) {
             if (typeof EDMAHApp !== 'undefined') {
-                EDMAHApp.showAlert('Une erreur est survenue. Veuillez réessayer.', 'error');
+                EDMAHApp.showAlert(error.message || 'Une erreur est survenue. Veuillez réessayer.', 'error');
             }
         } finally {
             submitBtn.disabled = false;

@@ -1,78 +1,104 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load asset_version %}
 {% load i18n %}
 
 {% block title %}{% trans "Contactez-nous - EDMAH" %}{% endblock %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static_versioned 'css/contact.css' %}">
+{% endblock %}
+
 {% block content %}
-<section class="py-5" style="background: linear-gradient(135deg, #1F4D78 0%, #2E74B5 100%);">
-    <div class="container py-4 text-center text-white">
-        <span class="badge bg-warning text-dark px-3 py-2 rounded-pill mb-3 fw-bold">{% trans "À votre écoute" %}</span>
-        <h1 class="display-5 fw-bold mb-2">{% trans "Contactez l'Équipe EDMAH" %}</h1>
-        <p class="lead opacity-90">{% trans "Une question sur nos formations ou vos inscriptions ? Envoyez-nous un message." %}</p>
+<section class="page-header">
+    <div class="container">
+        <div class="text-center" data-aos="fade-up">
+            <span class="badge-custom badge-dore mb-3">{% trans "À votre écoute" %}</span>
+            <h1 class="page-title">{% trans "Contactez l'Équipe EDMAH" %}</h1>
+            <p class="page-subtitle">{% trans "Une question sur nos formations ou vos inscriptions ? Envoyez-nous un message." %}</p>
+        </div>
     </div>
 </section>
 
 <div class="container py-5">
-    <div class="row g-5">
-        <div class="col-lg-5" data-aos="fade-right">
-            <h3 class="fw-bold text-primary mb-4">{% trans "Nos Coordonnées" %}</h3>
-            
-            <div class="d-flex align-items-center mb-4">
-                <div class="bg-primary text-white rounded-circle p-3 me-3"><i class="fas fa-map-marker-alt fs-4"></i></div>
-                <div>
-                    <h6 class="fw-bold mb-1">{% trans "Localisation" %}</h6>
-                    <p class="text-muted mb-0">Yaoundé, Cameroun</p>
-                </div>
-            </div>
-
-            <div class="d-flex align-items-center mb-4">
-                <div class="bg-primary text-white rounded-circle p-3 me-3"><i class="fas fa-phone fs-4"></i></div>
-                <div>
-                    <h6 class="fw-bold mb-1">{% trans "Téléphone / WhatsApp" %}</h6>
-                    <p class="text-muted mb-0">+237 6XX XX XX XX</p>
-                </div>
-            </div>
-
-            <div class="d-flex align-items-center mb-4">
-                <div class="bg-primary text-white rounded-circle p-3 me-3"><i class="fas fa-envelope fs-4"></i></div>
-                <div>
-                    <h6 class="fw-bold mb-1">{% trans "Adresse Courriel" %}</h6>
-                    <p class="text-muted mb-0">contact@edmah.com</p>
-                </div>
+    <div class="row g-4 mb-5">
+        <div class="col-md-4" data-aos="fade-up">
+            <div class="contact-card">
+                <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                <h5 class="contact-title">{% trans "Localisation" %}</h5>
+                <p class="contact-info">Yaoundé, Cameroun</p>
             </div>
         </div>
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="contact-card">
+                <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                <h5 class="contact-title">{% trans "Téléphone / WhatsApp" %}</h5>
+                <p class="contact-info">+237 6XX XX XX XX</p>
+            </div>
+        </div>
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="contact-card">
+                <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                <h5 class="contact-title">{% trans "Adresse Courriel" %}</h5>
+                <p class="contact-info">contact@edmah.com</p>
+            </div>
+        </div>
+    </div>
 
-        <div class="col-lg-7" data-aos="fade-left">
-            <div class="card border-0 shadow-sm rounded-4 p-4 p-md-5">
-                <h3 class="fw-bold text-dark mb-4">{% trans "Envoyer un message" %}</h3>
+    <div class="row g-5">
+        <div class="col-lg-7" data-aos="fade-right">
+            <div class="form-container">
+                <h3 class="fw-bold mb-4" style="color: var(--bordeaux);">{% trans "Envoyer un message" %}</h3>
                 <form id="contactForm">
                     {% csrf_token %}
                     <div class="row g-3">
                         <div class="col-md-6">
-                            <label class="form-label fw-bold">{% trans "Nom complet" %} <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control form-control-lg" name="name" required placeholder="{% trans 'Votre nom' %}">
+                            <label class="form-label">{% trans "Nom complet" %} <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" name="name" required placeholder="{% trans 'Votre nom' %}">
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label fw-bold">{% trans "Adresse Email" %} <span class="text-danger">*</span></label>
-                            <input type="email" class="form-control form-control-lg" name="email" required placeholder="{% trans 'votre.email@exemple.com' %}">
+                            <label class="form-label">{% trans "Adresse Email" %} <span class="text-danger">*</span></label>
+                            <input type="email" class="form-control" name="email" required placeholder="{% trans 'votre.email@exemple.com' %}">
                         </div>
                         <div class="col-12">
-                            <label class="form-label fw-bold">{% trans "Sujet" %} <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control form-control-lg" name="subject" required placeholder="{% trans 'Objet de votre message' %}">
+                            <label class="form-label">{% trans "Sujet" %} <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" name="subject" required placeholder="{% trans 'Objet de votre message' %}">
                         </div>
                         <div class="col-12">
-                            <label class="form-label fw-bold">{% trans "Message" %} <span class="text-danger">*</span></label>
-                            <textarea class="form-control form-control-lg" name="message" rows="4" required placeholder="{% trans 'Écrivez votre message ici...' %}"></textarea>
+                            <label class="form-label">{% trans "Message" %} <span class="text-danger">*</span></label>
+                            <textarea class="form-control" name="message" rows="4" required placeholder="{% trans 'Écrivez votre message ici...' %}"></textarea>
                         </div>
                         <div class="col-12 mt-4">
-                            <button type="submit" class="btn btn-warning btn-lg rounded-pill fw-bold text-dark w-100 shadow-sm">
+                            <button type="submit" class="btn-submit">
                                 <i class="fas fa-paper-plane me-2"></i> {% trans "Envoyer le message" %}
                             </button>
                         </div>
                     </div>
                 </form>
             </div>
+        </div>
+
+        <div class="col-lg-5" data-aos="fade-left">
+            <div class="map-container mb-4">
+                <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=11.45%2C3.82%2C11.55%2C3.90&amp;layer=mapnik" title="{% trans 'Localisation EDMAH - Yaoundé' %}" loading="lazy"></iframe>
+            </div>
+
+            {% if faqs %}
+            <h4 class="fw-bold mb-3" style="color: var(--bordeaux);">{% trans "Questions fréquentes" %}</h4>
+            <div id="faqList">
+                {% for faq in faqs %}
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>{{ faq.question }}</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p class="mb-0 text-muted">{{ faq.answer }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
         </div>
     </div>
 </div>
@@ -84,22 +110,26 @@
         e.preventDefault();
         const btn = this.querySelector('button[type="submit"]');
         btn.disabled = true;
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i> {% trans "Envoi..." %}';
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i> {% trans "Envoi..." %}';
 
         try {
-            await new Promise(r => setTimeout(r, 1200));
-            if (typeof EDMAHApp !== 'undefined') {
-                EDMAHApp.showAlert('{% trans "Votre message a bien été envoyé. Notre équipe vous répondra rapidement." %}', 'success');
-            }
+            const formData = new FormData(this);
+            const payload = Object.fromEntries(formData.entries());
+            const response = await EDMAHApp.submitContactForm(payload);
+            EDMAHApp.showAlert(response.message || '{% trans "Votre message a bien été envoyé. Notre équipe vous répondra rapidement." %}', 'success');
             this.reset();
-        } catch(err) {
-            if (typeof EDMAHApp !== 'undefined') {
-                EDMAHApp.showAlert('{% trans "Erreur lors de l'envoi." %}', 'danger');
-            }
+        } catch (err) {
+            EDMAHApp.showAlert(err.message || '{% trans "Erreur lors de l\'envoi." %}', 'danger');
         } finally {
             btn.disabled = false;
             btn.innerHTML = '<i class="fas fa-paper-plane me-2"></i> {% trans "Envoyer le message" %}';
         }
+    });
+
+    document.querySelectorAll('.faq-question').forEach(question => {
+        question.addEventListener('click', () => {
+            question.closest('.faq-item').classList.toggle('active');
+        });
     });
 </script>
 {% endblock %}

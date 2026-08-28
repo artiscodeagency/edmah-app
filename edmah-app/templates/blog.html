@@ -1,52 +1,122 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load asset_version %}
 {% load i18n %}
 
 {% block title %}{% trans "Blog & Articles - EDMAH" %}{% endblock %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static_versioned 'css/blog.css' %}">
+{% endblock %}
+
 {% block content %}
-<section class="py-5" style="background: linear-gradient(135deg, #1F4D78 0%, #2E74B5 100%);">
-    <div class="container py-4 text-center text-white">
-        <span class="badge bg-warning text-dark px-3 py-2 rounded-pill mb-3 fw-bold">{% trans "Ressources & Conseils" %}</span>
-        <h1 class="display-5 fw-bold mb-2">{% trans "Blog EDMAH" %}</h1>
-        <p class="lead opacity-90">{% trans "Articles, enseignements et réflexions pour nourrir votre vie de couple." %}</p>
+<!-- Page Header -->
+<section class="page-header">
+    <div class="container">
+        <div class="text-center" data-aos="fade-up">
+            <span class="badge-custom badge-dore mb-3">{% trans "Ressources & Conseils" %}</span>
+            <h1 class="page-title">{% trans "Blog EDMAH" %}</h1>
+            <p class="page-subtitle">{% trans "Articles, enseignements et réflexions pour nourrir votre vie de couple." %}</p>
+        </div>
     </div>
 </section>
 
 <div class="container py-5">
+    <!-- Search -->
+    <form class="search-bar" data-aos="fade-up" method="get">
+        <input type="search" name="q" class="search-input" placeholder="{% trans 'Rechercher un article...' %}" value="{{ query }}">
+        <button type="submit" class="search-btn"><i class="fas fa-search me-1"></i> {% trans "Rechercher" %}</button>
+    </form>
+
+    <!-- Categories -->
+    <div class="categories" data-aos="fade-up">
+        <a href="{% url 'blog' %}{% if query %}?q={{ query }}{% endif %}" class="category-tag {% if not active_category %}active{% endif %}">
+            {% trans "Toutes les catégories" %}
+        </a>
+        {% for cat in categories %}
+        <a href="?category={{ cat.slug }}{% if query %}&q={{ query }}{% endif %}" class="category-tag {% if active_category == cat.slug %}active{% endif %}">
+            {{ cat.name }}
+        </a>
+        {% endfor %}
+    </div>
+
     <div class="row g-4">
-        <div class="col-lg-4 col-md-6" data-aos="fade-up">
-            <div class="card border-0 shadow-sm rounded-4 overflow-hidden h-100">
-                <div class="card-body p-4">
-                    <span class="badge bg-info text-dark mb-2">{% trans "Communication" %}</span>
-                    <h4 class="fw-bold text-dark mb-3">{% trans "5 clés pour déamorcer les conflits dans le couple" %}</h4>
-                    <p class="text-muted small mb-3">{% trans "Par Pasteur Daniel M. • 20 Août 2026" %}</p>
-                    <p class="text-muted">{% trans "Découvrez comment transformer les désaccords en opportunités de croissance et d'écoute mutuelle." %}</p>
-                    <a href="#" class="btn btn-link text-primary p-0 fw-bold text-decoration-none">{% trans "Lire l'article" %} <i class="fas fa-arrow-right ms-1"></i></a>
+        <div class="col-lg-8">
+            <div class="row g-4">
+                {% for article in articles %}
+                <div class="col-md-6" data-aos="fade-up">
+                    <div class="blog-card">
+                        {% if article.cover_image %}
+                        <img src="{{ article.cover_image.url }}" alt="{{ article.title }}" class="blog-image">
+                        {% else %}
+                        <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=600" alt="{{ article.title }}" class="blog-image">
+                        {% endif %}
+                        <div class="blog-content">
+                            <span class="blog-category">{{ article.category.name }}</span>
+                            <h4 class="blog-title">{{ article.title }}</h4>
+                            <div class="blog-meta">
+                                <span class="meta-item"><i class="fas fa-user"></i> {{ article.author_name }}</span>
+                                <span class="meta-item"><i class="fas fa-calendar"></i> {{ article.published_at|date:"d M Y" }}</span>
+                            </div>
+                            <p class="blog-excerpt">{{ article.excerpt }}</p>
+                            <a href="{{ article.get_absolute_url }}" class="btn-read-more">
+                                {% trans "Lire l'article" %} <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
                 </div>
+                {% empty %}
+                <div class="col-12 text-center py-5">
+                    <i class="fas fa-newspaper" style="font-size: 3rem; color: var(--dore); opacity: 0.5;"></i>
+                    <p class="mt-3 text-muted">{% trans "Aucun article ne correspond à votre recherche." %}</p>
+                </div>
+                {% endfor %}
             </div>
+
+            {% if page_obj.paginator.num_pages > 1 %}
+            <div class="pagination-custom">
+                {% if page_obj.has_previous %}
+                <a href="?page={{ page_obj.previous_page_number }}{% if query %}&q={{ query }}{% endif %}{% if active_category %}&category={{ active_category }}{% endif %}" class="page-btn"><i class="fas fa-chevron-left"></i></a>
+                {% endif %}
+                {% for num in page_obj.paginator.page_range %}
+                <a href="?page={{ num }}{% if query %}&q={{ query }}{% endif %}{% if active_category %}&category={{ active_category }}{% endif %}" class="page-btn {% if num == page_obj.number %}active{% endif %}">{{ num }}</a>
+                {% endfor %}
+                {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}{% if query %}&q={{ query }}{% endif %}{% if active_category %}&category={{ active_category }}{% endif %}" class="page-btn"><i class="fas fa-chevron-right"></i></a>
+                {% endif %}
+            </div>
+            {% endif %}
         </div>
 
-        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-            <div class="card border-0 shadow-sm rounded-4 overflow-hidden h-100">
-                <div class="card-body p-4">
-                    <span class="badge bg-warning text-dark mb-2">{% trans "Finances" %}</span>
-                    <h4 class="fw-bold text-dark mb-3">{% trans "L'argent dans le ménage : Serviteur ou Maître ?" %}</h4>
-                    <p class="text-muted small mb-3">{% trans "Par Équipe EDMAH • 12 Août 2026" %}</p>
-                    <p class="text-muted">{% trans "Des conseils pratiques pour gérer le budget familial avec transparence et sérénité." %}</p>
-                    <a href="#" class="btn btn-link text-primary p-0 fw-bold text-decoration-none">{% trans "Lire l'article" %} <i class="fas fa-arrow-right ms-1"></i></a>
+        <!-- Sidebar -->
+        <div class="col-lg-4">
+            <div class="sidebar" data-aos="fade-up">
+                <div class="sidebar-widget">
+                    <h5 class="widget-title">{% trans "Articles populaires" %}</h5>
+                    {% for post in popular_articles %}
+                    <a href="{{ post.get_absolute_url }}" class="popular-post text-decoration-none">
+                        {% if post.cover_image %}
+                        <img src="{{ post.cover_image.url }}" alt="{{ post.title }}" class="popular-post-img">
+                        {% else %}
+                        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=200" alt="{{ post.title }}" class="popular-post-img">
+                        {% endif %}
+                        <div>
+                            <div class="popular-post-title">{{ post.title }}</div>
+                            <div class="popular-post-date">{{ post.published_at|date:"d M Y" }}</div>
+                        </div>
+                    </a>
+                    {% empty %}
+                    <p class="text-muted small">{% trans "Aucun article pour le moment." %}</p>
+                    {% endfor %}
                 </div>
-            </div>
-        </div>
 
-        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-            <div class="card border-0 shadow-sm rounded-4 overflow-hidden h-100">
-                <div class="card-body p-4">
-                    <span class="badge bg-success text-white mb-2">{% trans "Spiritualité" %}</span>
-                    <h4 class="fw-bold text-dark mb-3">{% trans "Construire un autel familial béni" %}</h4>
-                    <p class="text-muted small mb-3">{% trans "Par Marie K. • 05 Août 2026" %}</p>
-                    <p class="text-muted">{% trans "Comment mettre la prière au cœur de votre foyer et transmettre la foi aux enfants." %}</p>
-                    <a href="#" class="btn btn-link text-primary p-0 fw-bold text-decoration-none">{% trans "Lire l'article" %} <i class="fas fa-arrow-right ms-1"></i></a>
+                <div class="sidebar-widget">
+                    <h5 class="widget-title">{% trans "Catégories" %}</h5>
+                    <div class="tag-cloud">
+                        {% for cat in categories %}
+                        <a href="?category={{ cat.slug }}" class="tag text-decoration-none">{{ cat.name }}</a>
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
         </div>

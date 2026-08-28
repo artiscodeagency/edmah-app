@@ -1,0 +1,288 @@
+/**
+ * EDMAH — Habillage de l'interface d'administration Django
+ * Réutilise la palette et la typographie du site public.
+ */
+
+:root,
+html[data-theme="light"] {
+    --primary: #7b1426;
+    --secondary: #5c0f1d;
+    --accent: #d4a017;
+    --primary-fg: #fffaf6;
+
+    --body-fg: #333333;
+    --body-bg: #fffaf6;
+    --body-quiet-color: #666666;
+    --body-medium-color: #444444;
+    --body-loud-color: #1a1a1a;
+
+    --header-color: #fffaf6;
+    --header-branding-color: var(--accent);
+    --header-bg: linear-gradient(135deg, #7b1426 0%, #5c0f1d 100%);
+    --header-link-color: #fffaf6;
+
+    --breadcrumbs-fg: rgba(255, 250, 246, 0.85);
+    --breadcrumbs-link-fg: #fffaf6;
+    --breadcrumbs-bg: #5c0f1d;
+
+    --link-fg: #7b1426;
+    --link-hover-color: #d4a017;
+    --link-selected-fg: #7b1426;
+
+    --hairline-color: #f0e4d8;
+    --border-color: #e5d7c8;
+
+    --error-fg: #ba2121;
+
+    --darkened-bg: #f8f2ec;
+    --selected-bg: #fbeed4;
+    --selected-row: #fbeed4;
+
+    --button-fg: #fffaf6;
+    --button-bg: #7b1426;
+    --button-hover-bg: #a01836;
+    --default-button-bg: #7b1426;
+    --default-button-hover-bg: #a01836;
+    --close-button-bg: #8a8a8a;
+    --close-button-hover-bg: #5c5c5c;
+    --delete-button-bg: #ba2121;
+    --delete-button-hover-bg: #a41515;
+
+    --object-tools-fg: #fffaf6;
+    --object-tools-bg: #d4a017;
+    --object-tools-hover-bg: #b98a10;
+
+    --font-family-primary: 'Inter', 'Segoe UI', system-ui, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --primary: #c25d70;
+        --secondary: #a01836;
+        --accent: #e7b13f;
+        --primary-fg: #fdf3ec;
+
+        --body-fg: #eee6df;
+        --body-bg: #1a0f0c;
+        --body-quiet-color: #cbb9ac;
+        --body-medium-color: #ddccc0;
+        --body-loud-color: #fff9f2;
+
+        --header-bg: linear-gradient(135deg, #4a0d17 0%, #260709 100%);
+        --breadcrumbs-bg: #2a1410;
+        --breadcrumbs-fg: rgba(255, 250, 246, 0.85);
+
+        --link-fg: #e7b13f;
+        --link-hover-color: #f0c968;
+        --link-selected-fg: #e7b13f;
+
+        --hairline-color: #38221c;
+        --border-color: #3d251f;
+
+        --darkened-bg: #241512;
+        --selected-bg: #2c1a15;
+        --selected-row: #3a2117;
+    }
+}
+
+html[data-theme="dark"] {
+    --primary: #c25d70;
+    --secondary: #a01836;
+    --accent: #e7b13f;
+    --primary-fg: #fdf3ec;
+
+    --body-fg: #eee6df;
+    --body-bg: #1a0f0c;
+    --body-quiet-color: #cbb9ac;
+    --body-medium-color: #ddccc0;
+    --body-loud-color: #fff9f2;
+
+    --header-bg: linear-gradient(135deg, #4a0d17 0%, #260709 100%);
+    --breadcrumbs-bg: #2a1410;
+    --breadcrumbs-fg: rgba(255, 250, 246, 0.85);
+
+    --link-fg: #e7b13f;
+    --link-hover-color: #f0c968;
+    --link-selected-fg: #e7b13f;
+
+    --hairline-color: #38221c;
+    --border-color: #3d251f;
+
+    --darkened-bg: #241512;
+    --selected-bg: #2c1a15;
+    --selected-row: #3a2117;
+}
+
+body {
+    font-family: var(--font-family-primary);
+}
+
+/* ============================================
+   EN-TÊTE
+   ============================================ */
+#header {
+    background: var(--header-bg);
+    padding: 0.9rem 2rem;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.15);
+}
+
+#branding {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+#branding img.edmah-admin-logo {
+    height: 42px;
+    width: auto;
+    border-radius: 8px;
+    background: #fffaf6;
+    padding: 3px;
+}
+
+#branding h1, #site-name {
+    font-family: 'Playfair Display', Georgia, serif;
+}
+
+#site-name a {
+    color: var(--header-color) !important;
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+
+#user-tools {
+    font-size: 0.85rem;
+}
+
+#user-tools a {
+    border-bottom: 1px solid rgba(255,255,255,0.4);
+}
+
+#user-tools a:focus, #user-tools a:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+}
+
+/* ============================================
+   BREADCRUMBS
+   ============================================ */
+div.breadcrumbs {
+    background: var(--breadcrumbs-bg);
+    padding: 0.7rem 2rem;
+    font-size: 0.85rem;
+}
+
+/* ============================================
+   MODULES / TABLEAU DE BORD
+   ============================================ */
+.module h2, .module caption, .inline-group h2 {
+    background: var(--primary);
+    font-family: 'Playfair Display', Georgia, serif;
+    letter-spacing: 0.01em;
+}
+
+#content-related .module h2 {
+    background: var(--secondary);
+}
+
+.dashboard .module table th {
+    width: auto;
+}
+
+.dashboard .module table td a {
+    font-weight: 600;
+}
+
+/* ============================================
+   NAVIGATION LATÉRALE
+   ============================================ */
+#nav-sidebar {
+    background: var(--darkened-bg);
+    border-right: 1px solid var(--border-color);
+}
+
+#nav-sidebar .current-app .section {
+    color: var(--primary);
+    font-weight: 700;
+}
+
+#nav-sidebar a:focus, #nav-sidebar a:hover {
+    color: var(--accent);
+}
+
+/* ============================================
+   BOUTONS
+   ============================================ */
+.button, input[type=submit], input[type=button], .submit-row input, a.button {
+    border-radius: 999px;
+    font-weight: 600;
+    text-transform: none;
+    box-shadow: 0 3px 10px rgba(123, 20, 38, 0.25);
+}
+
+.button.default, input[type=submit].default, .submit-row input.default {
+    box-shadow: 0 3px 12px rgba(123, 20, 38, 0.35);
+}
+
+/* ============================================
+   TABLEAUX / LISTES
+   ============================================ */
+#changelist-filter {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+#changelist-filter h2 {
+    background: var(--primary);
+    font-family: 'Playfair Display', Georgia, serif;
+}
+
+.object-tools a.addlink {
+    background-color: var(--accent) !important;
+}
+
+.object-tools a.addlink:focus, .object-tools a.addlink:hover {
+    background-color: #b98a10 !important;
+}
+
+/* ============================================
+   PAGE DE CONNEXION
+   ============================================ */
+body.login {
+    background: linear-gradient(135deg, #7b1426 0%, #5c0f1d 100%);
+}
+
+body.login #container {
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    margin-top: 8vh;
+}
+
+body.login #header {
+    justify-content: center;
+    padding: 1.75rem 2rem;
+}
+
+body.login .form-row label {
+    color: var(--body-fg);
+    font-weight: 600;
+}
+
+body.login .submit-row {
+    text-align: center;
+}
+
+body.login .submit-row input {
+    width: 100%;
+    padding: 0.7rem;
+}
+
+.login-logo {
+    display: block;
+    height: 60px;
+    width: auto;
+    margin: 0 auto 0.5rem;
+}

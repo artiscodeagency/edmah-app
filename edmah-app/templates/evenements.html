@@ -1,61 +1,183 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load asset_version %}
 {% load i18n %}
 
 {% block title %}EDMAH - {% trans "Événements & Conférences" %}{% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/evenements.css' %}">
+<link rel="stylesheet" href="{% static_versioned 'css/evenements.css' %}">
 {% endblock %}
 
 {% block content %}
-<!-- Page Header -->
 <section class="page-header">
-    <div class="container">
-        <div class="text-center" data-aos="fade-up">
-            <h1 class="page-title">{% trans "Événements & Séminaires" %}</h1>
-            <p style="font-size: 1.3rem; opacity: 0.95;">
-                {% trans "Rejoignez nos conférences, retraites de couples et ateliers thématiques" %}
-            </p>
-        </div>
+    <div class="container text-center" data-aos="fade-up">
+        <h1 class="page-title">{% trans "Événements & Séminaires" %}</h1>
+        <p class="page-subtitle">{% trans "Rejoignez nos conférences, retraites de couples et ateliers thématiques" %}</p>
     </div>
 </section>
 
 <div class="container py-5">
-    <div class="row g-4">
-        <div class="col-lg-6" data-aos="fade-up">
-            <div class="event-card">
-                <div class="event-badge">{% trans "À Venir" %}</div>
-                <h3 class="event-title">{% trans "Grande Retraite des Couples 2026" %}</h3>
-                <div class="event-meta">
-                    <p><i class="fas fa-calendar-alt text-warning me-2"></i> 15 - 17 Novembre 2026</p>
-                    <p><i class="fas fa-map-marker-alt text-warning me-2"></i> {% trans "Centre d'Accompagnement, Yaoundé" %}</p>
-                </div>
-                <p class="event-desc">
-                    {% trans "Un week-end d'immersion totale dédié au ressourcement conjugal, avec conférences, ateliers pratiques et moments de prière au calme." %}
-                </p>
-                <a href="{% url 'contact' %}" class="btn btn-warning rounded-pill fw-bold text-dark px-4 py-2">
-                    {% trans "Réserver ma place" %}
-                </a>
+    {% if featured_event %}
+    <div class="upcoming-banner" data-aos="zoom-in">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <span class="badge-custom" style="background: rgba(255,255,255,0.25); color: white;"><i class="fas fa-star"></i> {% trans "Prochain événement" %}</span>
+                <h2 class="mt-2 mb-1" style="color: white;">{{ featured_event.title }}</h2>
+                <p class="mb-0" style="opacity: 0.9;"><i class="fas fa-map-marker-alt me-2"></i>{{ featured_event.location }}</p>
             </div>
-        </div>
-
-        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-            <div class="event-card">
-                <div class="event-badge" style="background: var(--dore); color: dark;">{% trans "Webinaire En Ligne" %}</div>
-                <h3 class="event-title">{% trans "Atelier : Gérer le Budget à Deux" %}</h3>
-                <div class="event-meta">
-                    <p><i class="fas fa-calendar-alt text-warning me-2"></i> 10 Octobre 2026 (20h00 - 21h30)</p>
-                    <p><i class="fas fa-video text-warning me-2"></i> {% trans "En ligne (Zoom)" %}</p>
+            <div class="col-lg-6">
+                <div class="countdown-timer" id="countdown" data-target="{{ featured_event.start_datetime|date:'c' }}">
+                    <div class="countdown-item"><div class="countdown-value" id="cd-days">0</div><div class="countdown-label">{% trans "Jours" %}</div></div>
+                    <div class="countdown-item"><div class="countdown-value" id="cd-hours">0</div><div class="countdown-label">{% trans "Heures" %}</div></div>
+                    <div class="countdown-item"><div class="countdown-value" id="cd-min">0</div><div class="countdown-label">{% trans "Min" %}</div></div>
+                    <div class="countdown-item"><div class="countdown-value" id="cd-sec">0</div><div class="countdown-label">{% trans "Sec" %}</div></div>
                 </div>
-                <p class="event-desc">
-                    {% trans "Un atelier interactif d'1h30 pour acquérir une méthode simple et biblique de gestion des finances familiales sans dispute." %}
-                </p>
-                <a href="{% url 'contact' %}" class="btn btn-outline-primary rounded-pill fw-bold px-4 py-2">
-                    {% trans "S'inscrire au Webinaire" %}
-                </a>
             </div>
         </div>
     </div>
+    {% endif %}
+
+    <div class="row" id="eventsGrid">
+        {% for event in upcoming_events %}
+        <div class="col-lg-6" data-aos="fade-up">
+            <div class="event-card">
+                <div style="position: relative;">
+                    <img src="https://images.unsplash.com/photo-{% if event.event_type == 'webinaire' %}1591115765373-5207764f72e7{% else %}1511795409834-ef04bbd61622{% endif %}?w=800" alt="{{ event.title }}" class="event-image">
+                    <div class="event-date-badge">
+                        <div class="event-day">{{ event.start_datetime|date:"d" }}</div>
+                        <div class="event-month">{{ event.start_datetime|date:"M" }}</div>
+                    </div>
+                    <span class="event-type-badge {% if event.event_type == 'webinaire' %}badge-formation{% else %}badge-retraite{% endif %}">
+                        {{ event.get_event_type_display }}
+                    </span>
+                </div>
+                <div class="event-content">
+                    <h3 class="event-title">{{ event.title }}</h3>
+                    <div class="event-meta">
+                        <span class="meta-item"><i class="fas fa-calendar-alt"></i> {{ event.start_datetime|date:"d F Y (H\hi)" }}</span>
+                        <span class="meta-item"><i class="fas fa-map-marker-alt"></i> {{ event.location }}</span>
+                    </div>
+                    <p class="event-description">{{ event.description }}</p>
+                    <div class="event-footer">
+                        <div class="event-price">{% if event.price %}{{ event.price|floatformat:0 }} FCFA{% else %}{% trans "Gratuit" %}{% endif %}</div>
+                        <button type="button" class="btn-register" data-modal-open="registerModal" data-event-slug="{{ event.slug }}" data-event-title="{{ event.title }}">
+                            {% trans "Réserver ma place" %} <i class="fas fa-arrow-right ms-1"></i>
+                        </button>
+                    </div>
+                    <p class="small text-muted mt-2 mb-0">{{ event.seats_available }} {% trans "places restantes" %}</p>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p class="text-center">{% trans "Aucun événement à venir pour le moment." %}</p>
+        {% endfor %}
+    </div>
+
+    {% if past_events %}
+    <h3 class="mt-4 mb-4" style="color: var(--bordeaux);">{% trans "Événements passés" %}</h3>
+    <div class="row">
+        {% for event in past_events %}
+        <div class="col-lg-6" data-aos="fade-up">
+            <div class="event-card" style="opacity: 0.65;">
+                <div class="event-content">
+                    <h3 class="event-title">{{ event.title }}</h3>
+                    <div class="event-meta"><span class="meta-item"><i class="fas fa-calendar-alt"></i> {{ event.start_datetime|date:"d F Y" }}</span></div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
 </div>
+
+<!-- Registration Modal -->
+<div class="edmah-modal-backdrop" id="registerModal">
+    <div class="edmah-modal">
+        <div class="edmah-modal-header">
+            <h5 style="margin:0;" id="registerModalTitle">{% trans "Réserver ma place" %}</h5>
+            <button type="button" class="btn-close btn-close-white" data-modal-close><i class="fas fa-times"></i></button>
+        </div>
+        <div class="edmah-modal-body">
+            <form id="eventRegisterForm">
+                {% csrf_token %}
+                <div class="form-group-custom">
+                    <label class="form-label-custom">{% trans "Nom complet" %}</label>
+                    <input type="text" class="form-control-custom" name="full_name" required>
+                </div>
+                <div class="form-group-custom">
+                    <label class="form-label-custom">{% trans "Email" %}</label>
+                    <input type="email" class="form-control-custom" name="email" required>
+                </div>
+                <div class="form-group-custom">
+                    <label class="form-label-custom">{% trans "Téléphone" %}</label>
+                    <input type="tel" class="form-control-custom" name="phone">
+                </div>
+                <div id="eventRegisterMessage" class="alert-custom d-none"></div>
+                <button type="submit" class="btn-primary-custom w-100 justify-content-center">
+                    <i class="fas fa-check me-1"></i> {% trans "Confirmer ma réservation" %}
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+// Countdown
+const countdownEl = document.getElementById('countdown');
+if (countdownEl) {
+    const target = new Date(countdownEl.getAttribute('data-target')).getTime();
+    setInterval(() => {
+        const distance = target - Date.now();
+        if (distance < 0) return;
+        document.getElementById('cd-days').textContent = Math.floor(distance / 86400000);
+        document.getElementById('cd-hours').textContent = Math.floor((distance % 86400000) / 3600000);
+        document.getElementById('cd-min').textContent = Math.floor((distance % 3600000) / 60000);
+        document.getElementById('cd-sec').textContent = Math.floor((distance % 60000) / 1000);
+    }, 1000);
+}
+
+// Registration modal
+const registerModal = document.getElementById('registerModal');
+let currentEventSlug = null;
+registerModal.addEventListener('edmah-modal-open', (event) => {
+    const button = event.detail.trigger;
+    currentEventSlug = button.getAttribute('data-event-slug');
+    document.getElementById('registerModalTitle').textContent = button.getAttribute('data-event-title');
+    document.getElementById('eventRegisterMessage').classList.add('d-none');
+    document.getElementById('eventRegisterForm').reset();
+});
+
+document.getElementById('eventRegisterForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const messageDiv = document.getElementById('eventRegisterMessage');
+    const submitBtn = this.querySelector('button[type="submit"]');
+    submitBtn.disabled = true;
+    try {
+        const formData = new FormData(this);
+        const response = await fetch(`/evenements/${currentEventSlug}/inscription/`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'X-CSRFToken': EDMAHApp.getCsrfToken() },
+            body: JSON.stringify({
+                full_name: formData.get('full_name'),
+                email: formData.get('email'),
+                phone: formData.get('phone'),
+            }),
+        });
+        const data = await response.json();
+        messageDiv.textContent = data.message;
+        messageDiv.classList.remove('d-none', 'alert-success', 'alert-danger');
+        messageDiv.classList.add(response.ok ? 'alert-success' : 'alert-danger');
+        if (response.ok) this.reset();
+    } catch (err) {
+        messageDiv.textContent = "Une erreur est survenue.";
+        messageDiv.classList.remove('d-none');
+        messageDiv.classList.add('alert-danger');
+    } finally {
+        submitBtn.disabled = false;
+    }
+});
+</script>
 {% endblock %}

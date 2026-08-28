@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load asset_version %}
+{% load i18n %}
+
+{% block title %}{{ article.title }} - EDMAH{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static_versioned 'css/blog.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="page-header" {% if article.cover_image %}style="background: linear-gradient(135deg, rgba(123, 20, 38, 0.92), rgba(160, 24, 54, 0.88)), url('{{ article.cover_image.url }}') center/cover;"{% endif %}>
+    <div class="container text-center" data-aos="fade-up">
+        <span class="blog-category">{{ article.category.name }}</span>
+        <h1 class="page-title">{{ article.title }}</h1>
+        <p class="page-subtitle">{% trans "Par" %} {{ article.author_name }} • {{ article.published_at|date:"d F Y" }}</p>
+    </div>
+</section>
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8" data-aos="fade-up">
+            <a href="{% url 'blog' %}" class="btn-read-more mb-4"><i class="fas fa-arrow-left"></i> {% trans "Retour au blog" %}</a>
+            <div class="blog-content" style="background: white; border-radius: 25px; box-shadow: 0 10px 40px rgba(0,0,0,0.08); padding: 2.5rem;">
+                <p class="lead" style="color: var(--bordeaux); font-weight: 600;">{{ article.excerpt }}</p>
+                <div style="line-height: 1.9;">{{ article.body|default:article.excerpt|linebreaks }}</div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

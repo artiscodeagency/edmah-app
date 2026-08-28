@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Créer un compte" %} - EDMAH{% endblock %}
+
+{% block content %}
+<div class="auth-shell">
+    <div class="container">
+        <div class="auth-split" data-aos="fade-up">
+            <div class="auth-visual">
+                <div class="auth-visual-icon"><i class="fas fa-ring"></i></div>
+                <h2>{% trans "Rejoignez la communauté EDMAH" %}</h2>
+                <p>{% trans "Créez votre compte apprenant pour accéder à vos formations, suivre votre progression et obtenir votre certificat." %}</p>
+                <ul class="auth-visual-list">
+                    <li><i class="fas fa-check-circle"></i> {% trans "Utilisez l'email fourni lors de votre inscription" %}</li>
+                    <li><i class="fas fa-check-circle"></i> {% trans "Accès immédiat après validation de votre dossier" %}</li>
+                    <li><i class="fas fa-check-circle"></i> {% trans "Vos données sont protégées" %}</li>
+                </ul>
+            </div>
+            <div class="auth-form-panel">
+                <span class="badge-custom badge-dore"><i class="fas fa-user-plus"></i> {% trans "Espace apprenant" %}</span>
+                <h1 class="auth-title">{% trans "Créer mon compte" %}</h1>
+                <p class="auth-subtitle">{% trans "Quelques informations pour démarrer." %}</p>
+
+                {% if form.non_field_errors %}
+                <div class="alert-custom alert-danger" role="alert"><i class="fas fa-exclamation-circle"></i> {{ form.non_field_errors|join:", " }}</div>
+                {% endif %}
+
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="auth-input-group">
+                                <i class="fas fa-id-card auth-input-icon"></i>
+                                {{ form.first_name }}
+                            </div>
+                            {% if form.first_name.errors %}<div class="text-danger small mb-2">{{ form.first_name.errors|join:", " }}</div>{% endif %}
+                        </div>
+                        <div class="col-md-6">
+                            <div class="auth-input-group">
+                                <i class="fas fa-id-card auth-input-icon"></i>
+                                {{ form.last_name }}
+                            </div>
+                            {% if form.last_name.errors %}<div class="text-danger small mb-2">{{ form.last_name.errors|join:", " }}</div>{% endif %}
+                        </div>
+                    </div>
+
+                    <div class="auth-input-group">
+                        <i class="fas fa-user auth-input-icon"></i>
+                        {{ form.username }}
+                    </div>
+                    {% if form.username.errors %}<div class="text-danger small mb-2">{{ form.username.errors|join:", " }}</div>{% endif %}
+
+                    <div class="auth-input-group">
+                        <i class="fas fa-envelope auth-input-icon"></i>
+                        {{ form.email }}
+                    </div>
+                    {% if form.email.errors %}<div class="text-danger small mb-2">{{ form.email.errors|join:", " }}</div>{% endif %}
+
+                    <div class="auth-input-group">
+                        <i class="fas fa-phone auth-input-icon"></i>
+                        {{ form.phone }}
+                    </div>
+                    {% if form.phone.errors %}<div class="text-danger small mb-2">{{ form.phone.errors|join:", " }}</div>{% endif %}
+
+                    <div class="auth-input-group">
+                        <i class="fas fa-lock auth-input-icon"></i>
+                        {{ form.password1 }}
+                        <button type="button" class="auth-password-toggle toggle-pw" aria-label="{% trans 'Afficher le mot de passe' %}"><i class="fas fa-eye"></i></button>
+                    </div>
+                    {% if form.password1.errors %}<div class="text-danger small mb-2">{{ form.password1.errors|join:", " }}</div>{% endif %}
+
+                    <div class="auth-input-group">
+                        <i class="fas fa-lock auth-input-icon"></i>
+                        {{ form.password2 }}
+                        <button type="button" class="auth-password-toggle toggle-pw" aria-label="{% trans 'Afficher le mot de passe' %}"><i class="fas fa-eye"></i></button>
+                    </div>
+                    {% if form.password2.errors %}<div class="text-danger small mb-2">{{ form.password2.errors|join:", " }}</div>{% endif %}
+
+                    <button type="submit" class="btn-auth-submit mt-2">
+                        <i class="fas fa-user-plus me-2"></i> {% trans "Créer mon compte" %}
+                    </button>
+                </form>
+
+                <div class="auth-divider">{% trans "ou" %}</div>
+
+                <p class="text-center mb-0">
+                    {% trans "J'ai déjà un compte" %} <a href="{% url 'login' %}" class="auth-switch-link">{% trans "Se connecter" %}</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.querySelectorAll('.toggle-pw').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const input = btn.closest('.auth-input-group').querySelector('input');
+            const icon = btn.querySelector('i');
+            const isHidden = input.type === 'password';
+            input.type = isHidden ? 'text' : 'password';
+            icon.classList.toggle('fa-eye');
+            icon.classList.toggle('fa-eye-slash');
+        });
+    });
+</script>
+{% endblock %}

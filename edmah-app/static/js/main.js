@@ -25,24 +25,26 @@ const API_CONFIG = {
  */
 function showAlert(message, type = 'success', duration = 5000) {
     const alertContainer = document.getElementById('alertContainer') || createAlertContainer();
-    
+
     const alertClass = type === 'success' ? 'alert-success' : 'alert-danger';
     const icon = type === 'success' ? 'check-circle' : 'exclamation-circle';
-    
-    const alertHTML = `
-        <div class="alert ${alertClass} alert-dismissible fade show" role="alert">
-            <i class="fas fa-${icon} me-2"></i>
-            ${message}
-            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-        </div>
+
+    const alertEl = document.createElement('div');
+    alertEl.className = `alert-custom ${alertClass}`;
+    alertEl.setAttribute('role', 'alert');
+    alertEl.setAttribute('aria-live', 'polite');
+    alertEl.innerHTML = `
+        <i class="fas fa-${icon}"></i>
+        <span>${message}</span>
+        <button type="button" class="alert-close-btn" aria-label="Fermer">&times;</button>
     `;
-    
-    alertContainer.innerHTML = alertHTML;
-    
+    alertEl.querySelector('.alert-close-btn').addEventListener('click', () => alertEl.remove());
+
+    alertContainer.innerHTML = '';
+    alertContainer.appendChild(alertEl);
+
     if (duration > 0) {
-        setTimeout(() => {
-            alertContainer.innerHTML = '';
-        }, duration);
+        setTimeout(() => alertEl.remove(), duration);
     }
 }
 
@@ -52,7 +54,6 @@ function showAlert(message, type = 'success', duration = 5000) {
 function createAlertContainer() {
     const container = document.createElement('div');
     container.id = 'alertContainer';
-    container.style.cssText = 'position: fixed; top: 100px; right: 20px; z-index: 9999; max-width: 400px;';
     document.body.appendChild(container);
     return container;
 }
@@ -98,6 +99,14 @@ function validateFile(file, maxSize, allowedTypes) {
 }
 
 /**
+ * Récupère le token CSRF Django depuis le cookie
+ */
+function getCsrfToken() {
+    const match = document.cookie.match(/csrftoken=([^;]+)/);
+    return match ? match[1] : '';
+}
+
+/**
  * Smooth scroll vers un élément
  */
 function smoothScrollTo(elementId) {
@@ -126,15 +135,17 @@ async function subscribeNewsletter(email) {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
+            'X-CSRFToken': getCsrfToken(),
         },
         body: JSON.stringify({ email })
     });
-    
+
+    const data = await response.json().catch(() => ({}));
     if (!response.ok) {
-        throw new Error('Erreur lors de l\'inscription à la newsletter');
+        throw new Error(data.message || 'Erreur lors de l\'inscription à la newsletter');
     }
-    
-    return await response.json();
+
+    return data;
 }
 
 /**
@@ -154,15 +165,17 @@ async function submitContactForm(formData) {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
+            'X-CSRFToken': getCsrfToken(),
         },
         body: JSON.stringify(formData)
     });
-    
+
+    const data = await response.json().catch(() => ({}));
     if (!response.ok) {
-        throw new Error('Erreur lors de l\'envoi du message');
+        throw new Error(data.message || 'Erreur lors de l\'envoi du message');
     }
-    
-    return await response.json();
+
+    return data;
 }
 
 /**
@@ -173,15 +186,18 @@ async function submitRegistration(formData) {
     
     const response = await fetch(`${API_CONFIG.baseURL}${API_CONFIG.endpoints.register}`, {
         method: 'POST',
+        headers: {
+            'X-CSRFToken': getCsrfToken(),
+        },
         body: formData // Don't set Content-Type, browser will set it with boundary
     });
-    
+
+    const data = await response.json().catch(() => ({}));
     if (!response.ok) {
-        const error = await response.json();
-        throw new Error(error.message || 'Erreur lors de l\'inscription');
+        throw new Error(data.message || 'Erreur lors de l\'inscription');
     }
-    
-    return await response.json();
+
+    return data;
 }
 
 /**
@@ -251,7 +267,7 @@ async function loadBlogArticles(page = 1, limit = 6) {
 document.addEventListener('DOMContentLoaded', function() {
     
     // Navbar scroll effect
-    const navbar = document.querySelector('.navbar-custom');
+    const navbar = document.querySelector('.site-navbar');
     if (navbar) {
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
@@ -300,18 +316,14 @@ document.addEventListener('DOMContentLoaded', function() {
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
             
             try {
-                // For demo purposes, simulate API call
-                await new Promise(resolve => setTimeout(resolve, 1000));
-                
-                // In production, use:
-                // await subscribeNewsletter(email);
-                
+                const result = await subscribeNewsletter(email);
+
                 if (messageDiv) {
                     messageDiv.style.display = 'block';
                     messageDiv.className = 'alert alert-success mt-3';
-                    messageDiv.innerHTML = '<i class="fas fa-check-circle me-2"></i> Merci ! Vous êtes maintenant inscrit à notre newsletter.';
+                    messageDiv.innerHTML = '<i class="fas fa-check-circle me-2"></i> ' + (result.message || 'Merci ! Vous êtes maintenant inscrit à notre newsletter.');
                 }
-                
+
                 form.reset();
                 
                 setTimeout(() => {
@@ -477,7 +489,8 @@ if (typeof module !== 'undefined' && module.exports) {
         showAlert,
         smoothScrollTo,
         animateCounter,
-        observeElements
+        observeElements,
+        getCsrfToken
     };
 }
 
@@ -495,5 +508,6 @@ window.EDMAHApp = {
     showAlert,
     smoothScrollTo,
     animateCounter,
-    observeElements
+    observeElements,
+    getCsrfToken
 };

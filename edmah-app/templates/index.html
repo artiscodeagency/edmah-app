@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load asset_version %}
 {% load i18n %}
 
 {% block title %}EDMAH - {% trans "École du Mariage Harmonieux" %}{% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/home.css' %}">
+<link rel="stylesheet" href="{% static_versioned 'css/home.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -21,7 +22,7 @@
                         <button class="btn btn-hero-primary" onclick="window.location.href='{% url 'formations' %}'">
                             {% trans "Découvrir nos formations" %}
                         </button>
-                        <button class="btn btn-hero-secondary" data-bs-toggle="modal" data-bs-target="#videoModal">
+                        <button class="btn btn-hero-secondary" data-modal-open="videoModal">
                             <i class="fas fa-play me-2"></i> {% trans "Voir la vidéo" %}
                         </button>
                     </div>
@@ -35,6 +36,24 @@
         </div>
     </div>
 </section>
+
+{% if next_event %}
+<section class="py-3" style="background: var(--dore);">
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between gap-3">
+            <div class="d-flex align-items-center gap-3">
+                <i class="fas fa-calendar-alt fa-lg" style="color: var(--bordeaux);"></i>
+                <span class="fw-bold" style="color: var(--gris-fonce);">
+                    {% trans "Prochain événement" %} : {{ next_event.title }} — {{ next_event.start_datetime|date:"d F Y" }}
+                </span>
+            </div>
+            <a href="{% url 'evenements' %}" class="btn-primary-custom" style="padding: 0.5rem 1.5rem;">
+                {% trans "Voir les détails" %} <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+</section>
+{% endif %}
 
 <!-- Stats Section -->
 <section class="section-modern bg-white">
@@ -76,42 +95,29 @@
             <p class="section-subtitle">{% trans "Des programmes adaptés à chaque étape de votre vie conjugale" %}</p>
         </div>
         <div class="row">
-            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+            {% for formation in featured_formations %}
+            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="{{ forloop.counter0|add:1 }}00">
                 <div class="card-modern">
                     <div class="card-icon">
                         <i class="fas fa-ring"></i>
                     </div>
+                    <h3 class="card-title">{{ formation.title }}</h3>
+                    <p class="card-text">{{ formation.short_description }}</p>
+                    <a href="{{ formation.get_absolute_registration_url }}" class="btn-card">
+                        {% trans "En savoir plus" %} <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up">
+                <div class="card-modern">
+                    <div class="card-icon"><i class="fas fa-ring"></i></div>
                     <h3 class="card-title">{% trans "Préparation au Mariage" %}</h3>
                     <p class="card-text">{% trans "Préparez-vous solidement avant le grand jour avec nos cours sur la communication, les finances et la vie de couple." %}</p>
-                    <a href="{% url 'formations' %}" class="btn-card">
-                        {% trans "En savoir plus" %} <i class="fas fa-arrow-right"></i>
-                    </a>
+                    <a href="{% url 'formations' %}" class="btn-card">{% trans "En savoir plus" %} <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
-                <div class="card-modern">
-                    <div class="card-icon">
-                        <i class="fas fa-heartbeat"></i>
-                    </div>
-                    <h3 class="card-title">{% trans "Couple Épanoui" %}</h3>
-                    <p class="card-text">{% trans "Renforcez votre union avec des outils pratiques pour maintenir l'harmonie et la complicité au quotidien." %}</p>
-                    <a href="{% url 'formations' %}" class="btn-card">
-                        {% trans "En savoir plus" %} <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
-                <div class="card-modern">
-                    <div class="card-icon">
-                        <i class="fas fa-home"></i>
-                    </div>
-                    <h3 class="card-title">{% trans "Vie Familiale" %}</h3>
-                    <p class="card-text">{% trans "Apprenez à gérer votre foyer selon les principes bibliques : éducation des enfants, finances, spiritualité." %}</p>
-                    <a href="{% url 'formations' %}" class="btn-card">
-                        {% trans "En savoir plus" %} <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
+            {% endfor %}
         </div>
         <div class="text-center mt-4" data-aos="fade-up">
             <a href="{% url 'formations' %}" class="btn btn-inscrire btn-lg">
@@ -182,14 +188,16 @@
                     <p style="font-size: 1.2rem; opacity: 0.9;">{% trans "Inscrivez-vous à notre newsletter pour recevoir nos dernières actualités, conseils et événements." %}</p>
                 </div>
                 <div class="col-lg-6">
-                    <form id="newsletterForm" class="d-flex gap-2">
+                    <form id="newsletterForm" data-newsletter-form>
                         {% csrf_token %}
-                        <input type="email" class="form-control newsletter-input flex-grow-1" placeholder="{% trans 'Votre adresse email' %}" required>
-                        <button type="submit" class="btn btn-newsletter">
-                            {% trans "S'abonner" %} <i class="fas fa-paper-plane ms-2"></i>
-                        </button>
+                        <div class="d-flex gap-2">
+                            <input type="email" class="form-control newsletter-input flex-grow-1" placeholder="{% trans 'Votre adresse email' %}" required>
+                            <button type="submit" class="btn btn-newsletter">
+                                {% trans "S'abonner" %} <i class="fas fa-paper-plane ms-2"></i>
+                            </button>
+                        </div>
+                        <div class="mt-3" data-newsletter-message style="display: none;"></div>
                     </form>
-                    <div id="newsletterMessage" class="mt-3" style="display: none;"></div>
                 </div>
             </div>
         </div>
@@ -197,15 +205,11 @@
 </section>
 
 <!-- Video Modal -->
-<div class="modal fade" id="videoModal" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content" style="background: transparent; border: none;">
-            <div class="modal-body p-0">
-                <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-3" data-bs-dismiss="modal" style="z-index: 10;"></button>
-                <div class="ratio ratio-16x9">
-                    <iframe id="videoFrame" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-            </div>
+<div class="edmah-modal-backdrop" id="videoModal">
+    <div class="edmah-modal" style="max-width: 900px; background: transparent; box-shadow: none;">
+        <button type="button" class="btn-close btn-close-white" data-modal-close style="position: absolute; top: -50px; right: 0; z-index: 10;"><i class="fas fa-times"></i></button>
+        <div style="position: relative; padding-top: 56.25%; border-radius: var(--radius-lg); overflow: hidden;">
+            <iframe id="videoFrame" src="" style="position: absolute; inset: 0; width: 100%; height: 100%; border: none;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
     </div>
 </div>
@@ -248,10 +252,10 @@
     const videoModal = document.getElementById('videoModal');
     const videoFrame = document.getElementById('videoFrame');
     if (videoModal && videoFrame) {
-        videoModal.addEventListener('show.bs.modal', () => {
+        videoModal.addEventListener('edmah-modal-open', () => {
             videoFrame.src = 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1';
         });
-        videoModal.addEventListener('hide.bs.modal', () => {
+        videoModal.addEventListener('edmah-modal-close', () => {
             videoFrame.src = '';
         });
     }

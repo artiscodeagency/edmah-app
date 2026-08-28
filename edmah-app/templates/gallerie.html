@@ -1,56 +1,132 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load asset_version %}
 {% load i18n %}
 
 {% block title %}EDMAH - {% trans "Galerie Photos & Souvenirs" %}{% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/gallerie.css' %}">
+<link rel="stylesheet" href="{% static_versioned 'css/gallerie.css' %}">
 {% endblock %}
 
 {% block content %}
 <section class="page-header">
-    <div class="container">
-        <div class="text-center" data-aos="fade-up">
-            <h1 class="page-title">{% trans "Galerie Photos" %}</h1>
-            <p style="font-size: 1.3rem; opacity: 0.95;">
-                {% trans "Revivez les moments forts de nos promotions et séminaires" %}
-            </p>
-        </div>
+    <div class="container text-center" data-aos="fade-up">
+        <h1 class="page-title">{% trans "Galerie Photos" %}</h1>
+        <p class="page-subtitle">{% trans "Revivez les moments forts de nos promotions et séminaires" %}</p>
     </div>
 </section>
 
 <div class="container py-5">
-    <div class="row g-4" id="galleryGrid">
-        <div class="col-md-4" data-aos="zoom-in">
-            <div class="gallery-card rounded-4 overflow-hidden shadow-sm">
-                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600" alt="Promotion 2024" class="img-fluid w-100" style="height: 250px; object-fit: cover;">
-                <div class="p-3 bg-white">
-                    <h5 class="mb-1 fw-bold" style="color: var(--bordeaux);">{% trans "Cérémonie de Remise des Diplômes" %}</h5>
-                    <p class="text-muted small mb-0">{% trans "Promotion 2024 - Yaoundé" %}</p>
-                </div>
-            </div>
-        </div>
+    <div class="filter-tabs" data-aos="fade-up">
+        <button class="tab-btn active" data-filter="all">{% trans "Tout" %}</button>
+        {% for cat in categories %}
+        <button class="tab-btn" data-filter="{{ cat }}">{{ cat|title }}</button>
+        {% endfor %}
+    </div>
 
-        <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100">
-            <div class="gallery-card rounded-4 overflow-hidden shadow-sm">
-                <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?w=600" alt="Retraite 2023" class="img-fluid w-100" style="height: 250px; object-fit: cover;">
-                <div class="p-3 bg-white">
-                    <h5 class="mb-1 fw-bold" style="color: var(--bordeaux);">{% trans "Retraite des Couples" %}</h5>
-                    <p class="text-muted small mb-0">{% trans "Session de Kribi" %}</p>
-                </div>
+    <div class="gallery-grid" id="galleryGrid">
+        {% for item in gallery_items %}
+        <div class="gallery-item" data-category="{{ item.category }}" data-aos="zoom-in"
+             data-title="{{ item.title }}" data-subtitle="{{ item.subtitle }}"
+             data-type="{{ item.media_type }}"
+             data-src="{% if item.media_type == 'video' %}{{ item.video_url }}{% elif item.image %}{{ item.image.url }}{% else %}https://images.unsplash.com/photo-1519741497674-611481863552?w=1200{% endif %}">
+            {% if item.image %}
+            <img src="{{ item.image.url }}" alt="{{ item.title }}">
+            {% else %}
+            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=600" alt="{{ item.title }}">
+            {% endif %}
+            {% if item.media_type == 'video' %}
+            <div class="play-icon"><i class="fas fa-play"></i></div>
+            {% endif %}
+            <div class="gallery-overlay">
+                <div class="gallery-title">{{ item.title }}</div>
+                <div class="gallery-category">{{ item.subtitle }}</div>
             </div>
         </div>
-
-        <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
-            <div class="gallery-card rounded-4 overflow-hidden shadow-sm">
-                <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=600" alt="Atelier Communication" class="img-fluid w-100" style="height: 250px; object-fit: cover;">
-                <div class="p-3 bg-white">
-                    <h5 class="mb-1 fw-bold" style="color: var(--bordeaux);">{% trans "Atelier Communication" %}</h5>
-                    <p class="text-muted small mb-0">{% trans "Session Pratique" %}</p>
-                </div>
-            </div>
-        </div>
+        {% empty %}
+        <p class="text-center">{% trans "Aucun média publié pour le moment." %}</p>
+        {% endfor %}
     </div>
 </div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+    <div class="lightbox-content">
+        <div class="lightbox-close" id="lightboxClose"><i class="fas fa-times"></i></div>
+        <div class="lightbox-nav lightbox-prev" id="lightboxPrev"><i class="fas fa-chevron-left"></i></div>
+        <div class="lightbox-nav lightbox-next" id="lightboxNext"><i class="fas fa-chevron-right"></i></div>
+        <div id="lightboxMedia"></div>
+        <div class="lightbox-caption" id="lightboxCaption"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+(function() {
+    const tabs = document.querySelectorAll('.tab-btn');
+    const items = document.querySelectorAll('.gallery-item');
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            tabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            const filter = tab.getAttribute('data-filter');
+            items.forEach(item => {
+                const match = filter === 'all' || item.getAttribute('data-category') === filter;
+                item.style.display = match ? '' : 'none';
+            });
+        });
+    });
+
+    let visibleItems = Array.from(items);
+    let currentIndex = 0;
+    const lightbox = document.getElementById('lightbox');
+    const lightboxMedia = document.getElementById('lightboxMedia');
+    const lightboxCaption = document.getElementById('lightboxCaption');
+
+    function openLightbox(index) {
+        visibleItems = Array.from(items).filter(i => i.style.display !== 'none');
+        currentIndex = visibleItems.indexOf(items[index]);
+        if (currentIndex === -1) currentIndex = 0;
+        render();
+        lightbox.classList.add('active');
+    }
+
+    function render() {
+        const item = visibleItems[currentIndex];
+        if (!item) return;
+        const type = item.getAttribute('data-type');
+        const src = item.getAttribute('data-src');
+        lightboxMedia.innerHTML = type === 'video'
+            ? `<iframe src="${src}" allowfullscreen></iframe>`
+            : `<img src="${src}" alt="${item.getAttribute('data-title')}">`;
+        lightboxCaption.textContent = item.getAttribute('data-title');
+    }
+
+    items.forEach((item, index) => {
+        item.addEventListener('click', () => openLightbox(index));
+    });
+
+    document.getElementById('lightboxClose').addEventListener('click', () => lightbox.classList.remove('active'));
+    document.getElementById('lightboxPrev').addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + visibleItems.length) % visibleItems.length;
+        render();
+    });
+    document.getElementById('lightboxNext').addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % visibleItems.length;
+        render();
+    });
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) lightbox.classList.remove('active');
+    });
+    document.addEventListener('keydown', (e) => {
+        if (!lightbox.classList.contains('active')) return;
+        if (e.key === 'Escape') lightbox.classList.remove('active');
+        if (e.key === 'ArrowLeft') document.getElementById('lightboxPrev').click();
+        if (e.key === 'ArrowRight') document.getElementById('lightboxNext').click();
+    });
+})();
+</script>
 {% endblock %}

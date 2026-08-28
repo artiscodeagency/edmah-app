@@ -1,0 +1,203 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}{{ formation.title }} - {% trans "Espace Apprenant" %} - EDMAH{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/cours.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="page-header">
+    <div class="container">
+        <div class="text-center">
+            <h1 class="page-title">{{ formation.title }}</h1>
+        </div>
+    </div>
+</section>
+
+<section style="padding: 4rem 0;">
+    <div class="container">
+        <div class="progress-container">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h5 style="color: var(--bordeaux); margin: 0;"><i class="fas fa-chart-line me-2"></i> {% trans "Votre Progression" %}</h5>
+                <span style="font-weight: 700; color: var(--dore);">{{ progress_percent }}% {% trans "complété" %}</span>
+            </div>
+            <div class="progress-bar-custom">
+                <div class="progress-fill" style="width: {{ progress_percent }}%;">{{ progress_percent }}%</div>
+            </div>
+            <p style="margin-top: 1rem; color: var(--gris-fonce); opacity: 0.8;">
+                <i class="fas fa-trophy me-2" style="color: var(--dore);"></i>
+                {% trans "Tu as complété" %} <strong>{{ completed_count }} {% trans "modules sur" %} {{ modules|length }}</strong>
+            </p>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="sidebar">
+                    <h5 style="color: var(--bordeaux); margin-bottom: 1.5rem;"><i class="fas fa-book me-2"></i> {% trans "Modules" %}</h5>
+                    {% for module in modules %}
+                    {% if module.id in unlocked_ids %}
+                    <a href="{% url 'course_detail' formation.slug %}?module={{ module.id }}" class="module-nav-item {% if module.id in completed_ids %}completed{% elif current_module.id == module.id %}active{% endif %}" style="text-decoration:none; display:flex;">
+                        <div class="module-icon"><i class="fas {% if module.id in completed_ids %}fa-check{% elif current_module.id == module.id %}fa-play{% else %}fa-book{% endif %}"></i></div>
+                        <div><div style="font-weight: 600;">Module {{ module.order }}</div><small style="opacity: 0.8;">{{ module.title }}</small></div>
+                    </a>
+                    {% else %}
+                    <div class="module-nav-item">
+                        <div class="module-icon"><i class="fas fa-lock"></i></div>
+                        <div><div style="font-weight: 600;">Module {{ module.order }}</div><small style="opacity: 0.8;">{{ module.title }}</small></div>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+
+                    <div style="margin-top: 2rem; padding-top: 2rem; border-top: 2px solid var(--gris-clair);">
+                        <div style="text-align: center; margin-bottom: 1rem;">
+                            <div style="font-size: 1.5rem; font-weight: 700; color: var(--bordeaux);">{{ completed_count }} / {{ modules|length }} {% trans "modules" %}</div>
+                        </div>
+                        <a href="{% url 'certifications' %}" class="btn-download" style="width: 100%; justify-content: center;">
+                            <i class="fas fa-certificate"></i> {% trans "Certificat" %}
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-9">
+                {% if current_module %}
+                <div class="course-content">
+                    <div class="module-header">
+                        <h2 class="module-title">{% trans "Module" %} {{ current_module.order }}: {{ current_module.title }}</h2>
+                        <div class="module-meta">
+                            {% if current_module.duration_label %}<div class="meta-badge"><i class="fas fa-clock"></i> <span>{{ current_module.duration_label }}</span></div>{% endif %}
+                            <div class="meta-badge"><i class="fas fa-file-pdf"></i> <span>{{ current_module.resources.count }} {% trans "documents" %}</span></div>
+                            {% if current_module.quiz %}<div class="meta-badge"><i class="fas fa-question-circle"></i> <span>{% trans "Quiz final" %}</span></div>{% endif %}
+                        </div>
+                    </div>
+
+                    {% if current_module.video_url %}
+                    <div class="video-container">
+                        <iframe src="{{ current_module.video_url }}" allowfullscreen></iframe>
+                    </div>
+                    {% endif %}
+
+                    <div style="margin-bottom: 2rem;">
+                        <h4 style="color: var(--bordeaux); margin-bottom: 1rem;"><i class="fas fa-info-circle me-2"></i> {% trans "À propos de ce module" %}</h4>
+                        <p style="line-height: 1.8;">{{ current_module.description }}</p>
+                    </div>
+
+                    {% if current_module.resources.all %}
+                    <div class="resources-section">
+                        <h4 style="color: var(--bordeaux); margin-bottom: 1.5rem;"><i class="fas fa-download me-2"></i> {% trans "Supports de Cours" %}</h4>
+                        {% for resource in current_module.resources.all %}
+                        <div class="resource-item">
+                            <div class="resource-info">
+                                <div class="resource-icon"><i class="fas fa-file-pdf"></i></div>
+                                <div class="resource-details"><h4>{{ resource.title }}</h4></div>
+                            </div>
+                            <a href="{{ resource.file.url }}" class="btn-download" target="_blank"><i class="fas fa-download"></i> {% trans "Télécharger" %}</a>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+
+                    {% if current_module.id in completed_ids %}
+                    <div class="alert alert-success"><i class="fas fa-check-circle me-2"></i> {% trans "Module déjà validé." %}</div>
+                    {% elif current_module.quiz %}
+                    <div class="quiz-section mt-5" id="quizSection">
+                        <h4 style="color: var(--bordeaux); margin-bottom: 1.5rem;"><i class="fas fa-question-circle me-2"></i> {% trans "Quiz d'évaluation" %}</h4>
+                        <p style="margin-bottom: 2rem; color: var(--gris-fonce);">
+                            {% trans "Vous devez obtenir au moins" %} {{ current_module.quiz.pass_threshold }}% {% trans "pour valider." %}
+                        </p>
+                        <form id="quizForm" data-module-id="{{ current_module.id }}">
+                            {% csrf_token %}
+                            {% for question in current_module.quiz.questions.all %}
+                            <div class="question-item mb-4">
+                                <div class="question-text fw-bold mb-2">{{ forloop.counter }}. {{ question.text }}</div>
+                                {% for choice in question.choices.all %}
+                                <div class="answer-option">
+                                    <input type="radio" name="q{{ question.id }}" value="{{ choice.id }}" id="c{{ choice.id }}">
+                                    <label for="c{{ choice.id }}">{{ choice.text }}</label>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            {% endfor %}
+                            <button type="submit" class="btn btn-warning rounded-pill fw-bold text-dark px-4 py-2">
+                                <i class="fas fa-check me-2"></i> {% trans "Soumettre le Quiz" %}
+                            </button>
+                        </form>
+                        <div id="quizResult" class="mt-3"></div>
+                    </div>
+                    {% endif %}
+
+                    <div class="mt-5 p-4 rounded-4 bg-white border">
+                        <h4 style="color: var(--bordeaux); margin-bottom: 1rem;"><i class="fas fa-sticky-note me-2"></i> {% trans "Mes Notes Personnelles" %}</h4>
+                        <textarea class="form-control" id="notesArea" rows="4" data-module-id="{{ current_module.id }}"
+                                  placeholder="{% trans 'Prenez vos notes ici... Elles seront sauvegardées automatiquement.' %}">{{ note.content|default:'' }}</textarea>
+                        <small class="text-muted" id="notesStatus"></small>
+                    </div>
+                </div>
+                {% else %}
+                <div class="alert alert-info">{% trans "Aucun module disponible pour le moment." %}</div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+const quizForm = document.getElementById('quizForm');
+if (quizForm) {
+    quizForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const moduleId = quizForm.getAttribute('data-module-id');
+        const answers = {};
+        quizForm.querySelectorAll('input[type=radio]:checked').forEach(input => {
+            const questionId = input.name.replace('q', '');
+            answers[questionId] = input.value;
+        });
+        const resultDiv = document.getElementById('quizResult');
+        try {
+            const response = await fetch(`/apprenant/modules/${moduleId}/quiz/`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'X-CSRFToken': EDMAHApp.getCsrfToken() },
+                body: JSON.stringify(answers),
+            });
+            const data = await response.json();
+            if (data.passed) {
+                resultDiv.innerHTML = `<div class="alert alert-success">Score: ${data.score}% — Module validé !${data.certificate_issued ? ' Félicitations, votre certificat a été délivré.' : ''}</div>`;
+                setTimeout(() => window.location.reload(), 2000);
+            } else {
+                resultDiv.innerHTML = `<div class="alert alert-danger">Score: ${data.score}% — Seuil requis: ${data.threshold}%. Réessayez.</div>`;
+            }
+        } catch (err) {
+            resultDiv.innerHTML = '<div class="alert alert-danger">Erreur lors de la soumission du quiz.</div>';
+        }
+    });
+}
+
+const notesArea = document.getElementById('notesArea');
+if (notesArea) {
+    let saveTimeout;
+    notesArea.addEventListener('input', function() {
+        clearTimeout(saveTimeout);
+        const status = document.getElementById('notesStatus');
+        status.textContent = 'Enregistrement...';
+        saveTimeout = setTimeout(async () => {
+            const moduleId = notesArea.getAttribute('data-module-id');
+            try {
+                await fetch(`/apprenant/modules/${moduleId}/notes/`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'X-CSRFToken': EDMAHApp.getCsrfToken() },
+                    body: JSON.stringify({ content: notesArea.value }),
+                });
+                status.textContent = 'Notes enregistrées ✓';
+            } catch (err) {
+                status.textContent = "Erreur d'enregistrement";
+            }
+        }, 800);
+    });
+}
+</script>
+{% endblock %}

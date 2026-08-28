@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load asset_version %}
 {% load i18n %}
 
 {% block title %}EDMAH - {% trans "Nos Formations" %}{% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/formations.css' %}">
+<link rel="stylesheet" href="{% static_versioned 'css/formations.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -28,15 +29,11 @@
             <button class="filter-btn active" data-filter="all">
                 <i class="fas fa-th me-2"></i> {% trans "Toutes les formations" %}
             </button>
-            <button class="filter-btn" data-filter="preparation">
-                <i class="fas fa-ring me-2"></i> {% trans "Préparation" %}
+            {% for cat in categories %}
+            <button class="filter-btn" data-filter="{{ cat.slug }}">
+                <i class="fas fa-tag me-2"></i> {{ cat.name }}
             </button>
-            <button class="filter-btn" data-filter="couple">
-                <i class="fas fa-heart me-2"></i> {% trans "Vie de couple" %}
-            </button>
-            <button class="filter-btn" data-filter="famille">
-                <i class="fas fa-home me-2"></i> {% trans "Famille" %}
-            </button>
+            {% endfor %}
         </div>
     </div>
 </section>
@@ -45,271 +42,50 @@
 <section style="padding: 2rem 0 4rem;">
     <div class="container">
         <div class="row" id="formationsGrid">
-            <!-- Formation 1 -->
-            <div class="col-lg-6 mb-4 formation-item" data-category="preparation" data-aos="fade-up">
+            {% for formation in formations %}
+            <div class="col-lg-6 mb-4 formation-item" data-category="{{ formation.category.slug }}" data-aos="fade-up">
                 <div class="formation-card">
                     <div style="position: relative; overflow: hidden;">
-                        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=800" alt="Préparation au Mariage" class="formation-image">
-                        <span class="formation-badge">{% trans "Populaire" %}</span>
+                        {% if formation.image %}
+                        <img src="{{ formation.image.url }}" alt="{{ formation.title }}" class="formation-image">
+                        {% else %}
+                        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=800" alt="{{ formation.title }}" class="formation-image">
+                        {% endif %}
+                        {% if formation.is_featured %}<span class="formation-badge">{% trans "Populaire" %}</span>{% endif %}
+                        {% if formation.is_new %}<span class="formation-badge">{% trans "Nouveau" %}</span>{% endif %}
                     </div>
                     <div class="formation-content">
-                        <span class="formation-category">{% trans "Préparation" %}</span>
-                        <h3 class="formation-title">{% trans "Préparation au Mariage" %}</h3>
-                        <p class="formation-desc">
-                            {% trans "Un programme complet de 8 semaines pour préparer solidement votre union. Abordez les sujets essentiels : communication, finances, intimité, résolution de conflits et fondements spirituels." %}
-                        </p>
-                        
+                        <span class="formation-category">{{ formation.category.name }}</span>
+                        <h3 class="formation-title">{{ formation.title }}</h3>
+                        <p class="formation-desc">{{ formation.short_description }}</p>
+
                         <div class="formation-meta">
-                            <div class="meta-item"><i class="fas fa-clock"></i> <span>{% trans "8 semaines" %}</span></div>
-                            <div class="meta-item"><i class="fas fa-users"></i> <span>{% trans "Couples fiancés" %}</span></div>
+                            <div class="meta-item"><i class="fas fa-clock"></i> <span>{{ formation.duration_label }}</span></div>
+                            <div class="meta-item"><i class="fas fa-users"></i> <span>{{ formation.audience }}</span></div>
                             <div class="meta-item"><i class="fas fa-certificate"></i> <span>{% trans "Certificat inclus" %}</span></div>
                         </div>
 
                         <div class="formation-details">
+                            {% for highlight in formation.highlights.all %}
                             <div class="detail-item">
-                                <div class="detail-icon"><i class="fas fa-check"></i></div>
-                                <div><strong>{% trans "16 sessions de cours" %}</strong><p class="mb-0" style="font-size: 0.9rem; color: #666;">{% trans "2 sessions par semaine" %}</p></div>
+                                <div class="detail-icon"><i class="fas {{ highlight.icon }}"></i></div>
+                                <div><strong>{{ highlight.title }}</strong><p class="mb-0" style="font-size: 0.9rem; color: #666;">{{ highlight.description }}</p></div>
                             </div>
-                            <div class="detail-item">
-                                <div class="detail-icon"><i class="fas fa-book"></i></div>
-                                <div><strong>{% trans "Supports de cours complets" %}</strong><p class="mb-0" style="font-size: 0.9rem; color: #666;">{% trans "Manuels + exercices pratiques" %}</p></div>
-                            </div>
-                            <div class="detail-item">
-                                <div class="detail-icon"><i class="fas fa-user-tie"></i></div>
-                                <div><strong>{% trans "Accompagnement personnalisé" %}</strong><p class="mb-0" style="font-size: 0.9rem; color: #666;">{% trans "Entretiens individuels inclus" %}</p></div>
-                            </div>
+                            {% endfor %}
                         </div>
 
                         <div class="formation-footer">
-                            <div class="formation-price">50 000 FCFA</div>
-                            <a href="{% url 'inscriptions' %}?formation=preparation" class="btn-formation">
+                            <div class="formation-price">{{ formation.price|floatformat:0 }} FCFA</div>
+                            <a href="{{ formation.get_absolute_registration_url }}" class="btn-formation">
                                 {% trans "S'inscrire" %} <i class="fas fa-arrow-right ms-2"></i>
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <!-- Formation 2 -->
-            <div class="col-lg-6 mb-4 formation-item" data-category="couple" data-aos="fade-up" data-aos-delay="100">
-                <div class="formation-card">
-                    <div style="position: relative; overflow: hidden;">
-                        <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=800" alt="Couple Épanoui" class="formation-image">
-                    </div>
-                    <div class="formation-content">
-                        <span class="formation-category">{% trans "Vie de Couple" %}</span>
-                        <h3 class="formation-title">{% trans "Couple Épanoui" %}</h3>
-                        <p class="formation-desc">
-                            {% trans "Renforcez votre union et ravivez la flamme. Apprenez les clés d'une communication efficace, découvrez les langages de l'amour et cultivez l'intimité émotionnelle et spirituelle." %}
-                        </p>
-                        
-                        <div class="formation-meta">
-                            <div class="meta-item"><i class="fas fa-clock"></i> <span>{% trans "6 semaines" %}</span></div>
-                            <div class="meta-item"><i class="fas fa-users"></i> <span>{% trans "Couples mariés" %}</span></div>
-                            <div class="meta-item"><i class="fas fa-video"></i> <span>{% trans "En ligne/présentiel" %}</span></div>
-                        </div>
-
-                        <div class="formation-details">
-                            <div class="detail-item">
-                                <div class="detail-icon"><i class="fas fa-check"></i></div>
-                                <div><strong>{% trans "12 sessions interactives" %}</strong><p class="mb-0" style="font-size: 0.9rem; color: #666;">{% trans "Ateliers pratiques inclus" %}</p></div>
-                            </div>
-                            <div class="detail-item">
-                                <div class="detail-icon"><i class="fas fa-heart"></i></div>
-                                <div><strong>{% trans "Exercices de couple" %}</strong><p class="mb-0" style="font-size: 0.9rem; color: #666;">{% trans "Renforcement du lien affectif" %}</p></div>
-                            </div>
-                            <div class="detail-item">
-                                <div class="detail-icon"><i class="fas fa-headset"></i></div>
-                                <div><strong>{% trans "Support continu" %}</strong><p class="mb-0" style="font-size: 0.9rem; color: #666;">{% trans "Groupe WhatsApp + suivi" %}</p></div>
-                            </div>
-                        </div>
-
-                        <div class="formation-footer">
-                            <div class="formation-price">40 000 FCFA</div>
-                            <a href="{% url 'inscriptions' %}?formation=couple-epanoui" class="btn-formation">
-                                {% trans "S'inscrire" %} <i class="fas fa-arrow-right ms-2"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Formation 3 -->
-            <div class="col-lg-6 mb-4 formation-item" data-category="famille" data-aos="fade-up">
-                <div class="formation-card">
-                    <div style="position: relative; overflow: hidden;">
-                        <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?w=800" alt="Gestion Familiale" class="formation-image">
-                    </div>
-                    <div class="formation-content">
-                        <span class="formation-category">{% trans "Famille" %}</span>
-                        <h3 class="formation-title">{% trans "Gestion Familiale Biblique" %}</h3>
-                        <p class="formation-desc">
-                            {% trans "Apprenez à gérer votre foyer selon les principes de la Parole. Éducation des enfants, finances, organisation domestique, rôles conjugaux et spiritualité familiale." %}
-                        </p>
-                        
-                        <div class="formation-meta">
-                            <div class="meta-item"><i class="fas fa-clock"></i> <span>{% trans "10 semaines" %}</span></div>
-                            <div class="meta-item"><i class="fas fa-users"></i> <span>{% trans "Parents" %}</span></div>
-                            <div class="meta-item"><i class="fas fa-certificate"></i> <span>{% trans "Certification" %}</span></div>
-                        </div>
-
-                        <div class="formation-details">
-                            <div class="detail-item">
-                                <div class="detail-icon"><i class="fas fa-check"></i></div>
-                                <div><strong>{% trans "20 modules complets" %}</strong><p class="mb-0" style="font-size: 0.9rem; color: #666;">{% trans "Théorie + cas pratiques" %}</p></div>
-                            </div>
-                            <div class="detail-item">
-                                <div class="detail-icon"><i class="fas fa-wallet"></i></div>
-                                <div><strong>{% trans "Finances familiales" %}</strong><p class="mb-0" style="font-size: 0.9rem; color: #666;">{% trans "Budget, épargne, investissement" %}</p></div>
-                            </div>
-                            <div class="detail-item">
-                                <div class="detail-icon"><i class="fas fa-child"></i></div>
-                                <div><strong>{% trans "Éducation des enfants" %}</strong><p class="mb-0" style="font-size: 0.9rem; color: #666;">{% trans "Discipline positive + valeurs" %}</p></div>
-                            </div>
-                        </div>
-
-                        <div class="formation-footer">
-                            <div class="formation-price">60 000 FCFA</div>
-                            <a href="{% url 'inscriptions' %}?formation=gestion-familiale" class="btn-formation">
-                                {% trans "S'inscrire" %} <i class="fas fa-arrow-right ms-2"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Formation 4 -->
-            <div class="col-lg-6 mb-4 formation-item" data-category="couple" data-aos="fade-up" data-aos-delay="100">
-                <div class="formation-card">
-                    <div style="position: relative; overflow: hidden;">
-                        <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?w=800" alt="Résolution Conflits" class="formation-image">
-                        <span class="formation-badge">{% trans "Nouveau" %}</span>
-                    </div>
-                    <div class="formation-content">
-                        <span class="formation-category">{% trans "Vie de Couple" %}</span>
-                        <h3 class="formation-title">{% trans "Communication & Résolution de Conflits" %}</h3>
-                        <p class="formation-desc">
-                            {% trans "Formation intensive pour améliorer votre communication et gérer sainement les désaccords. Techniques éprouvées pour transformer les conflits en opportunités de croissance." %}
-                        </p>
-                        
-                        <div class="formation-meta">
-                            <div class="meta-item"><i class="fas fa-clock"></i> <span>{% trans "4 semaines" %}</span></div>
-                            <div class="meta-item"><i class="fas fa-users"></i> <span>{% trans "Tous couples" %}</span></div>
-                            <div class="meta-item"><i class="fas fa-video"></i> <span>{% trans "100% en ligne" %}</span></div>
-                        </div>
-
-                        <div class="formation-details">
-                            <div class="detail-item">
-                                <div class="detail-icon"><i class="fas fa-check"></i></div>
-                                <div><strong>{% trans "8 sessions intensives" %}</strong><p class="mb-0" style="font-size: 0.9rem; color: #666;">{% trans "Exercices pratiques immédiats" %}</p></div>
-                            </div>
-                            <div class="detail-item">
-                                <div class="detail-icon"><i class="fas fa-comments"></i></div>
-                                <div><strong>{% trans "Techniques de communication" %}</strong><p class="mb-0" style="font-size: 0.9rem; color: #666;">{% trans "Écoute active + expression saine" %}</p></div>
-                            </div>
-                            <div class="detail-item">
-                                <div class="detail-icon"><i class="fas fa-puzzle-piece"></i></div>
-                                <div><strong>{% trans "Gestion des conflits" %}</strong><p class="mb-0" style="font-size: 0.9rem; color: #666;">{% trans "Stratégies de résolution efficaces" %}</p></div>
-                            </div>
-                        </div>
-
-                        <div class="formation-footer">
-                            <div class="formation-price">30 000 FCFA</div>
-                            <a href="{% url 'inscriptions' %}?formation=communication-conflits" class="btn-formation">
-                                {% trans "S'inscrire" %} <i class="fas fa-arrow-right ms-2"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Formation 5 -->
-            <div class="col-lg-6 mb-4 formation-item" data-category="couple" data-aos="fade-up">
-                <div class="formation-card">
-                    <div style="position: relative; overflow: hidden;">
-                        <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=800" alt="Intimité Conjugale" class="formation-image">
-                    </div>
-                    <div class="formation-content">
-                        <span class="formation-category">{% trans "Vie de Couple" %}</span>
-                        <h3 class="formation-title">{% trans "Intimité Conjugale" %}</h3>
-                        <p class="formation-desc">
-                            {% trans "Formation délicate sur l'intimité physique, émotionnelle et spirituelle dans le couple. Abordez ce sujet crucial dans un cadre sain, respectueux et biblique." %}
-                        </p>
-                        
-                        <div class="formation-meta">
-                            <div class="meta-item"><i class="fas fa-clock"></i> <span>{% trans "3 semaines" %}</span></div>
-                            <div class="meta-item"><i class="fas fa-users"></i> <span>{% trans "Couples mariés" %}</span></div>
-                            <div class="meta-item"><i class="fas fa-lock"></i> <span>{% trans "Confidentialité totale" %}</span></div>
-                        </div>
-
-                        <div class="formation-details">
-                            <div class="detail-item">
-                                <div class="detail-icon"><i class="fas fa-check"></i></div>
-                                <div><strong>{% trans "6 sessions privées" %}</strong><p class="mb-0" style="font-size: 0.9rem; color: #666;">{% trans "Groupes restreints" %}</p></div>
-                            </div>
-                            <div class="detail-item">
-                                <div class="detail-icon"><i class="fas fa-heart"></i></div>
-                                <div><strong>{% trans "Vision biblique" %}</strong><p class="mb-0" style="font-size: 0.9rem; color: #666;">{% trans "Intimité selon la Parole" %}</p></div>
-                            </div>
-                            <div class="detail-item">
-                                <div class="detail-icon"><i class="fas fa-user-md"></i></div>
-                                <div><strong>{% trans "Approche professionnelle" %}</strong><p class="mb-0" style="font-size: 0.9rem; color: #666;">{% trans "Conseillers qualifiés" %}</p></div>
-                            </div>
-                        </div>
-
-                        <div class="formation-footer">
-                            <div class="formation-price">35 000 FCFA</div>
-                            <a href="{% url 'inscriptions' %}?formation=intimite-conjugale" class="btn-formation">
-                                {% trans "S'inscrire" %} <i class="fas fa-arrow-right ms-2"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Formation 6 -->
-            <div class="col-lg-6 mb-4 formation-item" data-category="preparation" data-aos="fade-up" data-aos-delay="100">
-                <div class="formation-card">
-                    <div style="position: relative; overflow: hidden;">
-                        <img src="https://images.unsplash.com/photo-1460978812857-470ed1c77af0?w=800" alt="Finances Couple" class="formation-image">
-                    </div>
-                    <div class="formation-content">
-                        <span class="formation-category">{% trans "Préparation" %}</span>
-                        <h3 class="formation-title">{% trans "Finances pour Couples" %}</h3>
-                        <p class="formation-desc">
-                            {% trans "Maîtrisez la gestion financière à deux. Budget familial, épargne, investissements, gestion des dettes et construction d'un patrimoine selon les principes bibliques." %}
-                        </p>
-                        
-                        <div class="formation-meta">
-                            <div class="meta-item"><i class="fas fa-clock"></i> <span>{% trans "5 semaines" %}</span></div>
-                            <div class="meta-item"><i class="fas fa-users"></i> <span>{% trans "Tous couples" %}</span></div>
-                            <div class="meta-item"><i class="fas fa-calculator"></i> <span>{% trans "Outils inclus" %}</span></div>
-                        </div>
-
-                        <div class="formation-details">
-                            <div class="detail-item">
-                                <div class="detail-icon"><i class="fas fa-check"></i></div>
-                                <div><strong>{% trans "10 modules pratiques" %}</strong><p class="mb-0" style="font-size: 0.9rem; color: #666;">{% trans "Cas réels + simulations" %}</p></div>
-                            </div>
-                            <div class="detail-item">
-                                <div class="detail-icon"><i class="fas fa-file-excel"></i></div>
-                                <div><strong>{% trans "Outils de gestion" %}</strong><p class="mb-0" style="font-size: 0.9rem; color: #666;">{% trans "Tableurs + templates" %}</p></div>
-                            </div>
-                            <div class="detail-item">
-                                <div class="detail-icon"><i class="fas fa-chart-line"></i></div>
-                                <div><strong>{% trans "Plan financier personnalisé" %}</strong><p class="mb-0" style="font-size: 0.9rem; color: #666;">{% trans "Adapté à votre situation" %}</p></div>
-                            </div>
-                        </div>
-
-                        <div class="formation-footer">
-                            <div class="formation-price">45 000 FCFA</div>
-                            <a href="{% url 'inscriptions' %}?formation=finances-couples" class="btn-formation">
-                                {% trans "S'inscrire" %} <i class="fas fa-arrow-right ms-2"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {% empty %}
+            <p class="text-center">{% trans "Aucune formation disponible pour le moment." %}</p>
+            {% endfor %}
         </div>
 
         <!-- Empty State -->

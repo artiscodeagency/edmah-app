@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-k#9_ho#_lmf82_wbfobnt%r=5qj$2)molys$c%u5j$ak*b&7+0
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'testserver']
 
 
 # Application definition
@@ -84,6 +84,18 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'edmah_project.wsgi.application'
+
+AUTH_USER_MODEL = 'accounts.User'
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'apprenant_dashboard'
+LOGOUT_REDIRECT_URL = 'index'
+
+# Règles métier EDMAH (P0/P1)
+QUIZ_PASS_THRESHOLD = 80
+MAX_ID_PHOTO_SIZE = 2 * 1024 * 1024  # 2 Mo
+MAX_DOCUMENT_SIZE = 5 * 1024 * 1024  # 5 Mo
+ADMIN_NOTIFICATION_EMAIL = 'contact@edmah.com'
+DEFAULT_FROM_EMAIL = 'noreply@edmah.com'
 
 
 # Base de données
@@ -144,13 +156,11 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
+# Stockage privé des pièces d'inscription : jamais servi par MEDIA_URL,
+# uniquement accessible via la vue protégée admissions.views.serve_document.
+PRIVATE_MEDIA_ROOT = BASE_DIR / 'private_media'
+
 
 # Email (console backend pour le dev)
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
-MAILERS = {
-    'default': {
-        'BACKEND': 'django.core.mail.backends.console.EmailBackend',
-    },
-}
 
