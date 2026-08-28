@@ -1,0 +1,224 @@
+/**
+ * EDMAH — Habillage Jazzmin (interface d'administration)
+ * Palette officielle du site : bordeaux #7b1426 / or #d4a017
+ */
+
+:root {
+    --edmah-bordeaux: #7b1426;
+    --edmah-bordeaux-dark: #5c0f1d;
+    --edmah-bordeaux-hover: #a01836;
+    --edmah-dore: #d4a017;
+    --edmah-dore-hover: #f0b824;
+    --edmah-cream: #fffaf6;
+    --edmah-text: #333333;
+
+    /* Bootstrap 5 theme variables consumed across Jazzmin/AdminLTE */
+    --bs-primary: var(--edmah-bordeaux);
+    --bs-primary-rgb: 123, 20, 38;
+    --bs-warning: var(--edmah-dore);
+    --bs-warning-rgb: 212, 160, 23;
+}
+
+body, .app-wrapper {
+    font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+}
+
+h1, h2, h3, h4, h5, .brand-text, .login-box-msg {
+    font-family: 'Playfair Display', Georgia, serif;
+}
+
+/* ============================================
+   EN-TÊTE
+   ============================================ */
+.app-header {
+    background: linear-gradient(135deg, var(--edmah-bordeaux) 0%, var(--edmah-bordeaux-dark) 100%) !important;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.15);
+}
+
+.app-header .nav-link,
+.app-header .btn-navbar {
+    color: var(--edmah-cream) !important;
+}
+
+.app-header .nav-link:hover {
+    color: var(--edmah-dore) !important;
+}
+
+.app-header .form-control-navbar {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.2);
+    color: var(--edmah-cream);
+}
+
+.app-header .form-control-navbar::placeholder { color: rgba(255, 250, 246, 0.7); }
+
+/* ============================================
+   MARQUE / LOGO
+   ============================================ */
+.brand-link {
+    background: var(--edmah-bordeaux-dark) !important;
+    border-bottom: 1px solid rgba(212, 160, 23, 0.3) !important;
+}
+
+.brand-link .brand-image {
+    background: var(--edmah-cream);
+    border-radius: 50%;
+    padding: 2px;
+}
+
+.brand-text {
+    color: var(--edmah-cream) !important;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+
+/* ============================================
+   BARRE LATÉRALE
+   ============================================ */
+.app-sidebar {
+    background: var(--edmah-bordeaux-dark) !important;
+}
+
+.sidebar-dark-primary .nav-sidebar > .nav-item > .nav-link {
+    color: rgba(255, 250, 246, 0.85);
+}
+
+.nav-sidebar .nav-link:hover {
+    background: rgba(212, 160, 23, 0.15) !important;
+    color: var(--edmah-dore) !important;
+}
+
+.nav-sidebar .nav-link.active {
+    background: linear-gradient(135deg, var(--edmah-dore), var(--edmah-dore-hover)) !important;
+    color: var(--edmah-bordeaux-dark) !important;
+    font-weight: 700;
+    box-shadow: 0 2px 8px rgba(212, 160, 23, 0.4);
+}
+
+.nav-sidebar .nav-link.active i,
+.nav-sidebar .nav-link.active p { color: var(--edmah-bordeaux-dark) !important; }
+
+.nav-sidebar .nav-header {
+    color: var(--edmah-dore) !important;
+    font-family: 'Playfair Display', Georgia, serif;
+    opacity: 0.9;
+}
+
+.user-panel .info a {
+    color: var(--edmah-cream) !important;
+}
+
+/* ============================================
+   BOUTONS
+   ============================================ */
+.btn-primary {
+    background: linear-gradient(135deg, var(--edmah-bordeaux), var(--edmah-bordeaux-hover)) !important;
+    border-color: var(--edmah-bordeaux) !important;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.btn-primary:hover {
+    background: var(--edmah-bordeaux-hover) !important;
+    border-color: var(--edmah-bordeaux-hover) !important;
+}
+
+.btn-warning {
+    background: linear-gradient(135deg, var(--edmah-dore), var(--edmah-dore-hover)) !important;
+    border-color: var(--edmah-dore) !important;
+    color: var(--edmah-text) !important;
+    font-weight: 600;
+    border-radius: 8px;
+}
+
+.accent-warning a,
+.accent-warning .nav-link { color: var(--edmah-dore); }
+
+/* ============================================
+   CARTES / MODULES
+   ============================================ */
+.card {
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.card-primary.card-outline {
+    border-top: 3px solid var(--edmah-bordeaux);
+}
+
+.card-header {
+    font-family: 'Playfair Display', Georgia, serif;
+}
+
+/* ============================================
+   TABLEAUX / LISTES
+   ============================================ */
+.table thead th {
+    background: #f8f2ec;
+    color: var(--edmah-bordeaux);
+    border-bottom: 2px solid var(--edmah-dore);
+}
+
+.table-hover tbody tr:hover {
+    background: #fbeed4 !important;
+}
+
+.badge.bg-primary, .badge.bg-info {
+    background: var(--edmah-bordeaux) !important;
+}
+
+.badge.bg-warning {
+    background: var(--edmah-dore) !important;
+    color: var(--edmah-text) !important;
+}
+
+/* ============================================
+   PAGE DE CONNEXION
+   ============================================ */
+.login-page {
+    background:
+        radial-gradient(circle at 15% 15%, rgba(212, 160, 23, 0.15), transparent 45%),
+        radial-gradient(circle at 85% 85%, rgba(123, 20, 38, 0.12), transparent 45%),
+        var(--edmah-cream) !important;
+}
+
+.login-logo {
+    margin-bottom: 1.5rem;
+}
+
+.login-logo img { border-radius: 50%; }
+
+.login-logo a {
+    color: var(--edmah-bordeaux) !important;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 700;
+}
+
+.login-box .card {
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(123, 20, 38, 0.18);
+    border-top: 4px solid var(--edmah-dore);
+}
+
+.login-card-body {
+    padding: 2.25rem;
+}
+
+.login-box-msg {
+    color: var(--edmah-bordeaux);
+    font-weight: 700;
+}
+
+.callout.callout-danger {
+    background: #fbe9e7;
+    border-left-color: #c0392b;
+    color: #8b2f22;
+}
+
+/* ============================================
+   PIED DE PAGE
+   ============================================ */
+.app-footer {
+    background: var(--edmah-cream);
+    border-top: 1px solid #eee;
+}

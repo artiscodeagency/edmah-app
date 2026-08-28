@@ -161,3 +161,12 @@ class Command(BaseCommand):
         first_module = course.modules.order_by('order').first()
         if first_module:
             Progress.objects.get_or_create(user=demo_user, module=first_module, defaults={'completed': True, 'completed_at': timezone.now()})
+
+        formateur_user, created = User.objects.get_or_create(
+            username='formateur.demo',
+            defaults=dict(email='formateur.demo@edmah.com', role=User.Role.FORMATEUR, first_name='Daniel', last_name='M.'),
+        )
+        if created:
+            formateur_user.set_password('EdmahFormateur2026!')
+            formateur_user.save()
+        course.instructors.add(formateur_user)

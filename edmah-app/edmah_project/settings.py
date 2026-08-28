@@ -33,6 +33,7 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'testserver']
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -163,4 +164,115 @@ PRIVATE_MEDIA_ROOT = BASE_DIR / 'private_media'
 
 # Email (console backend pour le dev)
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
+# ============================================
+# Jazzmin — interface d'administration EDMAH
+# ============================================
+JAZZMIN_SETTINGS = {
+    'site_title': 'EDMAH Admin',
+    'site_header': 'EDMAH',
+    'site_brand': 'EDMAH Admin',
+    'site_logo': 'images/logo.png',
+    'login_logo': 'images/logo.png',
+    'site_logo_classes': 'img-circle',
+    'site_icon': 'images/logo.png',
+    'welcome_sign': "Bienvenue dans l'administration EDMAH",
+    'copyright': 'EDMAH — École du Mariage Harmonieux',
+    'search_model': ['admissions.Inscription'],
+    'user_avatar': None,
+
+    'topmenu_links': [
+        {'name': 'Voir le site', 'url': '/', 'new_window': True},
+    ],
+
+    'show_sidebar': True,
+    'navigation_expanded': False,
+    'hide_models': [],
+    'order_with_respect_to': [
+        'admissions', 'communications', 'catalog', 'events', 'learning',
+        'content', 'certificates', 'accounts', 'auth',
+    ],
+
+    'icons': {
+        'auth': 'fas fa-user-shield',
+        'auth.Group': 'fas fa-users-gear',
+        'accounts': 'fas fa-users',
+        'accounts.User': 'fas fa-user',
+        'admissions': 'fas fa-file-signature',
+        'admissions.Inscription': 'fas fa-file-signature',
+        'admissions.AdmissionDocument': 'fas fa-paperclip',
+        'catalog': 'fas fa-graduation-cap',
+        'catalog.Category': 'fas fa-tags',
+        'catalog.Formation': 'fas fa-graduation-cap',
+        'catalog.FormationHighlight': 'fas fa-star',
+        'catalog.Session': 'fas fa-calendar-check',
+        'certificates': 'fas fa-certificate',
+        'certificates.Certificate': 'fas fa-certificate',
+        'communications': 'fas fa-envelope-open-text',
+        'communications.ContactMessage': 'fas fa-envelope',
+        'communications.NewsletterSubscriber': 'fas fa-paper-plane',
+        'content': 'fas fa-newspaper',
+        'content.Article': 'fas fa-newspaper',
+        'content.ArticleCategory': 'fas fa-tags',
+        'content.FAQ': 'fas fa-circle-question',
+        'content.GalleryItem': 'fas fa-images',
+        'events': 'fas fa-calendar-days',
+        'events.Event': 'fas fa-calendar-days',
+        'events.EventRegistration': 'fas fa-ticket',
+        'learning': 'fas fa-book-open',
+        'learning.Course': 'fas fa-book',
+        'learning.Module': 'fas fa-layer-group',
+        'learning.Resource': 'fas fa-file-pdf',
+        'learning.Quiz': 'fas fa-circle-question',
+        'learning.Question': 'fas fa-list-check',
+        'learning.Choice': 'fas fa-check',
+        'learning.Attempt': 'fas fa-clipboard-check',
+        'learning.Progress': 'fas fa-chart-line',
+        'learning.Note': 'fas fa-note-sticky',
+    },
+    'default_icon_parents': 'fas fa-chevron-circle-right',
+    'default_icon_children': 'fas fa-circle',
+
+    'related_modal_active': True,
+
+    'custom_css': 'css/jazzmin-custom.css',
+    'custom_js': None,
+    'use_google_fonts_cdn': True,
+    'show_ui_builder': False,
+
+    'changeform_format': 'horizontal_tabs',
+    'language_chooser': True,
+}
+
+JAZZMIN_UI_TWEAKS = {
+    'navbar_small_text': False,
+    'footer_small_text': True,
+    'body_small_text': False,
+    'brand_small_text': False,
+    'accent': 'accent-warning',
+    'navbar': 'navbar-dark',
+    'no_navbar_border': True,
+    'navbar_fixed': True,
+    'layout_boxed': False,
+    'footer_fixed': False,
+    'sidebar_fixed': True,
+    'sidebar': 'sidebar-dark-primary',
+    'sidebar_nav_small_text': False,
+    'sidebar_disable_expand': False,
+    'sidebar_nav_child_indent': True,
+    'sidebar_nav_compact_style': False,
+    'sidebar_nav_legacy_style': False,
+    'sidebar_nav_flat_style': True,
+    'theme': 'default',
+    'default_theme_mode': 'light',
+    'button_classes': {
+        'primary': 'btn-primary',
+        'secondary': 'btn-secondary',
+        'info': 'btn-info',
+        'warning': 'btn-warning',
+        'danger': 'btn-danger',
+        'success': 'btn-success',
+    },
+}
 

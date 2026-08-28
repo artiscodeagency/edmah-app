@@ -250,39 +250,361 @@ div.breadcrumbs {
 /* ============================================
    PAGE DE CONNEXION
    ============================================ */
-body.login {
-    background: linear-gradient(135deg, #7b1426 0%, #5c0f1d 100%);
+body.edmah-login {
+    background:
+        radial-gradient(circle at 15% 15%, rgba(212, 160, 23, 0.12), transparent 45%),
+        radial-gradient(circle at 85% 85%, rgba(123, 20, 38, 0.08), transparent 45%),
+        var(--body-bg);
 }
 
-body.login #container {
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-    margin-top: 8vh;
-}
-
-body.login #header {
+body.edmah-login #header {
     justify-content: center;
-    padding: 1.75rem 2rem;
+    padding: 1.5rem 2rem;
 }
 
-body.login .form-row label {
+body.edmah-login div.breadcrumbs { display: none; }
+
+.edmah-login-shell {
+    display: flex;
+    justify-content: center;
+    padding: 3rem 1.5rem;
+}
+
+.edmah-login-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-width: 920px;
+    width: 100%;
+    background: var(--body-bg);
+    border-radius: 22px;
+    overflow: hidden;
+    box-shadow: 0 25px 70px rgba(123, 20, 38, 0.18);
+}
+
+.edmah-login-visual {
+    background: linear-gradient(155deg, #7b1426 0%, #5c0f1d 60%, #3e0a13 100%);
+    color: #fff9f2;
+    padding: 3rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.edmah-login-visual::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 80% 10%, rgba(212, 160, 23, 0.3), transparent 55%);
+}
+
+.edmah-login-logo {
+    height: 56px;
+    width: auto;
+    border-radius: 50%;
+    background: #fff9f2;
+    padding: 4px;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.edmah-login-visual h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.6rem;
+    margin-bottom: 0.9rem;
+    position: relative;
+    z-index: 1;
+}
+
+.edmah-login-visual p {
+    opacity: 0.9;
+    line-height: 1.7;
+    position: relative;
+    z-index: 1;
+}
+
+.edmah-login-points {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0 0;
+    position: relative;
+    z-index: 1;
+}
+
+.edmah-login-points li {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.4rem 0;
+    opacity: 0.95;
+}
+
+.edmah-login-points li i { color: var(--accent); }
+
+.edmah-login-form {
+    padding: 3rem 2.5rem;
+    position: relative;
+}
+
+.edmah-login-form h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+}
+
+.edmah-login-form .theme-toggle {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+}
+
+.edmah-login-form .form-row {
+    margin-bottom: 1.1rem;
+}
+
+.edmah-login-form .form-row label {
+    display: block;
     color: var(--body-fg);
     font-weight: 600;
+    margin-bottom: 0.35rem;
 }
 
-body.login .submit-row {
-    text-align: center;
-}
-
-body.login .submit-row input {
+.edmah-login-form input[type="text"],
+.edmah-login-form input[type="password"] {
     width: 100%;
-    padding: 0.7rem;
+    padding: 0.75rem 1rem;
 }
 
-.login-logo {
-    display: block;
-    height: 60px;
-    width: auto;
-    margin: 0 auto 0.5rem;
+.edmah-login-form .submit-row {
+    margin-top: 1.5rem;
 }
+
+.edmah-login-form .submit-row input {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1rem;
+}
+
+.edmah-login-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 1.5rem;
+    color: var(--body-quiet-color) !important;
+    font-size: 0.85rem;
+}
+
+.edmah-login-back:hover { color: var(--primary) !important; }
+
+@media (max-width: 760px) {
+    .edmah-login-card { grid-template-columns: 1fr; max-width: 460px; }
+    .edmah-login-visual { padding: 2.25rem; }
+    .edmah-login-form { padding: 2.25rem; }
+}
+
+/* ============================================
+   TABLEAU DE BORD — HERO + STATS
+   ============================================ */
+.edmah-dash-hero {
+    background: var(--header-bg);
+    color: #fff9f2;
+    padding: 2.25rem 2rem;
+    border-radius: 16px;
+    margin-bottom: 1.75rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.edmah-dash-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 85% 20%, rgba(212, 160, 23, 0.3), transparent 55%);
+}
+
+.edmah-dash-hero h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.8rem;
+    margin: 0 0 0.4rem;
+    position: relative;
+    z-index: 1;
+}
+
+.edmah-dash-hero p {
+    opacity: 0.9;
+    margin: 0;
+    position: relative;
+    z-index: 1;
+}
+
+.edmah-dash-hero p .edmah-dash-date {
+    text-transform: capitalize;
+}
+
+.edmah-stat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.edmah-stat-card {
+    background: var(--body-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    padding: 1.25rem;
+    text-decoration: none !important;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.edmah-stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(123, 20, 38, 0.15);
+}
+
+.edmah-stat-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: var(--darkened-bg);
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+}
+
+.edmah-stat-value {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.9rem;
+    font-weight: 700;
+    color: var(--body-loud-color);
+    line-height: 1;
+}
+
+.edmah-stat-label {
+    color: var(--body-quiet-color);
+    font-size: 0.82rem;
+    margin-top: 0.35rem;
+}
+
+/* ============================================
+   TABLEAU DE BORD — GRILLE D'APPLICATIONS
+   ============================================ */
+.edmah-app-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.25rem;
+}
+
+.edmah-app-card {
+    background: var(--body-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.edmah-app-card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.25rem;
+    background: var(--primary);
+}
+
+.edmah-app-card-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 9px;
+    background: rgba(255,255,255,0.18);
+    color: #fff9f2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.edmah-app-card-title {
+    color: #fff9f2 !important;
+    font-weight: 700;
+    font-family: 'Playfair Display', Georgia, serif;
+    text-decoration: none !important;
+}
+
+.edmah-app-card-models {
+    list-style: none;
+    margin: 0;
+    padding: 0.4rem 0;
+}
+
+.edmah-app-card-models li {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.55rem 1.25rem;
+    border-bottom: 1px solid var(--hairline-color);
+}
+
+.edmah-app-card-models li:last-child { border-bottom: none; }
+
+.edmah-app-card-models li:hover { background: var(--darkened-bg); }
+
+.edmah-model-icon {
+    color: var(--accent);
+    width: 16px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.edmah-app-card-models a {
+    flex: 1;
+    color: var(--body-fg) !important;
+    text-decoration: none !important;
+    font-weight: 500;
+}
+
+.edmah-model-actions a.edmah-quick-add {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--darkened-bg);
+    color: var(--primary) !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none !important;
+    font-size: 0.75rem;
+}
+
+.edmah-model-actions a.edmah-quick-add:hover {
+    background: var(--accent);
+    color: #fff9f2 !important;
+}
+
+.edmah-empty-log {
+    color: var(--body-quiet-color);
+    font-style: italic;
+}
+
+/* ============================================
+   LISTES / TABLEAUX — POLISH
+   ============================================ */
+#changelist table thead th {
+    background: var(--darkened-bg);
+}
+
+#changelist table tbody tr:hover {
+    background: var(--selected-bg) !important;
+}
+
+.actionlist li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--hairline-color);
+}
+
+.actionlist li:last-child { border-bottom: none; }

@@ -116,10 +116,10 @@
             const formData = new FormData(this);
             const payload = Object.fromEntries(formData.entries());
             const response = await EDMAHApp.submitContactForm(payload);
-            EDMAHApp.showAlert(response.message || '{% trans "Votre message a bien été envoyé. Notre équipe vous répondra rapidement." %}', 'success');
+            EDMAHApp.showAlert(response.message || `{% trans "Votre message a bien été envoyé. Notre équipe vous répondra rapidement." %}`, 'success');
             this.reset();
         } catch (err) {
-            EDMAHApp.showAlert(err.message || '{% trans "Erreur lors de l\'envoi." %}', 'danger');
+            EDMAHApp.showAlert(err.message || `{% trans "Erreur lors de l'envoi." %}`, 'danger');
         } finally {
             btn.disabled = false;
             btn.innerHTML = '<i class="fas fa-paper-plane me-2"></i> {% trans "Envoyer le message" %}';

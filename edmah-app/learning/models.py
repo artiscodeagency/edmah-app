@@ -7,6 +7,11 @@ from catalog.models import Formation
 class Course(models.Model):
     formation = models.OneToOneField(Formation, on_delete=models.CASCADE, related_name='course')
     is_published = models.BooleanField(default=True)
+    instructors = models.ManyToManyField(
+        settings.AUTH_USER_MODEL, blank=True, related_name='courses_taught',
+        limit_choices_to={'role': 'formateur'},
+        help_text="Formateurs autorisés à gérer les modules, ressources et quiz de ce cours.",
+    )
 
     def __str__(self):
         return f'Cours — {self.formation}'
